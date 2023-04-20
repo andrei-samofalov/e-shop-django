@@ -1,0 +1,173 @@
+.{$px}Footer
+    margin-top: 43px
+    padding: 0
+    width: 100%
+    color: #86878a
+    background: clr-dk;
+
+    +m('phone')
+        position: static
+    +m('tablet')
+        margin-top: 40px
+    &-news
+        +m(1300px)
+            display: none
+        +b(media_news)
+            color: #86878a
+
+
+    &-main
+        padding-top: 34px
+        padding-left: 10px
+        padding-right: 10px
+        justify-content: space-between
+        line-height: 1.8em
+        font-size: font-nrm
+        &:before
+        &:after
+            display: none
+        +b(row-block)
+            width: auto
+            min-width: 150px
+            max-width: 400px
+            +m('tablet')
+                visibility: visible
+                min-width: 100px
+            +m(600px)
+                margin-left: auto !important
+                margin-right: auto !important
+                max-width: 300px
+            &:first-child
+                font-size:font-nr
+                line-height: 1.5em
+                +m(1300px)
+                    max-width: 300px
+                +m('tablet')
+                    width: 35%
+                +m(600px)
+                    width: auto
+            + {b(row-block)}
+                +m(1300px)
+                    margin-left: 20px
+                +m('tablet')
+                    margin-top: 0
+        +m('tablet')
+            display: flex
+            padding-left: 0
+            padding-right: 0
+        +m(600px)
+            //text-align: center
+            display: block
+        +b(menu)
+            margin-top: 21px
+            &_img
+                margin-top: 0
+    
+    &-title
+        color: clr-white;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        display: block
+        margin-top: 14px
+        margin-bottom: 18px
+        
+    
+    &-menu
+        margin-left: 0px
+        padding-left: 0
+        +b(menu)
+            &-link
+                padding-left: 0
+                padding-right: 0
+                color: #77787b
+                font-weight: 500
+    &-logo
+        margin-bottom: 30px
+        +m('tablet')
+            max-width: 100%
+            img
+                max-width: 100%
+    &-search
+        background: clr-primary
+        color: clr-white
+        padding-top: 26px
+        padding-bottom: 25px
+        margin-bottom: 40px
+        font-size: font-nrp;
+        letter-spacing: 0.9px;
+        +b(media)
+            &-image
+                margin-right: 9px
+        &Block
+            text-transform: uppercase
+            &:last-child
+                width: 60%
+                margin-left: 20px
+                +m(700px)
+                    width: 100%
+                    margin-left: 0
+        +b(wrap)
+            display: flex
+            align-items: center
+            justify-content: space-between
+            +m(700px)
+                display: block
+        
+
+    
+
+    &-social
+        margin: 0
+        position: relative
+        padding-right: 28px
+
+        +m('large')
+            right: -6px
+        +m('tablet')
+            width: 100%
+        +m('phone')
+            display: flex
+            justify-content: center
+
+    &-copy
+        font-size: font-sm;
+        line-height: 24px;
+        text-transform: uppercase
+        margin-top: 30px
+        background-color: #191b1f;
+        padding-top: 25px
+        padding-bottom: 25px
+        a
+            color: clr-white
+        span
+            vertical-align: middle
+    &-payments
+        display: inline-flex
+        vertical-align: middle
+        margin-left: 30px
+        div
+            + div
+                margin-left: 10px
+        +m('phone')
+            flex-wrap: wrap
+            margin-left: -10px
+            margin-right: -10px
+            div
+                margin-right: 10px
+                margin-left: 10px
+                margin-top: 20px
+        &_column
+            flex-wrap: wrap
+            margin-top: -14px
+            margin-left: -7px
+            margin-right: -7px
+            div
+                margin-right: 7px
+                margin-left: 7px
+                margin-top: 14px
+                + div
+                    margin-left: 7px
+            
+        
+

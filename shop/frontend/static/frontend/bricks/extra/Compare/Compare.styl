@@ -1,0 +1,109 @@
+.{$px}Compare
+    visibility: visible;
+    &-row
+        display: flex
+        padding-top: 20px
+        padding-bottom: 20px
+        padding-right: 5%
+        border-top: 1px solid #ddd
+        &:first-child
+            border-top: none
+        +m('tablet')
+            padding-right: 0
+    &-header
+        padding-bottom: 20px
+    
+    &-title
+        font-weight: 500
+        color: clr-muted
+        display: block
+        max-width: 150px
+        min-width: 150px
+        &_blank
+            +m('phone')
+                display: none
+            + {e(-products)}
+                +e(-nameProduct)
+                    text-align: center
+                    display: block
+                    margin-bottom: 10px
+        +m('phone')
+            color: clr-primary
+            max-width: none
+            margin-bottom: 10px
+            font-size: font-nrp
+            font-weight: normal
+            min-width: 120px
+            max-width: 120px
+            margin-right: 15px
+    
+    &-nameProduct
+        font-weight: 500
+        color: clr-muted
+        font-size: font-nrp
+        text-align: center
+        display: none
+        +m('phone')
+            display: inline-block
+            text-align: left
+            font-size: font-nr
+            &:after
+                content: ':'
+    
+        &_main
+            display: block
+        
+    &-products
+        width: 100%
+        display: flex
+        justify-content: space-between
+        overflow-x: auto
+        overflow-y: visible
+        +m('phone')
+            display: block
+            overflow: visible
+    
+    &-btn
+        display: flex
+        width: 41px
+        height: 41px
+        background-color: #ebebeb;
+        justify-content: center
+        align-items: center
+        & + &
+            margin-left: 12px
+        
+    &-product
+        margin-top: 1px
+        margin-bottom: 1px
+        width: 100%
+        min-width: 150px
+        & + &
+            margin-left: 30px
+            +m('phone')
+                margin-top: 20px
+                margin-left: 0
+    &-feature
+        display: flex
+        justify-content: center
+    
+    &-pict
+        margin-top: 20px
+        width: 150px
+        margin-left: auto
+        margin-right: auto
+        display: block
+        +m('large')
+            width: 200px
+        +m('phone')
+            margin-top: 0
+    &-price
+        font-weight: 600;
+        color: clr-primary;
+        display: inline-block
+        &Old
+            color: #999999;
+            text-decoration: line-through;
+            display: inline-block
+            margin-right: 7px
+            font-weight: 400

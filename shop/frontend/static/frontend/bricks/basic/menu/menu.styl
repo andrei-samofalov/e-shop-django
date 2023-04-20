@@ -1,0 +1,357 @@
+/*----------  Меню  ----------*/
+.{$px}menu
+    $itemPadding = 0 5px    // Отсутпы между элементами
+    $fontWeight = 800       // Жирность шрифта меню
+    $fontSize = font-nrm    // Размер шрифта меню
+    $clrHoverLink = clr-primary // Цвет подчеркивания при наведении на ссылку в меню
+    
+    clearfix()
+    width: 100%
+    position: relative
+    line-height: 1.2em
+    margin: 0
+    padding: 0
+    display: block
+    font-weight: bold
+
+    &Modal
+        +m('tablet')
+            height: 0px
+            display: block
+            transition: 300ms;
+            overflow: hidden
+            +b(menu)
+                padding-top: 30px
+        &_OPEN
+            transition: 300ms;
+
+    &Trigger
+        background: none
+        border: none !important
+        box-shadow: none
+        text-indent: -9999px
+        padding-left: 0 !important
+        padding-right: 0 !important
+        min-width: 0
+        margin-right: 0 !important
+        min-height: 0
+        z-index:1000
+        width: 30px
+        height: 30px
+        //> *
+        //    position: absolute
+        //    left: 0
+        //    top: 0
+        font-size: 0
+        line-height: 0
+        padding-top: 4px
+        position: relative
+        //&-content
+        //    display: none
+        span
+            display: block
+            height: 3px
+            width: 20px
+            border-radius: 100px
+            background: clr-primary
+            transition: all 0.3s
+            opacity:1
+            + span
+                margin-top: 3px
+
+        &_OPEN
+            span
+                position: absolute
+                top: 31%
+                margin-top: 0px
+                transform: rotate(45deg)
+                box-shadow: none
+                transition: all 0.3s
+                + span
+                    transform: rotate(-45deg)
+                    margin-top: 0
+                &:last-child
+                    opacity: 0
+
+    /*-----------  Начало стилей для меню  -----------*/
+    ul
+    li
+        list-style: none
+        padding: 0
+        margin: 0
+        &:after
+            display: none
+
+    /*-----------  Вертикальное меню  -----------*/
+    &_vt
+        visibility: visible
+        +e(-item)
+            display: block
+            font-weight: $fontWeight;
+            font-size: $fontSize;
+            line-height: 1.2em;
+            
+            &_ACTIVE
+            &_trigger
+                a
+                    color: clr-primary
+                    cursor: default
+                    +m('desktop')
+                        &:hover
+                            text-decoration: none
+                            &:after
+                                display: none
+            + {e(-item)}
+                margin-top: 10px
+        +e(-link)
+            color: text-main
+            border: none
+            //text-decoration: underline
+            position: relative
+            display: inline-block
+            padding-left: 0px
+            padding-right: 0px
+            padding-bottom: 5px
+            &:after
+                content: ''
+                height: 2px
+                left: 50%
+                bottom: 0
+                right: 50%
+                background: $clrHoverLink
+                z-index: -1
+                position: absolute
+                transition left 400ms cubic-bezier(0.215, 0.61, 0.355, 1),
+                    right 400ms cubic-bezier(0.215, 0.61, 0.355, 1)
+            +m('desktop')
+                &:hover
+                    text-decoration: none
+                    border: none !important
+                    &:after
+                        left: 0
+                        right: 0
+                        transition left 400ms cubic-bezier(0.215, 0.61, 0.355, 1),
+                        right 400ms cubic-bezier(0.215, 0.61, 0.355, 1)
+        
+    &_hz
+        width: auto
+        +e(-item)
+            float: left
+            display: block
+            text-align: center
+            padding-left: $itemPadding[1]
+            padding-right: @padding-left
+            margin-bottom: 0
+            + {e(-item)}
+                margin-left: 55px
+                +m('tablet')
+                    margin-left: 35px
+            &:last-child
+                padding-right: 0
+            &:first-child
+                padding-left: 0
+            &:first-child
+                margin-left: 0
+                
+    &_split
+        
+        &{b()}_hz
+            +e(-item)
+                position: relative
+                padding-left: $itemPadding[1] + 4px
+                padding-right: @padding-left
+                + {e(-item)}
+                    margin-left: 0
+                &:after
+                    content: ''
+                    display: block
+                    position: absolute
+                    background: clr-muted
+                    height: 15px
+                    width: 1px
+                    left: 0
+                    top: 50%
+                    margin-top: (-@height/2)
+                &:first-child
+                    &:after
+                        display: none
+
+
+
+    &_img
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-top: 94px
+        +e(-item)
+            width: 60px
+            height: 60px
+            //text-indent: -9999px
+            display: block
+            font-size: 0
+            padding: 0
+            margin-bottom: 0
+            line-height: 0
+            letter-spacing: 0
+            &:last-child
+                margin-top: 0
+            a
+                padding: 0
+                display: block
+                img
+                    transform: scale(0.82)
+                    //width: 120%
+                    //height: 120%
+                    transition: all 100ms
+            +m('desktop')
+                a:hover
+                    img
+                        transform: none
+                        transition: all 100ms
+
+            + {e(-item)}
+                margin-left: 17px
+        +e(-link)
+            background: no-repeat center center
+            background-size: 100%
+            display: block
+            width: 100%
+            height: 100%
+            +m('desktop')
+                &:hover
+                    border: none !important
+    &_smallImg
+        margin-top: 0
+        width: auto
+        display: inline-flex
+        +e(-item)
+            width: 16px
+            height: 16px
+            a
+                display: flex
+                align-items: center
+                justify-content: center
+                img
+                    transform: scale(1)
+            +m('desktop')
+                a:hover
+                    img
+                        transform: scale(1.5)
+    
+    &_main
+        @extend {e(_hz)}
+        display: flex
+        align-items: center
+        +e(-label)
+            position: absolute
+            left: 50%
+            top: -33%
+            color: clr-white;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.65px;
+            line-height: 1.2em
+            padding: 3px 5px 2px 7px
+            &:after
+                content: ''
+                display: block
+                position: absolute
+                left: 0
+                bottom: -5px
+                triangle: 'right' 5px #fff
+            &_danger
+                background-color: clr-danger;
+                &:after
+                    triangle: 'right' 5px clr-danger
+            &_success
+                background-color: clr-success;
+                &:after
+                    triangle: 'right' 5px clr-success
+        +e(-item)
+            display: flex
+            align-items: center
+            position: relative
+            margin-left: 0
+            margin-right: 0
+            + {e(-item)}
+                margin-left: 33px
+
+            &_ACTIVE
+                background: #12a3d6;
+                position: relative
+                &:after
+                    content:''
+                    display: block
+                    position: absolute
+                    left: 0
+                    bottom: 0
+                    right: 0
+                    width: auto
+                    top: auto
+                    border-radius: 0
+                    height: 10px
+                    background-color: #0080b7;
+                &:before
+                    content: ''
+                    triangle(up, 7px, #0080b7)
+                    position: absolute
+                    bottom: 10px
+                    left: 50%
+                    transform: translateX(-50%)
+                a
+                    color: clr-white
+                    &:hover
+                        text-decoration: none
+                        cursor: default
+        +e(-link)
+            color: #333333;
+            text-transform: uppercase
+            font-family: fontAddit
+            text-decoration: none
+            font-weight: 500
+            font-size: font-nrm;
+            padding: 10px
+            //line-height: 31px;
+            letter-spacing: 1.4px;
+        +m('tablet')
+            margin-right: 0
+        +m(800px)
+            display: block
+            +e(-item)
+                text-align: center
+                width: 100%
+                +e(-link)
+                    width: 100%
+                    text-align: left
+                + {e(-item)}
+                    margin-left: 0
+                    margin-top: 0 !important
+                    padding-left: 0
+
+    &_column
+        background: #313131
+        +e(-item)
+            border-bottom: 1px solid #f1f4f9;
+
+            &_ACTIVE
+            &:hover
+                +e(-link)
+                    color: #f0c519;
+                    transition: all 300ms
+                    background: #505050
+                    text-decoration: none
+        +e(-link)
+            transition: all 300ms
+            color: #fff
+            display: block
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+            text-decoration: none
+            font-weight: normal
+            padding: 0 8px 0px
+            letter-spacing: -0.5px
+            line-height: 35px
+
+
+
+

@@ -1,0 +1,96 @@
+.{$px}ControlPanel
+    visibility: visible;
+    width: 100%
+    background: #f5f5f5
+    padding-top: 7px
+    padding-bottom: 16px
+    padding-left: 13px
+    margin-bottom: 19px
+    +m('tablet')
+        margin-left: 0
+    +m('phone')
+        padding-left: 0
+        padding-right: 0
+    &-hideTablet
+        +m('tablet')
+            display: none
+    &-title
+        color: #777777;
+        font-size: font-sm;
+        font-weight: 400;
+        line-height: 1.2em
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        vertical-align: middle
+    &-menu
+        vertical-align: middle
+        margin-left: 15px
+
+
+
+    &-row
+        align-items: stretch
+        justify-content: flex-end
+        +m(1300px)
+            justify-content: space-between
+            &:after
+            &:before
+                display: none
+        +b(row-block)
+            +m(1300px)
+                width: auto
+            &:last-child
+                +e(-rowSplit)
+                    justify-content: flex-end
+                    +m(700px)
+                        flex-wrap: wrap
+                        justify-content: space-between
+                        &:after
+                        &:before
+                            display: none
+                        +b(row-block)
+                            padding-left: 0
+                            border-left: none
+                
+        > {b(row-block)}
+            + {b(row-block)}
+                margin-left: 20px
+        +m('tablet')
+            display: flex
+            +b(row-block)
+                margin-top: 0
+            +e(-tabletHide)
+                display: none
+        +m('phone')
+            flex-wrap: wrap
+            > {b(row-block)}
+                margin-left: 0 !important
+                + {b(row-block)}
+                    display: block
+                    margin-left: 0
+    &-rowSplit
+        justify-content: flex-start;
+        align-items: center;
+        
+        +b(row-block)
+            width: auto
+            display: flex
+            align-items: center
+            + {b(row-block)}
+                border-left: #d7d7d7 solid 1px
+                margin-left: 23px
+                padding-left: 24px
+        +b(hide_md)
+            + {b(row-block)}
+                border-left: 0
+                margin-left: 0
+                padding-left: 0
+        +m('tablet')
+            display: flex
+            flex-wrap: wrap
+            +b(row-block)
+                + {b(row-block)}
+                    border-left: none
+                    padding-left: 0
+    
+

@@ -1,0 +1,94 @@
+/*-----------  Строки  -----------*/
+.{$px}row
+    width: 100%
+    clearfix()
+    display: flex
+    justify-content: space-between
+    flex: 0 0 100%
+    &-block
+        display: block
+        flex-grow: 0
+        width: 100%
+        &_awayNext
+            padding-right: 7.0rem
+            +m('tablet')
+                padding-right: 0
+
+        &_media
+            max-width: 50%
+            iframe
+                width: 100%
+        & + &
+            margin-left: 2.0rem
+        &_fixed
+            flex-grow: 0
+        &_right
+            margin-left: auto !important
+            width: auto
+            + {e(-block)}
+                width: auto
+    &-left
+        display: block
+        min-width: 0
+        flex-shrink: 0
+    &_col
+        {e(-block)} + {e(-block)}
+            margin-left: 3.0rem
+    &_verticalCenter
+        align-items: center
+    &_alignCenter
+        justify-content: center
+    &_maxHalf
+        +e(-block)
+            max-width: 50%
+            img
+                max-width: 100%
+            +m('tablet')
+                max-width: none
+    &_space
+        &:after
+        &:before
+            display: none
+        +e(-block)
+            width: auto
+
+    +m('tablet')
+        display: block
+        &-block
+            + {e(-block)}
+                margin-top: 2.0rem
+                margin-left: 0
+            &_media
+                max-width: 100%
+
+    &_responsive
+        flex-wrap: wrap
+        justify-content: center
+        +e(-block)
+            width: auto
+        +m('tablet')
+            flex-wrap: wrap
+            text-align: center
+            +e(-block)
+                display: inline-block
+                width: auto
+                text-align: left
+                min-width: 20.0rem
+                margin-top: 0.0rem
+                margin-bottom: 1.0rem
+                margin-right: 2.0rem
+
+    &_slider
+        +m('tablet')
+            display: flex
+            +e(-block)
+                img
+                    max-width: 100%
+                &_awayNext
+                    padding-right: 7.0rem
+         +m(600px)
+            +e(-block)
+                &_awayNext
+                    padding-right: 0.0rem
+
+

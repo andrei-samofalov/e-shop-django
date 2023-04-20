@@ -1,0 +1,155 @@
+/*#################### Офомление базовых стилей ####################*/
+
+html
+    height: 100%
+    width: 100%
+    display: block
+    font-family: fontMain;
+
+body
+    min-height: 100%
+    font-size: font-nr
+    color: text-main
+    line-height: 1.3em
+    text-align: left;
+    position: relative;
+    min-width: 320px
+    background: #fff
+    display: flex
+    flex-direction: column
+
+*
+    box-sizing: border-box;
+
+.fontAddit
+    font-family: fontAddit
+
+/* Использовать только одиночные теги
+в редких случаях допускается использовать классы,
+только для стилизации стандартных элементов через скрипты */
+
+a
+    text-decoration: none
+    color: clr-primary
+    a()
+hr
+    border: none
+    margin-top: 14px
+    margin-bottom: 5px
+p
+    margin: 0
+    margin-bottom: 20px
+    &:last-child
+        margin-bottom: 0
+ul
+    margin: 20px 0
+    padding: 0 0 0 8px
+    list-style: none
+    line-height: 1.5em
+    li
+        position: relative
+        list-style: none
+        &:after
+            content: ' '
+            width: 4px
+            height: 4px
+            position: absolute
+            top: 10px
+            left: -8px
+            border-radius: 10px
+
+h1
+h2
+h3
+    text-align: left
+    font-weight: bold
+    margin-bottom: 20px;
+    line-height: 1.3em
+    &:first-child
+        margin-top: 0
+    em
+        text-decoration: underline
+h1
+    margin-bottom: 40px
+    margin-top: 20px
+    + h2
+        margin-top: 0
+h2
+    margin-bottom: 25px
+    margin-top 49px
+
+table
+    width: 100%
+    margin-bottom: 35px
+    margin-top: 58px
+    clear: both
+    line-height: 1.6em
+    border-collapse: collapse
+    border-left: 1px solid clr-lt;
+    border-right: 1px solid clr-lt;
+    border-bottom: 1px solid clr-lt;
+    &:last-child
+        margin-bottom: 0
+    &:first-child
+        margin-top: 0
+    td
+    th
+        padding: 5px 24px 5px
+        letter-spacing: 0.1px
+        text-align: left
+        vertical-align: top
+    th
+        font-weight: bold
+        background: clr-lt
+        padding:5px 23px 0
+        letter-spacing: 0.7px
+    tr.th
+        + tr
+            td
+            th
+                border-top: none
+    tr:first-child
+        th
+            border-top: 0
+
+
+.{$px}link
+    color: clr-primary
+    a()
+    button&
+        border: none
+        background: none
+    &_dk
+        color: text-main
+        a()
+    &_text
+        @extend {e(_dk)}
+        border-bottom: none !important
+    &_muted
+        color: text-placeholder
+        a()
+    &_dotted
+        border-bottom-style: dotted !important
+.{$px}text
+    &_primary
+        color: clr-primary
+
+.{$px}hide
+    &_tablet
+        +m('tablet')
+            display: none !important
+    &_phone
+        +m('phone')
+            display: none !important
+    &_md
+        +m(1200px)
+            display: none !important
+    &_1450
+        +m(1450px)
+            display: none !important
+    &_700
+        +m(700px)
+            display: none !important
+    
+    
+

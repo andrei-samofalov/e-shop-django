@@ -1,0 +1,257 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">Оформление заказа
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href={% url "frontend:index" %}>home</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>Оформление заказа</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section Section_column Section_columnRight Section_columnWide Order">
+			<div class="wrap">
+				<div class="Section-column">
+					{% if user.is_authenticated %}
+						<div class="Section-columnSection">
+							<header class="Section-header">
+								<strong class="Section-title">Прогресс заполнения </strong>
+							</header>
+							<div class="Section-columnContent">
+								<ul class="menu menu_vt Order-navigate">
+									<li class="menu-item_ACTIVE menu-item">
+										<a class="menu-link" href="#step1">Шаг 1. Параметры пользователя</a>
+									</li>
+									<li class="menu-item">
+										<a class="menu-link" href="#step2">Шаг 2. Способ доставки</a>
+									</li>
+									<li class="menu-item">
+										<a class="menu-link" href="#step3">Шаг 3. Способ оплаты</a>
+									</li>
+									<li class="menu-item">
+										<a class="menu-link" href="#step4">Шаг 4. Подтверждение заказа</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+				<div class="Section-content">
+					{% if user.is_authenticated %}
+						<form class="form" action="#" method="post" @submit.prevent="confirmOrder">
+							<div class="Order-block Order-block_OPEN" id="step1">
+								<header class="Section-header Section-header_sm">
+									<h2 class="Section-title">Шаг 1. Параметры пользователя
+									</h2>
+								</header>
+								<div class="row">
+									<div class="row-block">
+										<div class="form-group">
+											<label class="form-label" for="name">ФИО</label>
+											<input class="form-input" value="order.fullName" v-model="order.fullName" id="name" name="name" type="text"/>
+										</div>
+										<div class="form-group">
+											<label class="form-label" for="phone">Телефон</label>
+											<input class="form-input" value="order.phone" v-model="order.phone" id="phone" name="phone" type="text"/>
+										</div>
+										<div class="form-group">
+											<label class="form-label" for="mail">E-mail</label>
+											<input class="form-input" value="order.email" v-model="order.email" id="mail" name="mail" type="text" data-validate="require"/>
+										</div>
+									</div>
+								</div>
+								<div class="Order-footer">
+									<a class="btn btn_success Order-next" href="#step2">Дальше</a>
+								</div>
+							</div>
+							<div class="Order-block" id="step2">
+								<header class="Section-header Section-header_sm">
+									<h2 class="Section-title">Шаг 2. Способ доставки
+									</h2>
+								</header>
+								<div class="form-group">
+									<div>
+										<label class="toggle">
+											<input type="radio" name="delivery" value="regular" checked="checked" v-model="order.deliveryType"/>
+											<span class="toggle-box"></span>
+											<span class="toggle-text">Обычная доставка</span>
+										</label>
+									</div>
+									<div>
+										<label class="toggle">
+											<input type="radio" name="delivery" value="express" v-model="order.deliveryType"/>
+											<span class="toggle-box"></span><span class="toggle-text">Экспресс доставка</span>
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="city">Город </label>
+									<input class="form-input" v-model="order.city" id="city" name="city" type="text"/>
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="address">Адрес </label>
+									<textarea class="form-textarea" v-model="order.address" name="address" id="address"></textarea>
+								</div>
+								<div class="Order-footer">
+									<a class="btn btn_success Order-next" href="#step3">Дальше</a>
+								</div>
+							</div>
+							<div class="Order-block" id="step3">
+								<header class="Section-header Section-header_sm">
+									<h2 class="Section-title">Шаг 3. Способ оплаты
+									</h2>
+								</header>
+								<div class="form-group">
+									<div>
+										<label class="toggle">
+											<input type="radio" v-model="order.paymentType" name="pay" value="own" checked="checked"/>
+											<span class="toggle-box"></span><span class="toggle-text">Онлайн картой</span>
+										</label>
+									</div>
+									<div>
+										<label class="toggle">
+											<input type="radio" v-model="order.paymentType" name="pay" value="someone"/>
+											<span class="toggle-box"></span><span class="toggle-text">Онлайн со случайного чужого счета</span>
+										</label>
+									</div>
+								</div>
+								<div class="Order-footer">
+									<a class="btn btn_success Order-next" href="#step4">Дальше</a>
+								</div>
+							</div>
+							<div class="Order-block" id="step4">
+								<header class="Section-header Section-header_sm">
+									<h2 class="Section-title">Шаг 4. Подтверждение заказа
+									</h2>
+								</header>
+								<!--+div.Order.-confirmation-->
+								<div class="Order-infoBlock">
+									<div class="Order-personal">
+										<div class="row">
+											<div class="row-block">
+												<div class="Order-info">
+													<div class="Order-infoType">ФИО:
+													</div>
+													<div class="Order-infoContent">${ order.fullName }$
+													</div>
+												</div>
+												<div class="Order-info">
+													<div class="Order-infoType">Телефон:
+													</div>
+													<div class="Order-infoContent">${ order.phone }$
+													</div>
+												</div>
+												<div class="Order-info">
+													<div class="Order-infoType">E-mail:
+													</div>
+													<div class="Order-infoContent">${ order.email }$
+													</div>
+												</div>
+											</div>
+											<div class="row-block">
+												<div class="Order-info Order-info_delivery">
+													<div class="Order-infoType">Тип доставки:
+													</div>
+													<div class="Order-infoContent">${ order.deliveryType }$
+													</div>
+												</div>
+												<div class="Order-info">
+													<div class="Order-infoType">Город:
+													</div>
+													<div class="Order-infoContent">${ order.city }$
+													</div>
+												</div>
+												<div class="Order-info">
+													<div class="Order-infoType">Адрес:
+													</div>
+													<div class="Order-infoContent">${ order.address }$
+													</div>
+												</div>
+												<div class="Order-info Order-info_pay">
+													<div class="Order-infoType">Оплата:
+													</div>
+													<div class="Order-infoContent">${ order.paymentType }$
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="Cart Cart_order">
+										<!-- Товар на оплату -->
+										<div v-for="product in order.products" class="Cart-product">
+											<div class="Cart-block Cart-block_row">
+												<div class="Cart-block Cart-block_pict">
+													<a class="Cart-pict" :href="product.href">
+														<img class="Cart-img" :src="product.images.length ? product.images[0] : ''" alt="product.title"/>
+													</a>
+												</div>
+												<div class="Cart-block Cart-block_info">
+													<a class="Cart-title" href="#">${ product.title }$</a>
+													<div class="Cart-desc">${ product.description }$</div>
+												</div>
+											</div>
+											<div class="Cart-block Cart-block_price">
+												<div class="Cart-price">${ product.price }$$
+												</div>
+											</div>
+											<div class="Cart-block Cart-block_row">
+												<div class="Cart-block Cart-block_amount">${ product.count }$ шт.
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Товар на оплату -->
+
+									<div class="Cart-total">
+										<div class="Cart-block Cart-block_total">
+											<strong class="Cart-title">Итого:</strong>
+											<span class="Cart-price">${ order.products.reduce((acc, el) => {return acc += (el.price * el.count)}, 0) }$$</span>
+										</div>
+										<div class="Cart-block">
+											<button class="btn btn_primary btn_lg" type="submit">Оплатить
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					{% else %}
+						<div class="row-block">
+							<form action="{% url "frontend:signin" %}?next={{ request.get_full_path }}" method="post">
+								{% csrf_token %}
+								<div class="form-group">
+									<label class="form-label" for="login">Логин</label>
+									<input class="form-input" id="login" name="login" type="text" placeholder="Login"/>
+								</div>
+								<div class="form-group">
+									<label class="form-label" for="password">Пароль</label>
+									<input class="form-input" id="password" name="password" type="password" placeholder="Password"/>
+								</div>
+								<div class="form-group">
+									<button class="btn btn_muted Order-btnReg" type="submit">Авторизация</button>
+								</div>
+								<div class="form-group">
+									<a class="btn btn_muted Order-btnReg" href="{% url "frontend:register" %}">Регистрация</a>
+								</div>
+							</form>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block mixins %}
+	<script src="{% static 'frontend/assets/js/order-confirm.js' %}"></script>
+{% endblock %}

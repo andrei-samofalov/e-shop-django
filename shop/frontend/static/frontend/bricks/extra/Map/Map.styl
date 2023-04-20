@@ -1,0 +1,23 @@
+.{$px}Map
+    visibility: visible
+    min-height: 486px
+    +m('tablet')
+        min-height: 300px
+        height: 300px
+        > ymaps
+            height: 300px !important
+        position: relative
+        &:after
+        &:before
+            content: ''
+            position: absolute
+            display: block
+            top: 0
+            left: 0
+            width: 15px
+            bottom: 0
+            z-index: 1000
+        &:after
+            right: 0
+            left: auto
+

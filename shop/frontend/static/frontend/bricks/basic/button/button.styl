@@ -1,0 +1,164 @@
+.{$px}buttons
+    display: flex
+    flex-wrap: wrap
+    margin-top: -10px
+    +b(btn)
+        margin-top: 10px
+        margin-right: 8px
+/*----------  Button  ----------*/
+.{$px}btn
+    $height = 42px              // Минимальная высота кнопки
+    $buttonPadding = 3px 15px   // Поля для кнопки
+    $radius = 100px               // Скругления углов для всех кнопок
+    $round = 100px                // Скругления углов для кнопок с классом .btn_round
+    $borderSize = 1px           // Толщина границы
+
+    $color = clr-white          // Стандартный цвет кнопки
+
+    $text = text-main           // Цвет шрифта
+    $fontSZ = font-nr          // Размер шрифта
+    
+    btnHover(color=@border-color, text=@color, outline=null)
+        border-color: color
+        if outline
+            color: color
+            background: transparent
+        else
+            color: text
+            background: color
+            &.btn_outline
+                background: transparent
+                color: color
+        transition: all 200ms
+        +m('desktop')
+            &:hover
+                transition:  all 200ms
+                cursor: pointer
+                background-color: lighten(saturate(@border-color[0], 20%), 20%)
+                border-color: lighten(saturate(@border-color[0], 20%), 20%)
+                text-decoration: none
+            &.btn_outline
+                &:hover
+                    color: text
+
+    btnSize(addDefault)
+        font-size: (@font-size + addDefault)
+        padding: ($buttonPadding[0] + addDefault) ($buttonPadding[1] + (2 * addDefault))
+    
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    min-height: $height
+    border: $borderSize solid $color
+    border-color: $color
+    border-radius: $radius
+    background: $color
+    padding: $buttonPadding
+    line-height: 1.2em
+    text-align: center
+    color: $text
+    text-decoration: none
+    position: relative
+    font-size: $fontSZ
+    btnHover: @border-color
+    font-weight: 500
+    text-transform: uppercase
+    letter-spacing: 0.8px;
+    padding-left: 38px
+    padding-right: 38px
+    &:focus
+        outline:none
+    
+    &-icon
+        vertical-align: middle
+        margin: 0 !important
+        margin-right: 10px !important
+
+    &-content
+        position: relative
+        display: inline-block
+        padding-right: 5px
+        +e(-icon)
+            width: 0
+            //transform: translate(-11px)
+            position: relative
+            left: -17px
+            top: -1px
+            margin-right: 0
+    &_icon
+        padding: 0
+        height: 24px
+        min-height: @height
+        min-width: @height
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        border-radius: 100px
+    
+    &_round
+        border-radius: $round
+        
+    &_outline
+        btnHover: @border-color @color true
+    
+    &_default
+        btnHover: clr-white #8e9096
+        border-color: #e0e0e0
+    
+    
+    &_info
+        btnHover: clr-info clr-white
+    &_square
+        border-radius: 0;
+
+    &_success
+        btnHover: clr-success clr-white
+
+    &_primary
+        btnHover: clr-primary clr-white
+
+    &_danger
+        btnHover: clr-danger clr-white
+        
+    &_muted
+        btnHover: #e8eaef #7c8088
+        
+    &_dark
+        btnHover:  #a5abba clr-white
+    &_narrow
+        padding-left: 23px
+        padding-right: 23px
+
+    &_warning
+        btnHover: clr-warning clr-white
+
+    &_sm
+        //btnSize: -4px
+        font-size: font-nrm
+        min-height: 32px
+        padding-left: 20px
+        padding-right: 20px
+    
+    &_md
+        btnSize: 3px
+        
+    &_lg
+        btnSize: 7px
+
+    &_full
+        width: 100%
+        text-align: center
+    &_play
+        padding-left: 0
+        padding-right: 0
+        background: none
+        height: 100%
+        border: none
+        +m('tablet')
+            height: auto
+            background: clr-white
+            padding: 3px
+            border: @background
+    &_nolink
+        &:hover
+            cursor: default

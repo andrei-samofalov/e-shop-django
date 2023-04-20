@@ -1,0 +1,183 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">Megano Product
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item"><a href="/">home</a></li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>${product.title}$</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section">
+			<div class="wrap">
+				<div class="Product">
+					<div class="ProductCard">
+						<div class="ProductCard-look">
+
+							<!-- Основное фото -->
+							<div class="ProductCard-photo">
+								<img :src="photoSrc" :alt="photoAlt"/>
+							</div>
+							<!-- Основное фото -->
+
+							<!-- Миниатюры -->
+							<div class="ProductCard-picts">
+								<a v-for="src in product.images" class="ProductCard-pict ProductCard-pict_ACTIVE" :href="src">
+									<img :src="src" :alt="product.title"/> </a>
+							</div>
+							<!-- Миниатюры -->
+
+						</div>
+						<div class="ProductCard-desc">
+							<div class="ProductCard-header">
+								<h2 class="ProductCard-title">${ product.title }$</h2>
+								<div class="ProductCard-info">
+									<div class="ProductCard-cost">
+										<div class="ProductCard-price">$${ product.price }$
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="ProductCard-text">
+
+								<!-- Описание как html -->
+								<div v-html="product.description"></div>
+								<!-- Описание как html -->
+
+							</div>
+							<div class="ProductCard-cart">
+								<div class="ProductCard-cartElement ProductCard-cartElement_amount">
+									<div class="Amount Amount_product">
+										<button class="Amount-remove" type="button" @click.stop="changeCount(-1)">
+										</button>
+										<input class="Amount-input form-input" name="amount" type="text" v-model="count"/>
+										<button class="Amount-add" type="button" @click.stop="changeCount(1)">
+										</button>
+									</div>
+								</div>
+								<div class="ProductCard-cartElement">
+									<button class="btn btn_primary" @click="addToBasket(product, count)">
+										<img class="btn-icon" src="/static/frontend/assets/img/icons/card/cart_white.svg" alt="cart_white.svg"/>
+										<span class="btn-content">Add To Cart</span>
+									</button>
+								</div>
+							</div>
+							<div class="ProductCard-footer">
+								<div class="ProductCard-tags">
+									<strong class="ProductCard-tagsTitle">Tags:</strong>
+
+									<!-- Как добавить пробел между ссылками? -->
+									<div v-for="(tag, index) in product.tags">${ tag.name }$
+										<span v-if="(index !== tags.length -1) || (tags.length !== 1)">|</span>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="Tabs Tabs_default">
+						<div class="Tabs-links">
+							<a class="Tabs-link_ACTIVE Tabs-link" href="#description">
+								<span>Описание</span> </a>
+							<a class="Tabs-link" href="#reviews">
+								<span>Отзывы (${ product.reviews ? product.reviews.length : 0 }$)</span>
+							</a>
+						</div>
+						<div class="Tabs-wrap">
+							<div class="Tabs-block" id="description">
+								<div v-html="product.fullDescription"></div>
+
+
+								<div class="clearfix">
+								</div>
+								<div class="table">
+									<table>
+										<tr>
+											<th>Характеристика
+											</th>
+											<th>Значение
+											</th>
+										</tr>
+										<tr v-for="spec in product.specifications">
+											<td>${ spec.name }$</td>
+											<td>${ spec.value }$</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="Tabs-block" id="reviews">
+								<header class="Section-header">
+									<h3 class="Section-title">${ product.reviews ? (product.reviews.length || 0) : 0 }$ Отзывов | Рейтинг ${ product.rating }$</h3>
+								</header>
+								<div class="Comments">
+									<div v-for="review in product.reviews" class="Comment">
+										<div class="Comment-column Comment-column_pict">
+											<div class="Comment-avatar"></div>
+										</div>
+										<div class="Comment-column">
+											<header class="Comment-header">
+												<div>
+													<strong class="Comment-title">Автор: ${ review.author }$</strong>
+													<span class="Comment-date">Дата : ${ review.date }$</span><br>
+													<span class="Comment-date">Оценка: ${ review.rate }$</span><br>
+												</div>
+											</header>
+											<div class="Comment-content">${ review.text }$</div>
+										</div>
+									</div>
+								</div>
+								<header class="Section-header Section-header_product">
+									<h3 class="Section-title">Add Review</h3>
+								</header>
+								<div class="Tabs-addComment">
+									<form class="form" @submit.prevent="submitReview">
+										<div class="form-group">
+											<textarea class="form-textarea" name="review" id="review" placeholder="Review" v-model="review.text"></textarea>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="row-block">
+													<input class="form-input" id="name" name="name" type="text" placeholder="Name" v-model="review.author"/>
+												</div>
+												<div class="row-block">
+													<input class="form-input" id="email" name="email" type="text" placeholder="Email" v-model="review.email"/>
+												</div>
+												<div class="row-block">
+													<select name="rate" id="rate" v-model="review.rate">
+														<optgroup label="rate">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</optgroup>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<button class="btn btn_muted" type="submit">Submit Review</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block mixins %}
+	<script>var pk = {{ pk }}</script>
+	<script src="{% static 'frontend/assets/js/product-detail.js' %}"></script>
+{% endblock %}

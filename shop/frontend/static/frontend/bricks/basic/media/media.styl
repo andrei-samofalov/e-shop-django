@@ -1,0 +1,82 @@
+/*-----------  media  -----------*/
+.{$px}media
+    $headerBottom = 10px    // Отступ у блока header снизу
+    $titleFz = font-nr     // Размер шрифта у заголовка
+    $contentPd = 10px       // Отступ блока content от картинки
+    $imageVtBottom = 10px   // Отступ у картинки снизу, при вертикальном положении
+    
+    display: flex
+    
+    &_middle
+        align-items: center
+    &_advantage
+        align-items: center
+        +e(-title)
+            margin-bottom: 5px
+            font-weight: 800
+        +e(-image)
+            width: 57px
+            text-align: center
+        {b(Section_columnWide)} &
+            visibility: visible
+    &-header
+        display: block
+        margin-bottom: $headerBottom
+
+    &-title
+        font-weight: 700
+        font-size: $titleFz
+        display: block
+        color: clr-primary;
+        letter-spacing: 0.48px;
+        text-transform: uppercase;
+    
+    &-image
+        display: block
+        line-height: 0
+        
+    &-content
+        padding-left: $contentPd
+        padding-right: $contentPd
+        display: block
+        flex-grow: 8
+        flex-basis: 60px
+        flex-shrink: 0
+        &:first-child
+            padding-left: 0
+        &:last-child
+            padding-right: 0
+    &-mark
+        border: 2px solid clr-primary;
+        color: clr-white
+        padding: 20px 15px 15px
+        text-align: center
+        font-size: font-xs;
+        text-transform: uppercase
+        line-height: 1.2em
+    &-day
+        font-size: font-md;
+        font-weight: 400;
+        display: block
+        margin-bottom: 3px
+    
+    
+    &_vt
+        display: block
+        text-align: center
+        +e(-image)
+            margin-bottom: $imageVtBottom
+        +e(-content)
+            padding-left: 0
+        +e(-header)
+            border-right: none
+            padding-right: 0
+    &_news
+        +e(-title)
+            color: clr-white;
+            font-size: font-xs;
+            font-weight: 500;
+            text-transform: uppercase;
+        & + &
+            margin-top: 30px
+

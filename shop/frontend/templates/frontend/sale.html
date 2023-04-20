@@ -1,0 +1,73 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">Megano Sales
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href={% url "frontend:index" %}>home</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>Sales</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section">
+			<div class="wrap">
+				<div class="Cards Cards_blog">
+
+					<!-- Получаем товар по скидке -->
+					<div v-for="card in salesCards" class="Card">
+						<a class="Card-picture" :href="card.href">
+							<img :src="card.images[0]" :alt="card.title"/> </a>
+						<div v-if="card.dateFrom" class="Card-date">
+							<strong class="Card-date-number">${ card.dateFrom }$</strong>
+						</div>
+						<div v-if="card.dateTo" class="Card-date Card-date_to">
+							<strong class="Card-date-number">${ card.dateTo }$</strong>
+						</div>
+						<div class="Card-content">
+							<strong class="Card-title"><a :href="card.href">${ card.title }$</a>
+							</strong>
+							<div class="Card-description"><s><${ card.price }$</s></div>
+							<br>
+							<div class="Card-description">${ card.salePrice }$</div>
+						</div>
+					</div>
+					<!-- Получаем товар по скидке -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Доработать пагинацию!  -->
+	<div class="Pagination">
+		<div class="Pagination-ins">
+			<a class="Pagination-element Pagination-element_prev" href="#">
+				<img src="/static/frontend/assets/img/icons/prevPagination.svg" alt="prevPagination.svg"/>
+			</a> <a class="Pagination-element Pagination-element_current" href="#">
+			<span class="Pagination-text">1</span> </a>
+			<a class="Pagination-element" href="#">
+				<span class="Pagination-text">2</span> </a>
+			<a class="Pagination-element" href="#">
+				<span class="Pagination-text">3</span> </a>
+			<a class="Pagination-element Pagination-element_prev" href="#">
+				<img src="/static/frontend/assets/img/icons/nextPagination.svg" alt="nextPagination.svg"/>
+			</a>
+		</div>
+	</div>
+	<!-- Доработать пагинацию!  -->
+
+{% endblock %}
+
+{% block mixins %}
+	<script src="{% static 'frontend/assets/js/sales.js' %}"></script>
+{% endblock %}

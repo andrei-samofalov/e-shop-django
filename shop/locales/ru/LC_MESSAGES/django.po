@@ -1,0 +1,489 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-20 23:50+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: accounts/admin.py:31 accounts/models.py:28
+msgid "phone"
+msgstr "телефон"
+
+#: accounts/admin.py:36
+msgid "full name"
+msgstr "полное имя"
+
+#: accounts/models.py:15
+msgid "user"
+msgstr "пользователь"
+
+#: accounts/models.py:16
+msgid "user that owns this profile"
+msgstr "пользователь, которому принадлежит профиль"
+
+#: accounts/models.py:22
+msgid "user's avatar"
+msgstr "аватар пользователя"
+
+#: accounts/models.py:23
+msgid "avatar, file resolution must be *.jpeg, *.jpg or *.png"
+msgstr "аватар, допустимые разрешения файлов *.jpeg, *.jpg or *.png"
+
+#: accounts/models.py:29
+msgid "phone in international format"
+msgstr "телефон в международном формате"
+
+#: accounts/models.py:33
+msgid "profile"
+msgstr "профиль"
+
+#: accounts/models.py:34
+msgid "profiles"
+msgstr "профили"
+
+#: catalog/apps.py:8
+msgid "catalog"
+msgstr "каталог"
+
+#: catalog/models.py:53 catalog/models.py:228
+msgid "category"
+msgstr "категория"
+
+#: catalog/models.py:54
+msgid "product category"
+msgstr "категория продукта"
+
+#: catalog/models.py:60 purchase/models.py:29
+msgid "price"
+msgstr "цена"
+
+#: catalog/models.py:61
+msgid "price of the product"
+msgstr "стоимость продукта"
+
+#: catalog/models.py:65
+msgid "stock"
+msgstr "остаток"
+
+#: catalog/models.py:66
+msgid "available stock of the product"
+msgstr "доступный остаток продукта"
+
+#: catalog/models.py:70
+msgid "count"
+msgstr "количество"
+
+#: catalog/models.py:71
+msgid "do nothing, needed by frontend"
+msgstr "ничего не делает, нужно для фронтенда"
+
+#: catalog/models.py:76 catalog/models.py:125 catalog/models.py:177
+#: catalog/models.py:259 catalog/models.py:307 purchase/models.py:22
+msgid "product"
+msgstr "продукт"
+
+#: catalog/models.py:77
+msgid "human-readable title of the product"
+msgstr "человеко-читаемое название продукта"
+
+#: catalog/models.py:82
+msgid "full description"
+msgstr "полное описание"
+
+#: catalog/models.py:83
+msgid "full description of the product"
+msgstr "полное описание продукта"
+
+#: catalog/models.py:87
+msgid "free delivery"
+msgstr "бесплатная доставка"
+
+#: catalog/models.py:88
+msgid "type of delivery - free or not"
+msgstr "тип доставки - бесплатная или нет"
+
+#: catalog/models.py:92 catalog/models.py:225 catalog/models.py:244
+#: catalog/models.py:284 catalog/models.py:310 purchase/models.py:60
+#: purchase/models.py:112
+msgid "active"
+msgstr "активный"
+
+#: catalog/models.py:93
+msgid "soft-delete option"
+msgstr "опция soft-delete"
+
+#: catalog/models.py:97
+msgid "created"
+msgstr "создан"
+
+#: catalog/models.py:98
+msgid "timestamp when product was created"
+msgstr "дата и время, когда продукт был создан"
+
+#: catalog/models.py:102
+msgid "updated"
+msgstr "обновлен"
+
+#: catalog/models.py:103
+msgid "timestamp when product was updated"
+msgstr "дата и время, когда продукт был обновлен"
+
+#: catalog/models.py:108 catalog/models.py:288
+msgid "specifications"
+msgstr "спецификации"
+
+#: catalog/models.py:110
+msgid "specifications of the product"
+msgstr "спецификации продукта"
+
+#: catalog/models.py:115 catalog/models.py:248
+msgid "tags"
+msgstr "тэги"
+
+#: catalog/models.py:117
+msgid "keywords with which the product is tagged"
+msgstr "ключевые слова (тэги), которыми продукт помечен"
+
+#: catalog/models.py:121
+msgid "adds limited status to the product"
+msgstr "добавляет статус ограниченного продукту"
+
+#: catalog/models.py:126 purchase/models.py:87
+msgid "products"
+msgstr "продукты"
+
+#: catalog/models.py:178
+msgid "the product to which the images refer"
+msgstr "продукт, к которому относятся изображения"
+
+#: catalog/models.py:182 catalog/models.py:209 catalog/models.py:218
+msgid "image"
+msgstr "изображение"
+
+#: catalog/models.py:184
+msgid "image file"
+msgstr "файл изображения"
+
+#: catalog/models.py:188
+msgid "product image"
+msgstr "изображение продукта"
+
+#: catalog/models.py:189
+msgid "product images"
+msgstr "изображения продукта"
+
+#: catalog/models.py:214
+msgid "title"
+msgstr "наименование"
+
+#: catalog/models.py:222
+msgid "subcategory"
+msgstr "подкатегория"
+
+#: catalog/models.py:229
+msgid "categories"
+msgstr "категории"
+
+#: catalog/models.py:243 catalog/models.py:282
+msgid "name"
+msgstr "название"
+
+#: catalog/models.py:247
+msgid "tag"
+msgstr "тэг"
+
+#: catalog/models.py:262
+msgid "author"
+msgstr "автор"
+
+#: catalog/models.py:264
+msgid "text"
+msgstr "содержание"
+
+#: catalog/models.py:268
+msgid "rate"
+msgstr "оценка"
+
+#: catalog/models.py:270
+msgid "date"
+msgstr "дата"
+
+#: catalog/models.py:271
+msgid "email"
+msgstr "электронная почта"
+
+#: catalog/models.py:274
+msgid "review"
+msgstr "отзыв"
+
+#: catalog/models.py:275
+msgid "reviews"
+msgstr "отзывы"
+
+#: catalog/models.py:283
+msgid "value"
+msgstr "значение"
+
+#: catalog/models.py:287
+msgid "specification"
+msgstr "спецификация"
+
+#: catalog/models.py:296
+msgid "start date"
+msgstr "дата начала"
+
+#: catalog/models.py:297
+msgid "end date"
+msgstr "дата окончания"
+
+#: catalog/models.py:301
+msgid "offer price"
+msgstr "цена акции"
+
+#: catalog/models.py:313
+msgid "product offer"
+msgstr "акция"
+
+#: catalog/models.py:314
+msgid "product offers"
+msgstr "акции"
+
+#: common_mixins/admin_mixins.py:17
+msgid "Mark selected as active"
+msgstr "Пометить активными"
+
+#: common_mixins/admin_mixins.py:22
+msgid "Mark selected as inactive"
+msgstr "Пометить неактивными"
+
+#: common_mixins/admin_mixins.py:44
+#, python-brace-format
+msgid "{updated} item was marked as {action}"
+msgid_plural "{updated} items were marked as {action}"
+msgstr[0] "{updated} элемент был отмечен как {action}"
+msgstr[1] "{updated} элементы были отмечены как {action}"
+msgstr[2] "{updated} элемент был отмечен как {action}"
+msgstr[3] "{updated} элементы были отмечены как {action}"
+
+#: purchase/admin.py:10
+msgid "item"
+msgstr "элемент"
+
+#: purchase/admin.py:11
+msgid "items"
+msgstr "элементы"
+
+#: purchase/apps.py:8
+msgid "purchase"
+msgstr "покупка"
+
+#: purchase/choices.py:6
+msgid "own online"
+msgstr "онлайн за свой счет"
+
+#: purchase/choices.py:7
+msgid "someone online"
+msgstr "онлайн за чужой счет"
+
+#: purchase/choices.py:11
+msgid "accepted"
+msgstr "принят"
+
+#: purchase/choices.py:12
+msgid "awaiting payment"
+msgstr "ожидает оплаты"
+
+#: purchase/choices.py:13
+msgid "paid"
+msgstr "оплачен"
+
+#: purchase/choices.py:14
+msgid "delivered"
+msgstr "доставлен"
+
+#: purchase/choices.py:18
+msgid "regular"
+msgstr "обычная"
+
+#: purchase/choices.py:19
+msgid "express"
+msgstr "экспресс"
+
+#: purchase/models.py:16 purchase/models.py:115
+msgid "order"
+msgstr "заказ"
+
+#: purchase/models.py:26
+msgid "quantity"
+msgstr "количество"
+
+#: purchase/models.py:33
+msgid "product in order"
+msgstr "товар в заказе"
+
+#: purchase/models.py:34
+msgid "products in order"
+msgstr "товары в заказе"
+
+#: purchase/models.py:42 purchase/models.py:139
+msgid "Order"
+msgstr "Заказ"
+
+#: purchase/models.py:44
+msgid "Product"
+msgstr "Продукт"
+
+#: purchase/models.py:46
+msgid "association"
+msgstr "ассоциация"
+
+#: purchase/models.py:55
+msgid "type"
+msgstr "тип"
+
+#: purchase/models.py:58
+msgid "cost of delivery"
+msgstr "стоимость доставки"
+
+#: purchase/models.py:63 purchase/models.py:96
+msgid "delivery type"
+msgstr "тип доставки"
+
+#: purchase/models.py:64
+msgid "delivery types"
+msgstr "типы доставки"
+
+#: purchase/models.py:80
+msgid "buyer"
+msgstr "покупатель"
+
+#: purchase/models.py:91
+msgid "date of creation"
+msgstr "дата создания"
+
+#: purchase/models.py:103
+msgid "type of payment"
+msgstr "тип оплаты"
+
+#: purchase/models.py:108
+msgid "status"
+msgstr "статус"
+
+#: purchase/models.py:110
+msgid "city"
+msgstr "город"
+
+#: purchase/models.py:111
+msgid "address"
+msgstr "адрес"
+
+#: purchase/models.py:116
+msgid "orders"
+msgstr "заказы"
+
+#: purchase/models.py:126
+msgid "total cost"
+msgstr "полная стоимость"
+
+#: sitesettings/admin.py:30
+msgid "Configure settings"
+msgstr "Конфигурировать настройки"
+
+#: sitesettings/models.py:15
+msgid "datetime formats"
+msgstr "форматы даты и времени"
+
+#: sitesettings/models.py:16
+msgid "choose datetime format that will be represented through entire project"
+msgstr ""
+"выберите формат даты и времени, который будет использоваться во всем проекте"
+
+#: sitesettings/models.py:23
+msgid "cost of regular delivery"
+msgstr "стоимость обычной доставки"
+
+#: sitesettings/models.py:24
+msgid ""
+"choose regular delivery cost that will be represented through entire project"
+msgstr ""
+"выберите стоимость обычной доставки, которая будет использоваться во всем "
+"проекте"
+
+#: sitesettings/models.py:31
+msgid "cost of express delivery"
+msgstr "стоимость экспресс-доставки"
+
+#: sitesettings/models.py:32
+msgid ""
+"choose express delivery cost that will be represented through entire project"
+msgstr ""
+"выберите стоимость экспресс-доставки, которая будет использоваться во всем "
+"проекте"
+
+#: sitesettings/models.py:37
+msgid "amount of popular products at main page"
+msgstr "количество популярных продуктов на главной странице"
+
+#: sitesettings/models.py:38
+msgid "choose amount of popular products that will be represented at main page"
+msgstr ""
+"выберите количество популярных продуктов, которое будет отображаться на "
+"главной странице"
+
+#: sitesettings/models.py:43
+msgid "amount of limited products at main page"
+msgstr "количество лимитированных продуктов на главной странице"
+
+#: sitesettings/models.py:44
+msgid "choose amount of limited products that will be represented at main page"
+msgstr ""
+"выберите количество лимитированных продуктов, которое будет отображаться на "
+"главной странице"
+
+#: sitesettings/models.py:49
+msgid "amount of banners at main page"
+msgstr "количество баннеров на главной странице"
+
+#: sitesettings/models.py:50
+msgid "choose amount of banners that will be represented at main page"
+msgstr ""
+"выберите количество баннеров, которое будет отображаться на главной странице"
+
+#: sitesettings/models.py:55
+msgid "cache time"
+msgstr "время кэширования"
+
+#: sitesettings/models.py:56
+msgid "choose time in seconds during which data will be cached"
+msgstr "выберите время, в течение которого данные будут храниться в кэше"
+
+#: sitesettings/models.py:60 sitesettings/models.py:61
+msgid "site settings"
+msgstr "настройки сайта"
+
+#: sitesettings/models.py:75
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#, python-brace-format
+#~ msgid "{updated} item was marked as inactive"
+#~ msgid_plural "{updated} items were marked as inactive"
+#~ msgstr[0] "{updated} элемент был отмечен как неактивный"
+#~ msgstr[1] "{updated} элементы были отмечены как неактивные"
+#~ msgstr[2] "{updated} элемент был отмечен как неактивный"
+#~ msgstr[3] "{updated} элементы были отмечены как неактивные"

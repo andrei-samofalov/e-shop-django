@@ -1,0 +1,186 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">Catalog Megano
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href={% url "frontend:index" %}>home</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>Каталог</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section Section_column Section_columnLeft">
+			<div class="wrap">
+				<div class="Section-column">
+					<div class="Section-columnSection">
+						<header class="Section-header">
+							<strong class="Section-title">Фильтр </strong>
+						</header>
+						<div class="Section-columnContent">
+							<form class="form"
+								action="/api/catalog/"
+								method="post"
+								@submit.prevent="getCatalogs(1)"
+							>
+								{#                {% csrf_token %}#}
+								<div class="form-group">
+									<div class="range Section-columnRange">
+
+										<!-- Получаем данные по фильтру цены -->
+										<input class="range-line"
+											id="price"
+											name="price"
+											type="text"
+											data-type="double"
+											:data-min="filters.price.minValue"
+											:data-max="filters.price.maxValue"
+											:data-from="filter.minPrice"
+											:data-to="filter.maxPrice"
+										/>
+										<input type="hidden" name="minPrice" v-model="filters.price.currentFromValue">
+										<input type="hidden" name="maxPrice" v-model="filters.price.currentToValue">
+										<!-- Получаем данные по фильтру цены -->
+
+										<div class="range-price">Price:&#32;
+											<div class="rangePrice">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<input class="form-input form-input_full"
+										id="title"
+										name="title"
+										type="text"
+										v-model="filter.title"
+										placeholder="Название"
+									/>
+								</div>
+								<div class="form-group">
+								</div>
+								<div class="form-group">
+									<label class="toggle">
+										<input type="checkbox" name="available" v-model="filter.available"/>
+										<span class="toggle-box"></span>
+										<span class="toggle-text">Только товары в наличии</span>
+									</label>
+								</div>
+								<div class="form-group">
+									<label class="toggle">
+										<input type="checkbox" name="freeDelivery" v-model="filter.freeDelivery"/>
+										<span class="toggle-box"></span>
+										<span class="toggle-text">С бесплатной доставкой</span>
+									</label>
+								</div>
+								<div class="form-group">
+									<div class="buttons">
+										<button type="submit"
+											class="btn btn_square btn_dark btn_narrow">
+											Фильтровать
+										</button>
+									</div> <!-- TODO отправка формы фильтрации -->
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="Section-columnSection">
+						<header class="Section-header">
+							<strong class="Section-title">Популярные теги </strong>
+						</header>
+						<div class="Section-columnContent">
+							<div class="buttons">
+
+								<!-- Получаем популярные тэги -->
+								<button v-for="tag in topTags"
+									:key="tag.id"
+									:class="['btn btn_sm', tag.selected ? 'btn_warning' : 'btn_default']"
+									@click="setTag(tag.id)"
+								>
+									${ tag.name }$
+								</button>
+								<!-- Получаем популярные тэги -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="Section-content">
+					<div class="Sort">
+						<div class="Sort-title">Сортировать по:</div>
+						<div class="Sort-variants">
+							<div v-for="sort in sortRules"
+								:key="sort.id"
+								:id="sort.id"
+								class="Sort-sortBy"
+								:class="[
+                    selectedSort && sort.id === selectedSort.id
+                      ? `Sort-sortBy_${selectedSort.selected}`
+                      : null
+                   ]"
+								@click="setSort(sort.id)"
+							>
+								${ sort.title }$
+							</div>
+
+						</div>
+					</div>
+					<div class="Cards">
+
+						<!-- Получаем товары по фильтрам -->
+						<div v-for="card in catalogCards" class="Card" :key="id">
+							<a class="Card-picture" :href="card.href"><img :src="card.images[0]" :alt="card.title"/></a>
+							<div class="Card-content">
+								<strong class="Card-title"><a :href="card.href">${ card.title }$</a></strong>
+								<div class="Card-description">
+									<div class="Card-cost">
+										<span class="Card-price">$${ card.price }$</span></div>
+									<div class="Card-category">Остаток ${ card.stock }$ шт.</div>
+									<div class="Card-category">Рейтинг ${ card.rating }$</div>
+									<div class="Card-category">Кол-во отзывов ${ card.reviews }$</div>
+									<div class="Card-category">${ card.categoryName }$</div>
+									<div class="Card-hover">
+										<button class="Card-btn" @click="addToBasket(card)">
+											<img src="/static/frontend/assets/img/icons/card/cart.svg" alt="cart.svg"/>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Получаем товары по фильтрам -->
+
+					</div>
+
+					<!-- Доработать апгинацию!  -->
+					<div class="Pagination">
+						<div class="Pagination-ins">
+							<a class="Pagination-element Pagination-element_prev" @click.prevent="getCatalogs(1)" href="#">
+								<img src="/static/frontend/assets/img/icons/prevPagination.svg" alt="prevPagination.svg"/>
+							</a>
+							<a v-for="i in lastPage" class="Pagination-element" :class="{'Pagination-element_current': i == currentPage}" @click.prevent="getCatalogs(i)" href="#">
+								<span class="Pagination-text">${i}$</span> </a>
+							<a class="Pagination-element Pagination-element_prev" @click.prevent="getCatalogs(lastPage)" href="#">
+								<img src="/static/frontend/assets/img/icons/nextPagination.svg" alt="nextPagination.svg"/>
+							</a>
+						</div>
+					</div>
+					<!-- Доработать пагинацию!  -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block mixins %}
+	<script src="{% static 'frontend/assets/js/catalog.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,904 @@
+openapi: 3.0.3
+info:
+  title: Swagger Diploma Project
+  version: 1.0.0
+tags:
+  - name: catalog
+  - name: basket
+  - name: order
+  - name: payment
+  - name: profile
+  - name: tags
+paths:
+  /categories/:
+    get:
+      tags:
+        - catalog
+      description: 'get catalog menu'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogItems'
+
+  /catalog/:
+    get:
+      tags:
+        - catalog
+      description: 'get catalog items'
+      parameters:
+        - name: filter
+          in: query
+          description: search text
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: page
+          in: query
+          description: page
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+            default: date
+            enum:
+              - rating
+              - price
+              - reviews
+              - date
+        - name: sortType
+          in: query
+          required: false
+          schema:
+            type: string
+            default: dec
+            enum:
+              - dec
+              - inc
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: number
+            default: 20
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProductShort'
+                  currentPage:
+                    type: number
+                    example: 5
+                  lastPage:
+                    type: number
+                    example: 10
+  /catalog/{id}/:
+    get:
+      tags:
+        - catalog
+      description: 'get catalog items'
+      parameters:
+        - name: filter
+          in: query
+          description: search text
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: page
+          in: query
+          description: page
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+            default: date
+            enum:
+              - rating
+              - price
+              - reviews
+              - date
+        - name: sortType
+          in: query
+          required: false
+          schema:
+            type: string
+            default: dec
+            enum:
+              - dec
+              - inc
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: number
+            default: 20
+        - name: id
+          in: path
+          description: category id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProductShort'
+                  currentPage:
+                    type: number
+                    example: 5
+                  lastPage:
+                    type: number
+                    example: 10
+  /products/popular/:
+    get:
+      tags:
+        - catalog
+      description: 'get catalog popular items'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+
+  /products/limited/:
+    get:
+      tags:
+        - catalog
+      description: 'get catalog limeted items'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+
+  /sales/:
+    get:
+      tags:
+        - catalog
+      description: 'get sales items'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sales'
+
+  /banners/:
+    get:
+      tags:
+        - catalog
+      description: 'get banner items'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+
+  /product/{id}/:
+    get:
+      tags:
+        - product
+      description: 'get catalog item'
+      parameters:
+        - name: id
+          in: path
+          description: product id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductFull'
+
+  /product/{id}/review/:
+    post:
+      tags:
+        - product
+      description: 'post product review'
+      parameters:
+        - name: id
+          in: path
+          description: product id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                xml:
+                  name: reviews
+                items:
+                  $ref: '#/components/schemas/Review'
+
+  /basket/:
+    get:
+      tags:
+        - basket
+      description: 'Get items in basket'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Products'
+    post:
+      tags:
+        - basket
+      description: 'Add item to basket'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              xml:
+                name: item
+              properties:
+                id:
+                  type: integer
+                  example: 123
+                count:
+                  type: integer
+                  example: 5
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+    delete:
+      tags:
+        - basket
+      description: 'Remove item from basket'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              xml:
+                name: item
+              properties:
+                id:
+                  type: integer
+                  example: 123
+                count:
+                  type: integer
+                  example: 5
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+
+  /orders/:
+    get:
+      tags:
+        - order
+      description: 'Get active order'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    post:
+      tags:
+        - order
+      description: 'Create order'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Basket'
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /orders/{id}/:
+    get:
+      tags:
+        - order
+      parameters:
+        - name: id
+          in: path
+          description: order id
+          required: true
+          schema:
+            type: integer
+      description: 'Get order'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+    post:
+      tags:
+        - order
+      parameters:
+        - name: id
+          in: path
+          description: order id
+          required: true
+          schema:
+            type: integer
+      description: 'Confirm order'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '201':
+          description: successful operation
+
+  /orders/active/:
+    get:
+      tags:
+        - order
+      description: 'Get active order'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+  /payment/:
+    post:
+      tags:
+        - payment
+      description: 'Payment'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '201':
+          description: successful operation
+
+  /profile/:
+    get:
+      tags:
+        - profile
+      description: 'Get user profile'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      tags:
+        - profile
+      description: 'update user info'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /profile/password/:
+    post:
+      tags:
+        - profile
+      description: 'update user password'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              xml:
+                name: password
+              properties:
+                password:
+                  type: string
+                  example: 'QWEWETEW12312'
+      responses:
+        '201':
+          description: successful operation
+  /profile/avatar/:
+    post:
+      tags:
+        - profile
+      description: 'update user avatar'
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: 'https://i.pravatar.cc/300'
+
+  /tags/:
+    get:
+      tags:
+        - tags
+      description: 'Get tags'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag'
+
+
+
+components:
+  schemas:
+    CatalogItems:
+      type: array
+      items:
+        $ref: '#/components/schemas/CatalogItem'
+    CatalogItem:
+      type: object
+      xml:
+        name: catalogItem
+      required:
+        - id
+        - title
+        - href
+      properties:
+        id:
+          type: integer
+          example: 123
+        title:
+          type: string
+          example: 'Video cards'
+        image:
+          type: object
+          xml:
+            name: image
+          properties:
+            src:
+              type: string
+              example: '/media/categories/category_1/images/example.jpg'
+            alt:
+              type: string
+              example: 'Video cards'
+        href:
+          type: string
+          example: '/catalog/123'
+        subcategories:
+          type: array
+          xml:
+            name: subcategories
+          items:
+            type: object
+            xml:
+              name: subcategory
+            properties:
+              id:
+                type: integer
+                example: 123
+              title:
+                type: string
+                example: 'Video cards for PC'
+              image:
+                type: object
+                xml:
+                  name: image
+                properties:
+                  src:
+                    type: string
+                    example: '/media/categories/category_1/images/example.jpg'
+                  alt:
+                    type: string
+                    example: 'Video cards'
+
+              href:
+                type: string
+                example: '/catalog/123'
+    Products:
+      type: array
+      items:
+        $ref: '#/components/schemas/ProductShort'
+    Sales:
+      type: array
+      items:
+        $ref: '#/components/schemas/SaleItem'
+    ProductShort:
+      required:
+        - id
+        - categoryName
+        - title
+        - price
+        - href
+      type: object
+      xml:
+        name: productShort
+      properties:
+        id:
+          type: integer
+          example: 123
+        categoryName:
+          type: string
+          example: 'Video cards'
+        price:
+          type: number
+          example: 500.67
+        count:
+          type: integer
+          example: 12
+          nullable: true
+        date:
+          type: string
+          example: 'Thu Feb 09 2023 21:39:52 GMT+0100 (Central European Standard Time)'
+          nullable: true
+        title:
+          type: string
+          example: 'NVIDIA GeForce RTX'
+        description:
+          type: string
+          example: 'description of the product'
+        href:
+          type: string
+          example: '/product/123'
+        freeDelivery:
+          type: boolean
+          example: true
+          nullable: true
+        images:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            example: '/media/products/product_1/images/example.jpg'
+            xml:
+              name: imageUrl
+        tags:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: tagId
+        reviews:
+          type: integer
+          example: 5
+          nullable: true
+        rating:
+          type: number
+          example: 4.6
+    SaleItem:
+      required:
+        - id
+        - title
+        - price
+        - salePrice
+        - href
+      type: object
+      xml:
+        name: saleItem
+      properties:
+        id:
+          type: integer
+          example: 123
+        price:
+          type: number
+          example: 500.67
+        salePrice:
+          type: number
+          example: 200.67
+        dateFrom:
+          type: string
+          example: '2023-05-08'
+        dateTo:
+          type: string
+          example: '2023-05-20'
+        title:
+          type: string
+          example: 'NVIDIA GeForce RTX'
+        href:
+          type: string
+          example: '/product/123'
+        images:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            example: '/media/products/product_1/images/example.jpg'
+            xml:
+              name: imageUrl
+    ProductFull:
+      required:
+        - id
+        - category
+        - title
+        - price
+        - href
+      type: object
+      xml:
+        name: productFull
+      properties:
+        id:
+          type: integer
+          example: 123
+        category:
+          type: integer
+          example: 55
+        price:
+          type: number
+          example: 500.67
+        count:
+          type: integer
+          example: 12
+        date:
+          type: string
+          example: 'Thu Feb 09 2023 21:39:52 GMT+0100 (Central European Standard Time)'
+        title:
+          type: string
+          example: 'NVIDIA GeForce RTX'
+        description:
+          type: string
+          example: 'description of the product'
+        fullDescription:
+          type: string
+          example: 'full description of the product'
+        href:
+          type: string
+          example: '/product/123'
+        freeDelivery:
+          type: boolean
+          example: true
+        images:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            example: '/media/products/product_1/images/example.jpg'
+            xml:
+              name: imageUrl
+        tags:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            example: 'NVIDIA'
+            xml:
+              name: tagId
+        reviews:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Review'
+        specifications:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Specification'
+        rating:
+          type: number
+          example: 4.6
+    Review:
+      type: object
+      xml:
+        name: review
+      properties:
+        author:
+          type: string
+          example: 'Annoying Orange'
+        email:
+          type: string
+          example: 'no-reply@mail.ru'
+        text:
+          type: string
+          example: 'Vue.js - OneLove!'
+        rate:
+          type: integer
+          example: 4
+        date:
+          type: string
+          example: '2023-05-05 12:12'
+    Specification:
+      type: object
+      xml:
+        name: specification
+      properties:
+        name:
+          type: string
+          example: 'Size'
+        value:
+          type: string
+          example: 'XL'
+    OrderProduct:
+      allOf:
+        - $ref: '#/components/schemas/ProductShort'
+        - description: 'count - для количества товара в корзине и price их общая цена на момент покупки'
+        - type: object
+        - xml:
+            name: orderProduct
+    Order:
+      type: object
+      xml:
+        name: order
+      properties:
+        orderId:
+          type: integer
+          example: 123
+        createdAt:
+          type: string
+          example: '2023-05-05 12:12'
+        fullName:
+          type: string
+          example: 'Annoying Orange'
+        email:
+          type: string
+          example: 'no-reply@mail.ru'
+        phone:
+          type: string
+          example: '88002000600'
+        deliveryType:
+          type: string
+          example: 'free'
+        paymentType:
+          type: string
+          example: 'online'
+        totalCost:
+          type: number
+          example: 567.8
+        status:
+          type: string
+          example: 'accepted'
+        city:
+          type: string
+          example: 'Moscow'
+        address:
+          type: string
+          example: 'red square 1'
+        products:
+          type: array
+          xml:
+            name: product
+          items:
+            $ref: '#/components/schemas/OrderProduct'
+    Basket:
+      type: array
+      xml:
+        name: basket
+      items:
+        $ref: '#/components/schemas/OrderProduct'
+    Payment:
+      type: object
+      xml:
+        name: payment
+      properties:
+        number:
+          type: string
+          example: '9999999999999999'
+        name:
+          type: string
+          example: 'Annoying Orange'
+        month:
+          type: string
+          example: '02'
+        year:
+          type: string
+          example: '2025'
+        code:
+          type: string
+          example: '123'
+    User:
+      type: object
+      xml:
+        name: user
+      properties:
+        fullName:
+          type: string
+          example: 'Annoying Orange'
+        email:
+          type: string
+          example: 'no-reply@mail.ru'
+        phone:
+          type: string
+          example: '88002000600'
+        avatar:
+          type: string
+          example: 'media/accounts/user_1/avatar.jpg'
+    Tag:
+      type: object
+      xml:
+        name: tag
+      properties:
+        id:
+          type: string
+          example: 'gaming'
+        name:
+          type: string
+          example: 'Gaming'

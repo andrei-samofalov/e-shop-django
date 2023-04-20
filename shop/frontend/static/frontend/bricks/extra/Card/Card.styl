@@ -1,0 +1,407 @@
+//options
+margHorizontal = 2%
+margVertical = 3.6%
+
+.{$px}Cards
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    width: 100%
+    +m('desktop')
+        width: auto
+        margin: 0px (- margHorizontal/2) (- margVertical)
+    +m('tablet')
+        justify-content: center
+    +m('phone')
+        margin-left: 0
+    
+    +b(Card)
+        width: 23%
+        margin: 0px (margHorizontal/2) margVertical
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+        border: 1px solid #e0e0e0;
+        background-color: clr-white;
+        min-width: 250px
+    
+        +m('tablet')
+            width: 46%
+        +m('phone')
+            width: auto
+            margin-left: 0
+            margin-right: 0
+    
+    &{b(Slider-box)}
+        margin-top: -30px
+        .slick-list
+            padding-top: 30px
+        +b(Card)
+            width: 100%
+            margin-left: 0 !important
+            margin-right: 0 !important
+            max-width: 100%
+    &_hz
+        margin-bottom: (- margVertical / 2)
+        +b(Card)
+            width: 31.333%
+            max-width: 600px
+            display: flex
+            padding-top: 33px
+            padding-bottom: 33px
+            margin-bottom: (margVertical / 2)
+            min-width: 380px
+            &-picture
+                min-width: 40%
+                margin-right: 30px
+                min-height: 100px
+            &-description
+                margin-top: 9px
+            &-content
+                margin-top: 0
+                text-align: left
+            +m('phone')
+                display: block
+                min-width: auto
+                +b(Rating)
+                    justify-content: center
+                &-content
+                    text-align: center
+    
+    &-imgOut
+        max-width: 100%
+        +m('tablet')
+            display: flex
+            justify-content: center
+    &_big
+        justify-content: flex-start
+        align-items: center
+        flex-wrap: nowrap
+        margin-bottom: 1px
+        +m('tablet')
+            flex-wrap: wrap
+        +b(Card)
+            visibility: visible
+            border: none
+            text-align: left
+            padding: 86px 90px 90px
+            margin-bottom: 0
+            max-width: 662px
+            min-width: 500px
+            width: auto
+            +m('tablet')
+                margin-left: 0
+                max-width: 100%
+            +m('phone')
+                min-width: auto
+                padding: 20px
+            &-sale
+                left: auto
+                right: 33px
+                top: -27px
+            &-price
+                font-size: font-lgm;
+                line-height: 1.2em
+                letter-spacing: 2px
+                &Old
+                    font-size: @font-size
+                    line-height: 1.2em
+                    letter-spacing: @letter-spacing
+                    +m('phone')
+                        font-size: font-mdp
+                +m('phone')
+                    font-size: font-mdp
+            &-title
+                font-size: font-lg;
+                font-weight: 600
+                line-height: 1.3em
+                margin-top: 10px
+                text-transform: uppercase
+                margin-bottom: 0
+                +m('phone')
+                    font-size: font-mdp
+            &-description
+                font-size: font-nrp
+                text-transform: none
+                line-height: 2em
+                margin-top: 0
+    &_column
+        +b(Card)
+            width: 31.333%
+            display: flex
+            padding: 10px
+            margin-bottom: (margVertical / 2)
+            min-width: 115px
+            min-height: 115px
+            border: none
+            box-shadow: none
+            &-picture
+                min-height: 0
+    &_blog
+        +b(Card)
+            padding: 0
+            max-width: none
+            text-align: left
+            margin-bottom: 2.6%
+            +m('tablet')
+                width: 48%
+            &-picture
+                line-height: 0
+                align-items: flex-start
+                min-height: auto
+                position: relative
+                padding-top: 74%
+                img
+                    position: absolute
+                    left: 0
+                    top: 0
+                    right: 0
+                    z-index: 1
+            &-content
+                padding: 12px 39px 20px
+                +m('tablet')
+                    padding: 0 20px 20px
+            +m(550px)
+                width: auto
+                margin-left: 0
+                margin-right: 0
+    &_account
+        margin: 0 0 -3.6%
+        +b(Card)
+            width: 31.333%
+            max-width: 400px
+            +m('tablet')
+                width: 46%
+            +m(700px)
+                width: 70%
+    
+    
+    
+    
+    &-ins
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        margin-left: -20px
+        margin-top: 41px
+        +m('phone')
+            margin-left: 0
+        +b(Card)
+            width: 22%
+            +m('tablet')
+                width: 40%
+            +m('phone')
+                width: auto
+                margin-left: 0
+                margin-right: 0
+
+
+.{$px}Card
+    background: clr-white;
+    text-align: center
+    clearfix()
+    max-width: 300px
+    align-items: center
+    position: relative
+    padding: 20px
+    +m('desktop')
+        &:hover
+            +e(-hover)
+                top: 0
+                transition: top 300ms
+    &-picture
+        min-width: 100%
+        overflow: hidden
+        display: flex
+        line-height: 0
+        min-height: 226px
+        align-items: center
+        justify-content: center
+        +m('desktop')
+            &:hover
+                border-bottom-color: transparent
+        &:empty
+            background: #f3f4f9
+        img
+            width: 100%
+            margin: 0
+    &-date
+        position: absolute
+        left: 14px
+        top: 14px
+        background: clr-white
+        width: 60px
+        z-index: 5
+        text-align: center
+        &-number
+            display: flex
+            align-items: center
+            justify-content: center
+            background: clr-primary
+            color: clr-white
+            font-size: font-md
+            font-weight: 500
+            padding: 5px
+            min-height: 42px
+    
+        &-month
+            display: block
+            color: #777777
+            font-weight: 500
+            font-size: font-xs
+            padding: 5px
+            text-transform: uppercase
+        &_to
+            left: 105px
+            &:after
+                content:''
+                display: block
+                height: 3px
+                width: 18px
+                position: absolute
+                background: #fff
+                border-bottom: 3px solid clr-primary
+                font-size: font-mdp
+                margin-top: 3px
+                left: -25px
+                top: 50%
+    &-pin
+        position: absolute
+        top: 14px
+        right: 14px
+        width: 26px
+        height: @width
+        background: img('icons', 'pin.svg') center center no-repeat
+        background-size: contain
+        z-index: 10
+    &-footer
+        margin-top: 11px
+    
+    &-content
+        margin-top: 20px
+        padding: 0
+        transition: all 300ms
+        color: #000
+    &-quote
+    &-link
+        height: 100%
+        display: flex
+        align-items: center
+        text-align: center
+        padding: 30px
+        &-text
+            background: img('icons', 'quote.svg') center top no-repeat
+            padding-top: 72px
+            font-size: font-mdm;
+            line-height: 1.8em
+            font-weight: 400;
+        &-author
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2.4px;
+            font-size: font-nrm
+            color: #949597
+            margin-top: 37px
+    &-link
+        &-text
+            background-image: img('icons', 'link.svg')
+        &-go
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2.4px;
+            color: #949597
+            margin-top: 50px
+            a
+                color: @color
+    
+
+    +m(desktop)
+        &:hover
+            +e(-content)
+                opacity: 1
+                transition: all 300ms
+    &-title
+        display: block
+        font-weight: normal
+        line-height: 26px;
+        font-size: font-mdm;
+        border-bottom: 2px solid #fafbfc
+        width: 100%
+        padding-bottom: 8px
+        margin-bottom: 3px
+        a
+            color: #000
+    &-description
+        margin-top: 5px
+        color: #999999;
+        font-size: font-xs;
+        font-weight: 400;
+        line-height: 26px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        position: relative
+        overflow: hidden
+    &-cost
+        font-size: font-mdm;
+        font-weight: 400;
+        line-height: 26px;
+    &-price
+        font-weight: 600;
+        color: clr-primary;
+        display: inline-block
+        &Old
+            color: #999999;
+            text-decoration: line-through;
+            display: inline-block
+            margin-right: 7px
+            font-weight: 400
+            
+        
+    
+    &-category
+        display: block
+        margin-top: 11px
+    &-btn
+        display: flex
+        width: 41px
+        height: 41px
+        background-color: #ebebeb;
+        justify-content: center
+        align-items: center
+        & + &
+            margin-left: 12 px
+    &-hover
+        position: absolute
+        left: 0
+        top: 100%
+        height: 100%
+        right: 0
+        display: flex
+        background: clr-white
+        justify-content: center
+        align-items: center
+        transition: top 300ms
+    &-sale
+        position: absolute
+        left: 19px
+        top: -23px
+        color: clr-white;
+        font-size: font-sm;
+        font-weight: 400;
+        line-height: 1.2em
+        letter-spacing: 0.65px;
+        width: 58px;
+        height: 58px;
+        padding: 5px
+        background-color: clr-success;
+        display: flex
+        align-items: center
+        justify-content: center
+        border-radius: 100px
+    &-tabletHide
+        +m('tablet')
+            display: none
+    &-phoneHide
+        +m('phone')
+            display: none
+
+
+

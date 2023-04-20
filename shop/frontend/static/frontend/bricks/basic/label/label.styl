@@ -1,0 +1,62 @@
+/*----------  LABEL  ----------*/
+.{$px}label
+    min-width: 12px
+    box-sizing: content-box
+    height: 18px
+    padding: 0 3px
+    border: 1px solid clr-primary
+    background: clr-primary
+    color: clr-white
+    position: relative
+    font-weight: normal
+    border-radius: 100px
+    font-family: fontAddit
+    display: inline-flex !important
+    justify-content: center
+    align-items: center
+    &-text
+        font-size: font-nrm
+        line-height: 1.2em
+    &_new
+        position: relative
+        +e(-text)
+            &:before
+                content:''
+                display: block
+                position: absolute
+                width: 8px
+                height: 8px
+                border: 2px solid bg-lt
+                background: clr-warning
+                box-sizing: border-box
+                border-radius: 100px
+                top: -3px
+                right: @top
+    &_primary
+        background: clr-primary
+        border-color: @background
+    &_warning
+        background: clr-warning
+        border-color: @background
+    &_success
+        background: clr-success
+        border-color: @background
+        &_message
+            @extend {e(_success)}
+            &:after
+                position: absolute
+                left: -2px
+                bottom: 0
+                content: ""
+                display: block
+                width: 0
+                height: 0
+                box-sizing: content-box
+                triangle(right, 6px, @background)
+                border-left-width: 6px
+                border-bottom-width: 0
+                z-index: 0
+                transform: Rotate(-110deg)
+    &_danger
+        background: clr-danger;
+        border-color: @background;

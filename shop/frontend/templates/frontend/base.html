@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Megano</title>
+	<meta name="description" content="Описание страницы">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<link href="{% static 'frontend/favicon.ico' %}" rel="shortcut icon">
+	<link rel="preload" href="{% static 'frontend/assets/fonts/Roboto/Roboto-Regular.woff' %}" as="font">
+	<link rel="preload" href="{% static 'frontend/assets/fonts/Roboto/Roboto-Italic.woff' %}" as="font">
+	<link rel="preload" href="{% static 'frontend/assets/fonts/Roboto/Roboto-Bold.woff' %}" as="font">
+	<link rel="preload" href="{% static 'frontend/assets/fonts/Roboto/Roboto-Bold_Italic.woff' %}" as="font">
+	<link rel="preload" href="{% static 'frontend/assets/fonts/Roboto/Roboto-Light.woff' %}" as="font">
+	<link rel="preload" href="{% static 'frontend/assets/fonts/Roboto/Roboto-Light_Italic.woff' %}" as="font">
+	<link rel="stylesheet" href="{% static 'frontend/assets/css/fonts.css' %}">
+	<link rel="stylesheet" href="{% static 'frontend/assets/css/basic.css' %}">
+	<link rel="stylesheet" href="{% static 'frontend/assets/css/extra.css' %}">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+	<script src="{% static 'frontend/assets/plg/vue.global.js' %}"></script>
+	<script src="{% static 'frontend/assets/plg/CountDown/countdown.js' %}"></script>
+</head>
+<body class="Site" id="site">
+<header class="Header">
+	<div class="ControlPanel">
+		<div class="wrap">
+			<div class="row ControlPanel-row">
+				<div class="row-block">
+					<div class="row ControlPanel-rowSplit">
+						<div class="row-block">
+							<a class="ControlPanel-title" href="#">Free delivery</a>
+						</div>
+						<div class="row-block hide_700">
+							<span class="ControlPanel-title">Follow Us</span>
+							<ul class="menu menu_img menu_smallImg ControlPanel-menu">
+								<li class="menu-item">
+									<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialHeader/fb.svg' %}" alt="fb.svg"/></a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialHeader/tw.svg' %}" alt="tw.svg"/></a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialHeader/in.svg' %}" alt="in.svg"/></a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialHeader/pt.svg' %}" alt="pt.svg"/></a>
+								</li>
+								<li class="menu-item">
+									<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialHeader/mail.svg' %}" alt="mail.svg"/></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<nav class="row-block">
+					<div class="row ControlPanel-rowSplit">
+						{% if user.is_authenticated %}
+							<div class="row-block">
+								<a class="ControlPanel-title" href="/profile/">{{ user.username }}</a>
+							</div>
+							<div class="row-block">
+								<a class="ControlPanel-title" href="/logout/">Logout</a></div>
+						{% else %}
+							<div class="row-block">
+								<a class="ControlPanel-title" href="/signin/">Login / Register</a>
+							</div>
+						{% endif %}
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<div class="row Header-rowMain">
+			<div class="row-block Header-logo">
+				<a class="logo" href="/"><img class="logo-image" src="{% static 'frontend/assets/img/logo.png' %}" alt="logo.png"/></a>
+			</div>
+			<nav class="row-block row-block_right Header-menu">
+				<div class="menuModal" id="navigate">
+					<ul class="menu menu_main">
+						<li class="menu-item">
+							<a class="menu-link" href={% url "frontend:index" %}>Home</a>
+						</li>
+
+						<li class="menu-item">
+							<a class="menu-link" href={% url "frontend:sale" %}>Sales</a>
+						</li>
+						{#              <li class="menu-item"><span class="menu-label menu-label_success">Hot</span><a class="menu-link" href="product.html">Gallery</a>#}
+						{#              </li>#}
+
+						<li class="menu-item">
+							<a class="menu-link" href={% url "frontend:catalog" %}>Catalog</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="row-block">
+				<div class="CartBlock"><a class="CartBlock-block" href="/cart/">
+					<img class="CartBlock-img" src="{% static 'frontend/assets/img/icons/cart.svg' %}" alt="cart.svg"/><span class="CartBlock-amount" v-text="basketCount.count"></span></a>
+					<div class="CartBlock-block">
+						<span class="CartBlock-price">${basketCount.total}$$</span>
+					</div>
+				</div>
+			</div>
+			<div class="row-block Header-trigger">
+				<a class="menuTrigger" href="#navigate">
+					<div class="menuTrigger-content">Показать навигацию</div>
+					<span></span> <span></span> <span></span> </a>
+			</div>
+		</div>
+	</div>
+	<div class="Header-searchWrap">
+		<div class="wrap">
+			<div class="Header-categories">
+				<div class="CategoriesButton">
+					<div class="CategoriesButton-title">
+						<div class="CategoriesButton-icon">
+							<img src="{% static 'frontend/assets/img/icons/allDep.svg' %}" alt="allDep.svg"/>
+						</div>
+						<span class="CategoriesButton-text">All Departments</span>
+						<div class="CategoriesButton-arrow">
+						</div>
+					</div>
+					<div class="CategoriesButton-content">
+
+						<!-- Получаем категории и подкатегории  -->
+						<div class="CategoriesButton-link" v-for="category in categories">
+							<a :href="category.href">
+								<div class="CategoriesButton-icon">
+									<img :src="category.image.src" :alt="category.image.alt"/>
+								</div>
+								<span class="CategoriesButton-text">${ category.title }$</span></a>
+							<a v-if="category.subcategories.length > 0" class="CategoriesButton-arrow" href="#"></a>
+
+							<div v-if="category.subcategories.length > 0" class="CategoriesButton-submenu">
+								<div v-for="subcategory in category.subcategories">
+									<a class="CategoriesButton-link" :href="subcategory.href">
+										<div class="CategoriesButton-icon">
+											<img :src="subcategory.image.src" :alt="subcategory.alt"/>
+										</div>
+										<span class="CategoriesButton-text">${ subcategory.title }$</span></a>
+								</div>
+							</div>
+						</div>
+						<!-- Получаем категории и подкатегории  -->
+
+					</div>
+				</div>
+			</div>
+			<div class="Header-searchLink">
+				<img src="{% static 'frontend/assets/img/icons/search.svg' %}" alt="search.svg"/>
+			</div>
+			<div class="Header-search">
+				<div class="search">
+					<form class="form form_search" @submit.prevent="search">
+						<input class="search-input" id="query" name="query" type="text" v-model="searchText" placeholder="What are you looking for ..."/>
+						<button class="search-button" type="submit" name="search" id="search">
+							<img src="{% static 'frontend/assets/img/icons/search.svg' %}" alt="search.svg"/>Search
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="Footer">
+	<div class="wrap">
+		<div class="row Footer-main">
+			<div class="row-block">
+				<a class="logo Footer-logo" href="/"><img class="logo-image" src="{% static 'frontend/assets/img/logo_footer.png' %}" alt="logo_footer.png"/></a>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincid unt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+				</p>
+				<ul class="menu menu_img menu_smallImg Footer-menuSoc">
+					<li class="menu-item">
+						<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialFooter/fb.svg' %}" alt="fb.svg"/></a>
+					</li>
+					<li class="menu-item">
+						<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialFooter/tw.svg' %}" alt="tw.svg"/></a>
+					</li>
+					<li class="menu-item">
+						<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialFooter/in.svg' %}" alt="in.svg"/></a>
+					</li>
+					<li class="menu-item">
+						<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialFooter/pt.svg' %}" alt="pt.svg"/></a>
+					</li>
+					<li class="menu-item">
+						<a class="menu-link" href="#"><img src="{% static 'frontend/assets/img/icons/socialFooter/mail.svg' %}" alt="mail.svg"/></a>
+					</li>
+				</ul>
+			</div>
+			<div class="row-block">
+				<strong class="Footer-title">Useful Links </strong>
+				<ul class="menu menu_vt Footer-menu">
+					<li class="menu-item"><a class="menu-link" href="#">Checkout</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">My Cart</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Delivery</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Order Info</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Terms</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Conditions</a>
+					</li>
+				</ul>
+			</div>
+			<div class="row-block">
+				<strong class="Footer-title">My Account </strong>
+				<ul class="menu menu_vt Footer-menu">
+					<li class="menu-item"><a class="menu-link" href="#">Accessories</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Bags</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Cameras</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Clothings</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Electronics</a>
+					</li>
+					<li class="menu-item"><a class="menu-link" href="#">Fashion</a>
+					</li>
+				</ul>
+			</div>
+			<div class="row-block">
+				<strong class="Footer-title">Contacts </strong>
+				<p>Phone: 8.800.200.600<br>Email: Support@ninzio.com<br>Skype: techno<br>Address: New York, north<br>Avenue 26/7<br>0057
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="Footer-copy">
+		<div class="wrap">
+			<div class="row row_space">
+				<div class="row-block">© Copyright&#32;<a href="#">Megano Store.</a>&#32;All rights reserved.
+				</div>
+				<div class="row-block"><span>Accepted Payments</span>
+					<div class="Footer-payments">
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/visa.png' %}" alt="visa.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/mastercard.png' %}" alt="mastercard.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/paypal.png' %}" alt="paypal.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/american.png' %}" alt="american.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/electron.png' %}" alt="electron.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/maestro.png' %}" alt="maestro.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/delta.png' %}" alt="delta.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/e.png' %}" alt="e.png"/>
+						</div>
+						<div>
+							<img src="{% static 'frontend/assets/img/payments/dk.png' %}" alt="dk.png"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+{% block mixins %}{% endblock %}
+<script src="{% static 'frontend/assets/js/app.js' %}"></script>
+<script src="{% static 'frontend/assets/plg/jQuery/jquery-3.5.0.slim.min.js' %}"></script>
+<script src="{% static 'frontend/assets/plg/form/jquery.form.js' %}"></script>
+<script src="{% static 'frontend/assets/plg/form/jquery.maskedinput.min.js' %}"></script>
+<script src="{% static 'frontend/assets/plg/range/ion.rangeSlider.min.js' %}"></script>
+<script src="{% static 'frontend/assets/plg/Slider/slick.min.js' %}"></script>
+<script src="{% static 'frontend/assets/js/scripts.js' %}"></script>
+</body>
+</html>

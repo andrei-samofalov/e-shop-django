@@ -1,0 +1,247 @@
+.{$px}Tabs
+    &-links
+        display: flex
+    &-link
+        min-width: 200px
+        height: 46px
+        display: flex
+        justify-content: center
+        align-items: center
+        & + &
+            margin-left: 2.3rem
+        &_ACTIVE
+            border-color: clr-primary;
+    &-wrap
+        padding: 50px
+        border: 1px solid #e0e0e0;
+        border-top: none
+        margin-top: 0
+        +m('tablet')
+            padding: 30px
+        +m('phone')
+            padding: 15px
+    &-block
+        clearfix()
+    & &-block
+        padding-bottom: 0
+        overflow: visible
+    &-title
+        font-size: font-lgm
+        margin-top: 0
+    &_steps
+        margin-top: 0
+        +e(-wrap)
+            margin-top: 0
+        +e(-links)
+            visibility: visible
+            counter-reset: steps
+            +m('phone')
+                justify-content: center
+                align-items: center
+                padding-left: 1.5rem
+                padding-right: 1.5rem
+        +e(-link)
+            color: #2c2d2e;
+            border: none
+            height: auto
+            width: auto
+            position: relative
+            +m('phone')
+                //flex-wrap: wrap
+                align-items: center
+                flex-direction: column;
+            span
+                &:after
+                    content: ''
+                    position: absolute
+                    background: #fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAALCAYAAACgR9dcAAAAq0lEQVQoU2NkIBEEzE8QYGD/6bAhavkGRlL0gjQysn/fz8DAaMD4n6GRaM3IGhkYGC7+/8nhANYctDSi4d8vjgkbEhd8wOYSbBpBahlBGv8zMtQzMPy/8P8npyO6Abg0gixhhEj+OMDAwKCPbgA+jWDNIAKbAWBJaODA/IjuKniAoRsA8TujAS6NcJthgYRqAFgUHKq4AhIjqpAMYMCnEcNmZBeA2LhshKkDAG7IdTpqX8axAAAAAElFTkSuQmCC') center center no-repeat
+                    border-radius: 100px
+                    left: 1.5rem
+                    top: -0.3rem
+                    width: 1.8rem
+                    height: 1.8rem
+                    display: block
+                    +m('phone')
+                        background-color: #f6f6f6
+                        top: 0
+                        left: 50%
+                        margin-left: -0.2rem
+            &:before
+                counter-increment: steps
+                content: counter(steps)
+                width: 2.8rem
+                height: 2.8rem
+                color: clr-primary;
+                font-family: Montserrat, 'Arial Black', "Helvetica CY", Helvetica, "Nimbus Sans L", sans-serif;
+                font-size: font-nrm;
+                font-weight: 700;
+                border: 0.2rem solid clr-primary
+                display: flex
+                align-items: center
+                justify-content: center
+                border-radius: 100px
+                margin-right: 1rem
+                +m('phone')
+                    margin-bottom: 0.9rem
+            + {e(-link)}
+                position: relative
+                margin-left: 9rem
+                +m('phone')
+                    margin-left: 4.8rem
+                &:after
+                    height: 0.2rem;
+                    width: 6rem
+                    left: -7.2rem
+                    top: 50%
+                    position: absolute
+                    background-color: clr-primary;
+                    content:''
+                    display: block
+                    cursor: default
+                    +m('phone')
+                        left: -5.3rem
+                        top: 1.6rem
+                        width: 5rem
+            &_ACTIVE
+                color: #2c2d2e;
+                span
+                    &:after
+                        display: none
+                &:before
+                    background-color: clr-primary
+                    color: clr-white
+
+                ~ {e(-link)}
+                    color: #b7b6b4;
+                    &:after
+                        background-color: #b7b6b4;
+                    &:before
+                        background-color: transparent
+                        border-color: #cbcccc
+                        color: #b7b6b4;
+                    span
+                        &:after
+                            display: none
+
+    &_default
+        +e(-links)
+            background:clr-lt
+            +m('tablet')
+                flex-wrap: wrap
+        +e(-link)
+            height: 46px
+            min-width: auto
+            display: flex
+            justify-content: center
+            align-items: center
+            cursor: pointer
+            text-transform: uppercase
+            font-size: font-nr;
+            letter-spacing: 0.8px
+            padding: 5px 55px
+            font-weight: 500
+            color: #93969d
+            border-right: 1px solid clr-white
+            +m('phone')
+                width: 100%
+            &:before
+            &:after
+                display: none
+            + {e(-link)}
+                margin-left: 0
+                &:after
+                    display: none
+            &_ACTIVE
+                background-color: clr-primary
+                color: clr-white
+
+    &_column
+        display: flex
+        align-items: stretch
+        justify-content: space-between
+        +e(-links)
+            min-width: 20rem
+            margin-left: 2.5rem
+            display: block
+            order: 2
+            margin-top: 8.5rem
+        +e(-link)
+            width: auto
+            margin-left: 0
+            font-family Roboto
+            font-size 1.1rem
+            font-weight 700
+            letter-spacing 0.079rem
+            text-transform uppercase
+            padding: 1.9rem 2.3rem
+            height: auto
+            border 0.2rem solid clr-lt
+            border-bottom: none
+            justify-content: flex-start
+            color: #999999
+            + {e(-link)}
+                border-top-width: 0.1rem
+            &:last-child
+                border-bottom: 0.2rem solid clr-lt
+            &_ACTIVE
+                border-left-color: clr-primary
+                color clr-primary
+        +e(-title)
+            margin-bottom: 4rem
+        +e(-wrap)
+            margin-top: 0
+            width: 100%
+    &_hz
+        +e(-links)
+            border-radius 0.2rem
+            box-shadow: inset 0 0 0 1px clr-lt
+            background-color clr-white
+            overflow-x: auto
+            &:after
+            &:before
+                min-width: 2.4rem
+                min-height: 100%
+                display: block
+                content:''
+            +m('tablet')
+                padding: 0
+                border: none
+                height: auto
+        +e(-wrap)
+            +m('tablet')
+                margin-top: 3rem
+        +e(-block)
+            > *
+                &:last-child
+                    margin-bottom: 0 !important
+        +e(-link)
+            border: none
+            height: auto
+            width: auto
+            color #333333
+            font-family Montserrat
+            font-size font-nrm
+            font-weight 600
+            position: relative
+            padding: 2.3rem 0 2.1rem
+            white-space: nowrap
+            + {e(-link)}
+                margin-left: 3.7rem
+            +m('tablet')
+                padding: 1rem 0 2rem
+            &_ACTIVE
+            &:hover
+                color #0064c9
+                &:after
+                    content: ''
+                    display: block
+                    position: absolute
+                    height: 0.4rem
+                    background-color #3182d4
+                    left: 0
+                    bottom: 0rem
+                    right: 0
+
+
+
+

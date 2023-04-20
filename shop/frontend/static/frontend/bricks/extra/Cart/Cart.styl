@@ -1,0 +1,172 @@
+.{$px}Cart
+    margin-top: 0
+    margin-bottom: 0
+    &-product
+        display: flex
+        align-items: center
+        border-top: 1px solid #e0e0e0
+        padding-top: 20px
+        padding-bottom: 20px
+        +m('tablet')
+            display: block
+    &-total
+        border-top: 1px solid #e0e0e0
+        padding-top: 20px
+        padding-bottom: 20px
+        display: flex
+        align-items: center
+        +e(-price_old)
+            display: inline-block
+            margin-left: 10px
+        +e(-price)
+            margin-left: 10px
+        +e(-title)
+            display: inline-block
+            margin-right: 10px
+        +m('phone')
+            display: block
+            text-align: center
+            +e(-title)
+                margin-right: 0
+                margin-bottom: 20px
+        
+    &-title
+        font-size: font-mdm
+        font-weight: 500
+        display: block
+        color: text-main
+        transition: color 300ms
+        a&
+            display: inline-block
+            +m('desktop')
+                &:hover
+                    color: clr-primary
+                    transition: color 300ms
+    
+    &-desc
+        font-size: font-nrm
+        display: block
+        margin-top: 5px
+        color: clr-muted
+    
+    &-block
+        & + &
+            margin-left: 20px
+            +m('large')
+                margin-left: 30px
+        &_info
+            width: 100%
+            +m('tablet')
+                width: auto
+                margin-right: auto
+            +m(600px)
+                max-width: 50%
+            +m('phone')
+                margin-left: 0 !important
+                max-width: none
+                text-align: center
+                width: 100%
+        &_price
+            text-align: right
+            +m(600px)
+                width: 100%
+                margin-left: 0 !important
+                margin-top: 20px
+                display: flex
+                justify-content: flex-end
+            +m('phone')
+                justify-content: center
+                +e(-price)
+                    margin-left: 0
+            
+            
+        &_row
+            display: flex
+            align-items: center
+            &:first-child
+                width: 100%
+            +m('tablet')
+                margin-left: 0 !important
+                width: 100%
+                margin-top: 20px
+            +m(600px)
+                flex-wrap: wrap
+        &_amount
+            min-width: 200px
+            +m(600px)
+                margin-left: 0 !important
+                margin-right: auto
+        &_total
+            margin-right: auto
+        &_pict
+            +m('phone')
+                width: 100%
+                display: flex
+                justify-content: center
+            margin-bottom: 20px
+        &_seller
+            +b(form-select)
+                min-width: 200px
+                +m('large')
+                    min-width: 250px
+            +m('tablet')
+                margin-left: 0 !important
+                width: 100%
+            +m(600px)
+                margin-bottom: 20px
+    
+    &-pict
+        max-height: 100px
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 160px
+        +m('desktop')
+            &:hover
+                border-bottom-color: transparent
+    &-price
+        font-size: font-md
+        color: clr-primary
+        
+    &-price_old
+        color: #999;
+        text-decoration: line-through;
+        display: block
+        margin-bottom: 5px
+        +m(600px)
+            margin-right: 10px
+            margin-bottom: 0
+    
+    &-img
+        max-height: 100px
+        max-width: 100%
+    &-amount
+        max-width: 200px
+    &-delete
+        display: flex
+        width: 56px
+        height: 56px
+        background-color: #ebebeb;
+        justify-content: center
+        align-items: center
+        border: 1px solid transparent
+        transition: all 300ms
+        +m('desktop')
+            &:hover
+                background-color: lighten(clr-danger, 55%)
+                border-color: clr-danger
+                transition: all 300ms
+    &_order
+        +e(-block)
+            &_amount
+                min-width: auto
+                width: 50px
+                +m(600px)
+                    margin-right: 0
+                    margin-left: auto !important
+            &_seller
+                width: 120px
+                +m('tablet')
+                    margin-right: auto
+                +m(600px)
+                    margin-bottom: 0

@@ -1,0 +1,79 @@
+.{$px}search
+    padding: 0;
+    position: relative
+    margin-top: 13px
+    margin-bottom: 12px
+    +b(form)
+        margin-top: 0
+        margin-bottom: 0
+        &_search
+            display: flex
+            background-color: clr-white;
+            border-radius: 100px
+            justify-content: space-between
+            &:after
+            &:before
+                display: none
+            +m(600px)
+                flex-wrap: wrap
+                border-radius: 10px
+                +e(-button)
+                    width: 100%
+                    border-radius: 0 0 10px 10px
+                    padding-top: 7px
+                    padding-bottom: 7px
+                +e(-choice)
+                    width: 100%
+    
+    
+    &-input
+        border-radius: 100px
+        border: none !important
+        display: block
+        min-height: 42px !important
+        line-height: (@min-height[0] - 12);
+        width: 100%
+        padding-right: 43px !important
+        padding-left: 37px !important
+        
+        
+    &-choice
+        width: 40%
+        display: flex
+        align-items: center
+        justify-content: center
+        border-left: 1px solid #cccccc
+        margin-top: 7px
+        margin-bottom: 7px
+        font-size: font-nrp;
+        color: #777777;
+    &-button
+        display: flex
+        align-items: center
+        justify-content: center
+        border: none
+        //position: absolute
+        //right: 0
+        //top: 0
+        //bottom: 0
+        //z-index: 10;
+        width: 30%
+        letter-spacing: 0.8px;
+        border-radius: 0 100px 100px 0
+        cursor: pointer
+        background-color: clr-dk;
+        color: clr-white
+        text-transform: uppercase
+        padding-left: 30px
+        padding-right: 30px
+        img
+            margin-right: 14px
+        
+.{$px}form
+    &_search
+        margin-top: 0
+        width: 100%
+        display: block
+        position: relative
+        clearfix()
+        position: relative

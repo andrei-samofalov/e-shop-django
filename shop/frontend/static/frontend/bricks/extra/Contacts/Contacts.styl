@@ -1,0 +1,29 @@
+.{$px}Contacts
+    width: 100%
+    overflow: hidden
+    display: flex
+    
+    &_main
+        margin-top: 60px
+        
+    &-block
+        width: 100%
+        & + &
+            margin-left: 10px
+            
+    +m(1700px)
+        display: block
+        +e(-block)
+            margin-left: 0
+            + {e(-block)}
+                margin-top: 10px
+    +m('phone')
+        +b(media)
+            display: block
+            &-image
+                text-align: center
+            &-content
+                padding-left: 0
+                margin-top: 10px
+
+

@@ -1,0 +1,96 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">Оплата
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href={% url "frontend:index" %}>home</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>Оплата</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section">
+			<div class="wrap">
+				<form class="form Payment" @submit.prevent="submitPayment">
+					<div class="Payment-card">
+						<div class="form-group">
+							<label for="numero1" class="form-label">Номер карты
+								<input class="form-input Payment-bill"
+									id="numero1"
+									name="numero1"
+									type="text"
+									placeholder="9999 9999 9999 9999"
+{#									data-mask="9999 9999 9999 9999"#}
+									v-model="number"
+									data-validate="require pay"
+								/> </label>
+						</div>
+						<div class="form-group ">
+							<label for="month" class="form-label"> Месяц
+								<input class="form-input Payment-bill"
+									id="month"
+									name="month"
+									type="text"
+									data-mask="99"
+									data-validate="require"
+									placeholder="12"
+									v-model="month"
+								> </label>
+						</div>
+						<div class="form-group ">
+							<label for="year" class="form-label"> Год
+								<input class="form-input Payment-bill"
+									id="year"
+									name="year"
+									type="text"
+									data-mask="99"
+									data-validate="require"
+									placeholder="23"
+									v-model="year"
+								> </label>
+						</div>
+						<div class="form-group">
+							<label for="code" class="form-label"> CVV
+								<input class="form-input Payment-bill"
+									id="code"
+									name="code"
+									type="text"
+									data-mask="999"
+									data-validate="require"
+									placeholder="000"
+									v-model="code"
+								> </label>
+						</div>
+						<div class="form-group">
+							<label for="name" class="form-label"> ФИО
+								<input class="form-input Payment-bill"
+									id="name"
+									name="name"
+									type="text"
+									data-validate="require"
+									placeholder="Сельдерей Ананасов"
+									v-model="name"
+								> </label>
+						</div>
+					</div>
+					<div class="Payment-pay">
+						<button class="btn btn_primary" type="submit">Оплатить</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block mixins %}
+	<script src="{% static 'frontend/assets/js/payment.js' %}"></script>
+{% endblock %}

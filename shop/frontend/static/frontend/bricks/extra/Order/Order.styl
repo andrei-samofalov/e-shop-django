@@ -1,0 +1,109 @@
+.{$px}Order
+    &-btn
+        &Reg
+            width: 100%
+            height: 58px
+            border-radius: 0
+            margin-top: 35px
+        &Pay
+            text-align: right
+    &-personal
+        margin-bottom: 30px
+        font-size: font-nr
+    +b(form)
+        margin-top: 0
+        +b(Section)
+            &-header
+                &:first-child
+                    padding-top: 3px
+                    margin-top: 0
+    &-block
+        display: none
+        &_OPEN
+            display: block
+    &-footer
+        margin-top: 20px
+        text-align: right
+    
+    &-price
+        font-size: font-nrp
+        color: clr-black
+    
+    &-price_old
+        color: #999;
+        text-decoration: line-through;
+        display: inline-block
+        margin-left: 10px
+        
+    &-navigate
+        +b(menu)
+            &-link
+                color: clr-success
+                &:after
+                    background: clr-success
+            &-item
+                &_ACTIVE
+                    & ~ {b(menu-item)}
+                        +b(menu-link)
+                            color: text-main
+                            &:hover
+                                cursor: default
+                                &:after
+                                    display: none
+    
+    &-info
+        display: flex
+        line-height: 1.2em
+        & + &
+            margin-top: 10px
+        &Type
+            margin-right: 10px
+            font-weight: 500
+            color: text-main
+            width: 60%
+        &Content
+            font-weight: 400
+            width: 100%
+        &_delivery
+            visibility: visible
+        &_date
+            +e(-infoContent)
+                font-weight: 500
+                font-size: font-nrp
+    
+        &_status
+            +e(-infoContent)
+                color: clr-primary
+                font-weight: 500
+                font-size: font-nrp
+        &_error
+            color: clr-danger
+            border-top: 1px solid #e0e0e0
+            margin-top: 10px
+            padding-top: 10px
+            +e(-infoType)
+                font-weight: 600
+                color: @color
+                
+            +e(-infoContent)
+                color: @color
+                font-size: font-nrp
+    
+    &_anons
+        border: 1px solid #e0e0e0
+        padding: 20px
+        +e(-personal)
+            margin-bottom: 0
+        .{$px}Orders &
+            margin-top: 40px
+            &:first-child
+                margin-top: 0
+        +e(-title)
+            font-size: font-md
+            color: text-main
+            display: block
+        +e(-numberOrder)
+            color: clr-primary
+            font-weight: 500
+        +e(-dateOrder)
+            font-size: font-mdp

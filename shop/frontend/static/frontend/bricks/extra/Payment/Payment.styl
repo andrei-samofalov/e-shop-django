@@ -1,0 +1,64 @@
+.{$px}Payment
+    display: block
+    max-width: 500px
+    text-align: center
+    margin-left: auto
+    margin-right: auto
+    margin-top: 0
+    margin-bottom: 0
+    & + &
+        margin-top: 50px
+    &-pay
+        margin-top: 30px
+    &-card
+        width: auto;
+        max-width: 100%
+        border-radius: 0.2rem;
+        padding: 0
+        margin-bottom: 0.5rem
+        +b(form)
+            &-input
+                margin-left: auto
+                margin-right: auto
+        +b(row)
+            margin-top: 2.5rem
+        +m('phone')
+            padding: 1.5rem 1.1rem 2.5rem
+            +b(row)
+                margin-top: 1.7rem
+                display: flex
+                &-block
+                    margin-top: 0
+                    + {b(row-block)}
+                        margin-left: 1.5rem
+                        margin-top: 0 !important
+
+    &-garanties
+        visibility: visible
+        margin-left: 2.5rem
+        clearfix()
+        +e(-pict)
+            position: relative
+            left: -2px
+            margin-top: 2rem
+            + {e(-pict)}
+                margin-top: 1.2rem
+        +m('phone')
+            margin-left: 0
+            margin-top: 2.5rem
+            margin-bottom: 0.7rem
+            +e(-pict)
+                display: inline-block
+                margin-top: 1rem
+                + {e(-pict)}
+                    margin-left: 0.5rem
+    &-title
+        font-size: font-nr;
+        font-weight: 900;
+        display: block
+        line-height: 1em
+    &-pict
+        display: block
+        width: 10rem
+    &-bill
+        text-align: center

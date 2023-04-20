@@ -1,0 +1,67 @@
+.{$px}Profile
+    visibility: visible;
+    &-file
+        display: block
+        opacity: 0
+        position: absolute
+        left: 0
+        bottom: 0
+        right: 0
+        top: 0
+        cursor: pointer
+        z-index: 10
+        &Label
+            width: 140px
+            height: 100px
+            position: absolute
+            left: 50%
+            top: 50%
+            margin-left: -70px
+            margin-top: -50px
+            display: flex
+            justify-content: center
+            text-align: center
+            align-items: center
+            
+    &-avatar
+        height: 293px
+        padding: 10px
+        display: flex
+        justify-content: center
+        align-items: center
+        border: 1px solid #e0e0e0
+        position: relative
+        &_noimg
+            +e(-img)
+                display: none
+    &-success
+        color: clr-success
+        display: block
+        margin-top: 20px
+        text-align: right
+    
+    &-img
+        max-height: 100%
+        max-width: 100%
+        height: 100%
+        min-height: 110px
+        min-width: 160px
+        display: flex
+        justify-content: center
+        align-items: center
+        background: clr-white
+        z-index: 10
+        position: relative
+        img
+            max-height: 100%
+            height: auto
+            width: auto
+            display: block
+            max-width: 100%
+    
+    &-btn
+        text-align: right
+    
+    &-form
+        margin-top: 0
+        

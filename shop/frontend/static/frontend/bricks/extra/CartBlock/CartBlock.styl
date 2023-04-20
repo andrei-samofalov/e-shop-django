@@ -1,0 +1,44 @@
+.{$px}CartBlock
+    display: flex
+    align-items: center
+    +m('tablet')
+        height: auto
+    &-block
+        position: relative
+        display: flex
+        align-items: center
+        +m('desktop')
+            &:hover
+                border-bottom-color: transparent
+        +m('tablet')
+            height: auto
+        + {e(-block)}
+            margin-left: 23px
+            +e(-img)
+                margin-left: 21px
+
+    
+    &-amount
+        background: clr-primary
+        position: absolute
+        right: -14px
+        top: 0px
+        min-width: 23px
+        font-size: font-xs
+        letter-spacing: -0.6px
+        color: clr-white
+        padding: 2px
+        line-height: 1.2em
+        display: flex
+        align-items: center
+        justify-content: center
+        border: 3px solid clr-white;
+        border-radius: 100px
+        
+    &-price
+        font-size: font-sm;
+        color: #777777;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        display: block

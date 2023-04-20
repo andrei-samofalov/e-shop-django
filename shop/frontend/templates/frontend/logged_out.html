@@ -1,0 +1,9 @@
+{% extends 'frontend/base.html' %}
+
+{% block content %}
+	<br>
+	<div class="wrap-content">
+		<h2>You are now logged out</h2>
+		<a class="ControlPanel-title" href="{% url "frontend:signin" %}">Login again</a>
+	</div>
+{% endblock %}

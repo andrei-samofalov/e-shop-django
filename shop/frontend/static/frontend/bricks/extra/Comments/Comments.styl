@@ -1,0 +1,60 @@
+.{$px}Comments
+    display: block
+
+
+.{$px}Comment
+    padding: 45px
+    background-color: clr-lt;
+    position: relative
+    display: flex
+    &-column
+        & + &
+            margin-left: 23px
+            +m('phone')
+                margin-left: 0
+                margin-top: 30px
+    +m('phone')
+        display: block
+        padding: 25px 25px 35px
+    &-title
+        color: text-main;
+        font-size: font-md;
+        font-weight: 500;
+        line-height: 1.2em
+        letter-spacing: 1.1px;
+        display: block
+    &-date
+        color: #8f959f;
+        font-size: font-sm;
+        font-weight: 400;
+        line-height: 26px;
+        text-transform: uppercase;
+        letter-spacing: 1.95px;
+        +m('phone')
+            margin-left: 0
+            margin-top: 1rem
+            display: block
+    &-header
+        margin-bottom: 1.5rem
+        display: flex
+        justify-content: space-between
+        +m('phone')
+            align-items: flex-start
+            margin-bottom: 1.3rem
+    &-content
+        color: clr-muted;
+        font-size: font-nrm;
+        font-weight: 400;
+        line-height: 1.5em
+    &-avatar
+        width: 99px
+        height: 99px
+        border-radius: 100px
+        background: clr-primary img('icons', 'user_icon.svg') center center no-repeat
+    &-rating
+        position: absolute
+        right: 24px
+        top: 21px
+
+
+

@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:15.2
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - PGUSER=admin
+    ports:
+      - '5432:5432'
+    restart: always
+    volumes:
+      - ./pgdata/:/var/lib/postgresql/data/
+
+volumes:
+  pgdata:

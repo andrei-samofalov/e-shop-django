@@ -1,0 +1,254 @@
+.ovHidden
+    overflow-x: hidden
+.{$px}Section
+    position: relative
+    padding-top: 1px
+    max-width: 100%
+    & + &
+        margin-top: 77px
+        +m('phone')
+            margin-top: 50px
+    +b(wrap)
+        position: relative
+        z-index: 5
+
+    &-bg
+        z-index: 0
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        height: auto
+    &-title
+        margin-bottom: 28px
+        color: #878a91;
+        font-size: font-mdm;
+        font-weight: 600;
+        line-height: 26px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        display: block
+        padding-right: 10px
+        background-color: clr-white
+        & + {e(-control)}
+            padding-left: 17px
+    &-desc
+        color: clr-info;
+        font-size: font-md;
+        font-weight: 300;
+        text-transform: uppercase;
+        font-style: italic
+        line-height: 1.3em
+        letter-spacing: -0.2px
+        margin-bottom: 55px !important
+        +m('tablet')
+            font-size: font-sm
+            margin-bottom: 25px !important
+            &_close
+                margin-bottom: 22px !important
+    &-header
+        position: relative
+        display: flex
+        align-items: center
+        margin-bottom: 54px
+        margin-top: 23px
+        background: img('bg', 'lineHeaderSection.png') 0 center repeat-x;
+        +e(-title)
+            margin-right: auto
+            margin-bottom: 0
+        &_sm
+            margin-bottom: 48px
+            +e(-title)
+                font-size: font-nrp
+        &_close
+            margin-top: 0
+        &_blank
+            background: none
+            margin-bottom: 20px
+        +m('tablet')
+            width: auto
+            float: none
+        +m('phone')
+            display: block
+            background: none
+            margin-bottom: 40px
+            &:first-child
+                margin-top: 0
+            +e(-title)
+                padding-right: 0
+                text-align: center
+            +e(-control)
+                margin-top: 15px
+                padding-left: 0
+        
+        &_product
+            margin-top: 65px
+            margin-bottom: 40px
+            +m('phone')
+                &:first-child
+                    margin-top: 65px
+    &-filter
+        visibility: visible
+        padding-right: 26px
+        background-color: clr-white
+        padding-left: 25px
+    &-control
+        display: block
+        background-color: clr-white
+        padding-left: 17px
+    &-tab
+        color: #94979f;
+        font-size: font-nr;
+        font-weight: 500;
+        line-height: 26px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        & + &
+            margin-left: 20px
+            padding-left: 21px
+            border-left: #e0e0e0 1px solid;
+        &Active
+            color: clr-primary
+
+
+
+    &-content
+        color: clr-muted;
+        font-size: font-nrp;
+        line-height: 1.67em;
+        width: 100%
+        +e(-header)
+            margin-right: 0
+        +m('tablet')
+            padding-left: 0
+            //font-size: font-sm
+            //line-height: (17.5px / @font-size)em
+    
+    &-column
+        min-width: 304px
+        max-width: 304px
+        flex-basis: 304px
+        position: relative
+        z-index: 1
+        &Title
+            color: #878a91;
+            font-size: font-mdm;
+            line-height: 26px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: block
+            font-weight: 600
+            padding-top: 0px
+        &Content
+            margin-top: 30px
+        +e(-header)
+            margin-bottom: 30px
+        +e(-title)
+            font-size: font-nrp
+    
+        &Header
+            display: flex
+            align-items: center
+            padding-bottom: 12px
+            border-bottom: 1px solid #e1e1e1;
+            justify-content: space-between
+            padding-top: 17px
+        &Buttons
+            display: flex
+            +b(btn)
+                &:last-child
+                    margin-left: 7px
+                    width: 100%
+        &Range
+            margin-top: -20px
+        &Section
+            padding-top: 10px
+            & + &
+                margin-top: 20px
+            &:first-child
+                padding-top: 3px
+                +e(-header)
+                    margin-top: 0
+            &_mark
+                padding: 24px 20px
+                box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+                border: 1px solid #e0e0e0;
+                background-color: clr-white;
+                &:first-child
+                    padding-top: 24px
+    
+    &_column
+        +b(wrap)
+            display: flex
+        &Left
+            +e(-content)
+                padding-left: 354px
+            +e(-column)
+                margin-right: -304px
+        &Right
+            +e(-content)
+                padding-right: 354px
+            +e(-column)
+                order: 10
+                margin-left: -304px
+        &Wide
+            +e(-column)
+                +m('large')
+                    min-width: 374px
+                    max-width: 374px
+            &{e(_columnLeft)}
+                +e(-column)
+                    margin-right: -282px
+            &{e(_columnRight)}
+                +e(-column)
+                    margin-left: -282px
+        
+    
+    
+        +m('tablet')
+            +b(wrap)
+                display: block
+            +e(-column)
+                width: 100%
+                max-width: none;
+                margin-left: 0 !important
+                margin-right: 0 !important
+                margin-bottom: 35px
+                min-width: auto;
+        
+            +e(-content)
+                padding-left: 0
+                padding-right: 0
+        +m('phone')
+            +e(-content)
+                margin-top: 50px
+        &Desktop
+            +m('tablet')
+                +e(-column)
+                    display: none
+                +e(-content)
+                    padding-left: 0
+            +m('phone')
+                +e(-content)
+                    margin-top: 0
+    &_dark
+        background-color: clr-lt;
+        padding-bottom: 97px
+        +e(-header)
+            margin-top: 87px
+            margin-bottom: 66px
+            &_blank
+                margin-top: 80px
+                margin-bottom: 20px
+            +m('phone')
+                margin-top: 40px
+                margin-bottom: 40px
+        {e(-title)},
+        {e(-filter)},
+        {e(-control)}
+            background-color: @background-color
+        +m('phone')
+            padding-bottom: 50px
+
+

@@ -1,0 +1,160 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="Middle">
+    <div class="Section">
+      <div class="wrap">
+        <div class="BannersHome">
+          <!-- Получаем баннеры -->
+          <a v-for="(banner, index) in banners"
+               :key="index"
+               class="BannersHomeBlock"
+               :href="banner.href">
+            <div class="BannersHomeBlock-row">
+              <div class="BannersHomeBlock-block">
+                <strong class="BannersHomeBlock-title">${ banner.title }$
+                </strong>
+                <div class="BannersHomeBlock-content">from &#32;<span class="BannersHomeBlock-price">$ ${ banner.price }$</span>
+                </div>
+              </div>
+              <div class="BannersHomeBlock-block" v-if="banner.images.length > 0">
+                <div class="BannersHomeBlock-img"><img :src="banner.images[0]" :alt="banner.title"/>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!-- Получаем баннеры -->
+
+        </div>
+      </div>
+    </div>
+    <div class="Section Section_column Section_columnDesktop"  >
+      <div class="wrap">
+        <div class="Section-content">
+          <header class="Section-header">
+            <h2 class="Section-title">Popular Products
+            </h2>
+          </header>
+          <div class="Cards">
+
+            <!-- Получаем популярные товары -->
+            <div v-for="card in popularCards" class="Card">
+              <a class="Card-picture" :href="card.href">
+                <img v-if="card.images.length > 0" :src="card.images[0]" :alt="card.title"/></a>
+              <div class="Card-content">
+                <strong class="Card-title"><a :href="card.href">${ card.title }$</a>
+                </strong>
+                <div class="Card-description">
+                  <div class="Card-cost"><span class="Card-price">$${ card.price }$</span>
+                  </div>
+                  <div class="Card-category">${ card.categoryName }$
+                  </div>
+                  <div class="Card-hover"><a class="Card-btn" href="#">
+                    <img src="{% static 'frontend/assets/img/icons/card/cart.svg' %}" alt="cart.svg"/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Получаем популярные товары -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Section Section_column Section_columnRight">
+      <div class="wrap">
+        <div class="Section-column">
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'frontend/assets/img/icons/advantages/shipping.svg' %}" alt="shipping.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Shipping & Returns
+                </strong>
+                <p class="media-text">World wide shipping
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'frontend/assets/img/icons/advantages/moneyBack.svg' %}" alt="moneyBack.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Money Back
+                </strong>
+                <p class="media-text">Guaranted payments
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'frontend/assets/img/icons/advantages/support.svg' %}" alt="support.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Support Policy
+                </strong>
+                <p class="media-text">Fast support team
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="Section-columnSection Section-columnSection_mark">
+            <div class="media media_advantage">
+              <div class="media-image"><img src="{% static 'frontend/assets/img/icons/advantages/quality.svg' %}" alt="quality.svg"/>
+              </div>
+              <div class="media-content">
+                <strong class="media-title">Quality Guarantee
+                </strong>
+                <p class="media-text">Best guaranted items
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="Section-content">
+          <div class="Slider Slider_carousel">
+            <header class="Section-header Section-header_close">
+              <h2 class="Section-title">Limited edition
+              </h2>
+              <div class="Section-control">
+                <div class="Slider-navigate">
+                </div>
+              </div>
+            </header>
+            <div class="Slider-box Cards">
+              <!-- Получаем список товаров ограниченной коллекции -->
+              <div v-for="card in limitedCards" class="Slider-item">
+                <div class="Slider-content">
+                  <div class="Card"><a class="Card-picture" :href="card.href">
+                    <img v-if="card.images.length > 0" :src="card.images[0]" :alt="card.title"/></a>
+                    <div class="Card-content">
+                      <strong class="Card-title"><a :href="card.href">${ card.title }$</a>
+                      </strong>
+                      <div class="Card-description">
+                        <div class="Card-cost"><span class="Card-price">$${ card.price }$</span>
+                        </div>
+                        <div class="Card-category">${ card.categoryName }$
+                        </div>
+                        <div class="Card-hover"><a class="Card-btn" href="#"><img src="{% static 'frontend/assets/img/icons/card/cart.svg' %}" alt="cart.svg"/></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Получаем список товаров ограниченной коллекции -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block mixins %}
+<script src="{% static 'frontend/assets/js/index.js' %}"></script>
+{% endblock %}

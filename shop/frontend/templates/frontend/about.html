@@ -1,0 +1,157 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">About Megano
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href={% url "frontend:index" %}>home</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>About Us</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section Section_column Section_columnLeft Section_columnWide">
+			<div class="wrap">
+				<div class="Section-column">
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image">
+								<img src="{% static 'frontend/assets/img/icons/advantages/shipping.svg' %}" alt="shipping.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">Shipping & Returns </strong>
+								<p class="media-text">World wide shipping
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image">
+								<img src="{% static 'frontend/assets/img/icons/advantages/moneyBack.svg' %}" alt="moneyBack.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">Money Back </strong>
+								<p class="media-text">Guaranted payments
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image">
+								<img src="{% static 'frontend/assets/img/icons/advantages/support.svg' %}" alt="support.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">Support Policy </strong>
+								<p class="media-text">Fast support team
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection Section-columnSection_mark">
+						<div class="media media_advantage">
+							<div class="media-image">
+								<img src="{% static 'frontend/assets/img/icons/advantages/quality.svg' %}" alt="quality.svg"/>
+							</div>
+							<div class="media-content">
+								<strong class="media-title">Quality Guarantee </strong>
+								<p class="media-text">Best guaranted items
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="Section-columnSection">
+						<header class="Section-header">
+							<strong class="Section-title">Follow Us </strong>
+						</header>
+						<div class="Section-columnContent">
+							<div class="Footer-payments Footer-payments_column">
+								<div>
+									<img src="{% static 'frontend/assets/img/icons/socialContent/fb.png' %}" alt="fb.png"/>
+								</div>
+								<div>
+									<img src="{% static 'frontend/assets/img/icons/socialContent/tw.png' %}" alt="tw.png"/>
+								</div>
+								<div>
+									<img src="{% static 'frontend/assets/img/icons/socialContent/gg.png' %}" alt="gg.png"/>
+								</div>
+								<div>
+									<img src="{% static 'frontend/assets/img/icons/socialContent/in.png' %}" alt="in.png"/>
+								</div>
+								<div>
+									<img src="{% static 'frontend/assets/img/icons/socialContent/pt.png' %}" alt="pt.png"/>
+								</div>
+								<div>
+									<img src="{% static 'frontend/assets/img/icons/socialContent/ml.png' %}" alt="ml.png"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="Section-content">
+					<article class="Article">
+						<div class="Article-section">
+							<div class="row row_verticalCenter row_maxHalf">
+								<div class="row-block">
+									<h2>Why Choose Megano?
+									</h2>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis parturient montesti, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eutu, pretiumem.
+									</p>
+									<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justotuio, rhoncus ut loret, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus element semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae ligula eget dolor. Aenean massa. Cumtipsu sociis natoque pena tibusetm t semper ni.
+									</p>
+									<div>
+										<a class="btn btn_primary" href={% url "frontend:catalog" %}>Get Started</a>
+									</div>
+								</div>
+								<div class="row-block">
+									<div class="pict">
+										<img src="{% static 'frontend/assets/img/content/home/slider.png' %}" alt="slider.png"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="Article-section">
+							<div class="row row_verticalCenter row_maxHalf">
+								<div class="row-block">
+									<div class="pict">
+										<img src="{% static 'frontend/assets/img/content/home/bigGoods.png' %}" alt="bigGoods.png"/>
+									</div>
+								</div>
+								<div class="row-block">
+									<h2>Megano Store Hystory
+									</h2>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit doli. Aenean commodo ligula eget dolor. Aenean massa. Cumtipsu sociis natoque penatibus et magnis dis parturient montesti, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eutu, pretiumem.
+									</p>
+									<ul>
+										<li>Lorem ipsum dolor sit amet, consectetuer
+										</li>
+										<li>adipiscing elit doli. Aenean commodo ligula
+										</li>
+										<li>eget dolor. Aenean massa. Cumtipsu sociis
+										</li>
+										<li>natoque penatibus et magnis dis parturient
+										</li>
+										<li>montesti, nascetur ridiculus mus. Donec
+										</li>
+										<li>quam felis, ultricies nec, pellentesque eutu
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

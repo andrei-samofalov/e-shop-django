@@ -1,0 +1,82 @@
+.{$px}BannersHome
+    visibility: visible;
+    display: flex
+    margin-top: 52px
+    +m('tablet')
+        display: block
+    +m('phone')
+        margin-top: 50px
+    
+
+.{$px}BannersHomeBlock
+    background: clr-lt;
+    width: 100%
+    padding: 30px 50px
+    font-size: font-mdp
+    color: text-main
+    display: block
+    +m('desktop')
+        &:hover
+            background: lighten(clr-primary, 90%)
+    +m('phone')
+        padding: 20px
+    
+    & + &
+        margin-left: 34px
+        +m('tablet')
+            margin-left: 0
+            margin-top: 20px
+    {b(Section-columnSection)} &
+        padding-left: 40px
+        padding-right: 40px
+        +e(-title)
+            font-weight: 800
+            font-size: 32px
+            line-height: 1.3em
+           
+    
+    &_center
+        text-align: center
+    &-title
+        text-transform: uppercase
+        margin-bottom: 18px
+        display: block
+        line-height: 1.2em
+    &-content
+        display: block
+        color: #979aa0;
+    &-row
+        display: flex
+        align-items: center
+        justify-content: space-between
+        +m(1200px)
+            display: block
+        +m('tablet')
+            display: flex
+    &-block
+        width: auto
+        &:first-child
+            min-width: 180px
+    
+    &-img
+        height: 175px
+        max-height: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        //min-width: 100px
+        +m(1200px)
+            margin-top: 20px
+            height: 130px
+        +m('tablet')
+            margin-top: 0
+            height: auto
+        img
+            max-height: 100%
+            max-width: 100%
+    &-price
+        color: clr-primary
+        font-weight: 600
+        
+    
+    

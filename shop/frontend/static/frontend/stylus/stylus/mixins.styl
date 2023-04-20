@@ -1,0 +1,179 @@
+@import 'variables'
+
+grad(light = #fff, dark = #000, bgl = 1, percent = 0)
+    if (bgl== 1)
+        background: light; /* Old browsers */
+    else
+        background: dark; /* Old browsers */
+    if percent
+        background: linear-gradient(to bottom, light 50%, dark 50%); /* W3C */
+    else
+        background: linear-gradient(to bottom, light 0%, dark 100%);
+
+/* W3C */
+
+a(color2 = @color, menu = false)
+    if light(darken(@color, 10%))
+        border-bottom: 1px solid darken(@color, 49%)
+    else
+        border-bottom: 1px solid lighten(@color, 59%) //border-bottom: 1px solid rgba(@color, 0.3)
+    border-bottom: 1px solid rgba(@color, 0)
+    padding-bottom: 0
+    cursor: pointer
+    //transition: color 0.3s, border 0.3s
+    +m(lg)
+        &:hover
+            if (color2 == @color)
+                position: relative
+                border-bottom: 1px solid @color
+                transition: border 0.4s
+
+            else
+                color: color2
+                transition: color 0.2s, border 0.2s
+                if light(darken(@color, 10%))
+                    border-bottom-color: darken(@color, 49%)
+                else
+                    border-bottom-color: lighten(@color, 59%)
+                border-bottom-color: @color
+
+after(bg, w = 7, h = 4, t = 5, r = -10)
+    position: relative
+    &:after
+        position: absolute
+        content: ' '
+        width: w px
+        height: h px
+        background: url('../img/' + bg + '.png') 0 0 no-repeat
+        display: block
+        top: t px
+        right: r px
+
+afters(pos = 0 0, w = 7, h = 4, t = 5, r = -10)
+    position: relative
+    &:after
+        position: absolute
+        content: ' '
+        width: w px
+        height: h px
+        z-index: 10
+        display: block
+        top: t px
+        right: r px
+
+/*-----------  Стилизация текстовых полей формы и текстовых областей  -----------*/
+input_text()
+    padding: input-padding
+    min-height: input-height
+    border: none
+    border-bottom: input-borderWidth solid bd-input
+    background: clr-white
+    display: block
+    font-size: font-nr
+    &:focus
+        outline: none
+
+/*------- stylus-mixins ---------*/
+clearfix()
+    &:before
+    &:after
+        content ""
+        display table
+    &:after
+        clear both
+
+triangle($point = 'up', $size = 1em, $color = #777)
+
+    if $size is a 'unit' && $color is a 'color'
+
+        if $point == 'up'
+            _triangle-borders({top: '', right: transparent, bottom: solid, left: transparent}, $size, $color)
+        else if $point == 'right'
+            _triangle-borders({top: transparent, right: '', bottom: transparent, left: solid}, $size, $color)
+        else if $point == 'down'
+            _triangle-borders({top: solid, right: transparent, bottom: '', left: transparent}, $size, $color)
+        else if $point == 'left'
+            _triangle-borders({top: transparent, right: solid, bottom: transparent, left: ''}, $size, $color)
+        else if $point == 'up-left'
+            $size = ($size / 2)
+            _triangle-borders({top: solid, right: transparent, bottom: transparent, left: solid}, $size, $color)
+        else if $point == 'up-right'
+            $size = ($size / 2)
+            _triangle-borders({top: solid, right: solid, bottom: transparent, left: transparent}, $size, $color)
+        else if $point == 'down-right'
+            $size = ($size / 2)
+            _triangle-borders({top: transparent, right: solid, bottom: solid, left: transparent}, $size, $color)
+        else if $point == 'down-left'
+            $size = ($size / 2)
+            _triangle-borders({top: transparent, right: transparent, bottom: solid, left: solid}, $size, $color)
+
+_triangle-borders($sides, $size, $color)
+
+    width 0
+    height 0
+
+    for $side, $style in $sides
+        if $style == solid
+            border-{$side} $size solid $color
+        else if $style == transparent
+            border-{$side} $size solid transparent
+
+font-face($font-name, $file-path, $weight = 'normal', $style = 'normal')
+
+    $url-fallback = 'url("' + $file-path + '.eot")'
+    $url = 'url("' + $file-path + '.eot?#iefix") format("embedded-opentype"), '
+    $url = $url + 'url("' + $file-path + '.woff") format("woff"), '
+    $url = $url + 'url("' + $file-path + '.ttf") format("truetype"), '
+    $url = $url + 'url("' + $file-path + '.svg#svg' + replace(' ', '', $font-name) + '") format("svg")'
+
+    @font-face
+        font-family $font-name
+        src unquote($url-fallback)
+        src unquote($url)
+        font-weight unquote($weight)
+        font-style unquote($style)
+
+/*--end---*/
+
+img()
+    result = '../img'
+    if length(arguments)>0
+        for item in arguments
+            result = result + '/' + item
+        url(result)
+
+    //if path
+    //    path = path + '/'
+
+e(selector = '')
+    {selector('^[0]')}{selector}
+        {block}
+    return (selector('^[0]') + selector)
+
+b(selector = '')
+    if (selector== '')
+        return selector('^[0]')
+    else
+        .{$px}{selector}
+            {block}
+        return ('.' + $px + selector)
+
+m(devices = '')
+    if (devices == 'phone')
+        @media screen and (max-width: $phone)
+            {block}
+
+    else if (devices == 'tablet')
+        @media screen and (max-width: $tablet)
+            {block}
+
+    else if (devices == 'desktop')
+        @media screen and (min-width: $tablet)
+            {block}
+
+    else if (devices == 'large')
+        @media screen and (min-width: $desktop)
+            {block}
+    else
+        @media screen and (max-width: devices)
+            {block}

@@ -1,0 +1,52 @@
+/*-----------  Обертка картинки  -----------*/
+.{$px}pict
+    display: inline-block
+    font-size: 0
+    line-height: 0
+    overflow: hidden
+    +m('tablet')
+        text-align: center
+        width: 100%
+        display: block
+    img
+        max-width: 100%
+
+    &_full
+        display: block
+        width: 100%;
+        img
+            width: 100%
+        
+    &_right
+    &_left
+        float: left
+        margin: 10px 32px 10px 0
+        max-width: 40%
+        img
+            max-width: 100%
+    &_right
+        float: right
+        margin-right: 0
+        margin-left: 32px
+        
+    +m('phone')
+        &_right
+        &_left
+            display: block
+            float: none
+            margin-left: auto
+            margin-right: auto
+            max-width: 100%
+            margin-bottom: 35px
+        
+    &-caption
+        color: #2c2c2c;
+        font-size: font-nrm;
+        font-weight: 600
+        line-height: 1.3em;
+        text-align: center
+        background-color: #d9edee;
+        padding: 15px 25px
+        width: 100%
+
+

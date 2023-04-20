@@ -1,0 +1,45 @@
+.{$px}Rating
+    font-family Montserrat
+    align-items: center
+    display: flex
+    &-stars
+        white-space: nowrap
+    &-star
+        display: inline-block
+        svg
+            width: 20px
+            height: 20px
+        & + &
+            margin-left: 1px
+        path
+            fill: #f0f0f0
+        &_view
+            path
+                fill: clr-joy
+    &-title
+        margin-left: 10px
+        color: #babbbe
+        font-size: font-nrm;
+        font-weight: 500;
+        text-transform: uppercase;
+    
+    &_comment
+        visibility: visible
+    &_inputClick
+        +e(-star)
+            path
+                fill: clr-joy
+    &_input
+        position: relative
+        display: inline-block
+        margin-left: 20px
+        input
+            width: 19px
+            height: 19px
+            margin-left: -20px !important
+            opacity: 0
+            margin-right: 0
+            &:checked
+                ~ {e(-star)}
+                    path
+                        fill: #f0f0f0

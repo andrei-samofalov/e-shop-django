@@ -1,0 +1,89 @@
+.{$px}trigger
+    visibility: visible
+    position: relative
+    display: inline-block
+
+.{$px}Site
+    &_modalOPEN
+        +m('tablet')
+            overflow: hidden
+
+.{$px}modal
+    justify-content: center
+    align-items: center
+    display: none
+    position: fixed
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    z-index: 1010
+    padding-bottom: 20px
+    padding-top: 20px
+    overflow: auto
+    +m('tablet')
+        overflow: scroll
+        align-items: start
+    &_OPEN
+        display: flex
+    &-window
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.52);
+        border-radius: 10px;
+        padding: 35px 60px
+        background-color: #fff;
+        width: 600px
+        position: relative
+        max-width: 95%
+        +m('phone')
+            padding: 35px
+
+    &_full
+        //display: flex !important
+        align-items: flex-start
+        padding: 0
+        justify-content: center
+        +e(-window)
+            width: 100%
+            height: 100%
+            padding: 50px
+            box-shadow: none
+            border-radius: 0
+            max-width: none
+    &_center
+        +e(-window)
+            display: flex
+            align-items: center
+            justify-content: center
+
+
+
+
+    &-title
+        color: #1d459b;
+        font-size: 35px
+        font-weight: bold
+        display: block
+        letter-spacing: -0.8px
+        line-height: 1.2em
+        text-transform: uppercase
+        +m('phone')
+            font-size: 28px
+
+    &-mark
+        color: clr-primary
+        text-decoration: underline
+
+    &-dark
+        color: #02071d
+        font-size: 34px
+        +m('phone')
+            font-size: 28px
+
+    &-close
+        position: absolute
+        right: 13px
+        top: 13px
+        display: block
+        width: 23px
+        height: 19px
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAATCAYAAAB7u5a2AAACjUlEQVQ4T6VVTWjTcBT/vaS6CupBmxQ8eBG7w1w78SB40LvgdGNTJuJh6Iapw+FgMrxUEMSPCbo2wwkDFRHcdE5Fr3pQ8CBryyZM8eCxSSf4AW6Y9Mk/LDZtk62wHBLy/u/93sfvvfcnLD8tWiHFoIacqlxEikquvO5viqUW07xcYlrK68olYUfiFdeMDgIei38GTdvgE3O6+rte4CbN2BgCPQD4CABm4GheVycd8IRmPAXQ5oIRkCeyWmcy276t5mBPz/ftlmw9ByFR1qVnOV1pc8A7O1n+opjDDJzzgBkEbsvq0fdBDlq0wj4GTQFQPTq3Y6ZyfmKCbAe8XHfzNIMzANYty5YY3JPXo/erHcS1wkkCjQFoWD77S0xns6OKkDlPBbgQ7D5jHigRTwKIeNK8llMjQw7RKZYSRvEKwIPuOQMLkkQd2bTyxhtEDbg43NVX2CHb0jTATR7lFyGLeq0Q3wFw6L+c+JMtoXV2JPq1OjtfcKG0t29h8x/bfkTAQY/RIoCwJ+3XshXq+ji25YcfL4HgLtGfFeMqQAM1xsQ3Y4Y6KIgLInxFcGGUSBrdYIhShDwgFgi9uYw6HgTsS6irLNrTJ2oxuVIZkIdjpnohKHrfyAPqPVsiJCVGGkCzp1NebZDlrg8jW3+uSqhvpzBeLi7R8flx5Vdjt7kpHOaHFR0DmrPl0uHqjqmIvDlp7JcYT7w9zkzXG4uRoYrUfXodQFFi6pgZVd7WDFE8aZ4ilDJgWu9OJzF6s6PqvSDSfKcUlMzqyl2HUEHcfMS8QYR+D4hBErdn09F3K3WDOPPbLwTc2mkqA5TQDFGGdk8qdW9E18Z/M2KK1rrLXQfVO50YxxxC13wLuR6qbqN/11wW2NlNjIkAAAAASUVORK5CYII=') center center no-repeat

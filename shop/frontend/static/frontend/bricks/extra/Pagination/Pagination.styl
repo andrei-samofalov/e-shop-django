@@ -1,0 +1,58 @@
+.{$px}Pagination
+    visibility: visible;
+    background: img('bg', 'lineHeaderSection.png') 0 center repeat-x
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-top: 79px
+    &-ins
+        background: clr-white
+        padding-left: 20px
+        padding-right: 20px
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-wrap: wrap
+    &-element
+        margin-top: 10px
+        margin-bottom: 10px
+        background: #e8eaef
+        border-radius: 100px
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 28px
+        width: 28px
+        padding: 4px 3px 2px
+        text-align: center
+        line-height: 1.2em
+        color: #9c9fa6;
+        &:after
+        &:before
+            display: none
+        +m('desktop')
+            &:hover
+                color: clr-primary
+                background: lighten(clr-primary, 70%)
+                border-bottom-color: transparent
+        &:after
+            display: none
+        img
+            line-height: 0
+            margin: 0
+        a
+
+
+
+        & + &
+            margin-left: 12px
+            
+        &_current
+            background: clr-primary
+            color: clr-white
+            cursor: default
+            +m('desktop')
+                &:hover
+                    color: @color
+                    background: @background
+

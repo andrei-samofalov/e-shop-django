@@ -1,0 +1,410 @@
+.{$px}Slider
+    background-size: cover
+    height: 600px
+    overflow: hidden
+    position: relative
+    +m('phone')
+        height: 280px
+    &-box
+        padding: 30px 15px 100px;
+        max-width: ($maxWidth + (@padding[1] * 2))
+        width: 100%
+        box-sizing: border-box
+        margin: 0 auto
+        height: 100%
+    &-item
+        height: 100%
+        display: flex !important
+        align-items: center
+        &:focus
+            outline:none
+        +m('tablet')
+            height: auto
+
+    &-content
+        visibility: visible
+    &_main
+        height: 671px
+        +e(-box)
+            min-width: 320px
+            +m('phone')
+                padding-bottom: 40px
+        +e(-content)
+            margin-left: 20%
+            +m('large')
+                margin-left: 25.5%
+            +m('tablet')
+                margin-left: 0
+            > {b(row)}
+                +m('tablet')
+                    display: flex
+                +m(750px)
+                    display: block
+        +e(-img)
+            +m(750px)
+                max-height: 200px
+                width: auto
+                height: 100%
+                img
+                    max-width: 100%
+                    height: 100%
+                    width: auto
+                    max-height: 100%
+                    margin-left: auto
+                    margin-right: auto
+        +e(-navigate)
+            justify-content: flex-start
+            margin-left: 25.5%
+            &Wrap
+                height: 80px
+                padding: 0 15px
+                max-width: ($maxWidth + (@padding[1] * 2))
+                margin-left: auto
+                margin-right: auto
+                +m('phone')
+                    height: 40px
+            +m(700px)
+                margin-left: 0
+                justify-content: center
+    &_bigCard
+        height: 700px
+        +m('tablet')
+            height: auto !important
+            .slick-track
+                height: auto
+            .slick-list
+                height: auto
+            +e(-box)
+                height: auto
+            +e(-item)
+                margin-top: 30px
+                align-items: flex-start
+                height: auto !important
+        +e(-box)
+            padding: 0
+    &_goods
+        +b(Card)
+            padding: 0
+            &-description
+                margin-bottom: 30px
+        +e(-box)
+            padding: 0
+        +e(-navigate)
+            &Wrap
+                position: relative
+                left: 0
+                bottom: 0
+                right: 0
+                top: 0
+            .slick-dots
+                display: none !important
+            .slick-next
+                margin-left: 12px
+    &-footer
+        margin-top: 43px
+        +m('tablet')
+            +b(row)
+                display: flex
+                &-block
+                    margin-top: 0
+                    + {b(row-block)}
+                        margin-left: 10px
+
+    &-title
+        font-weight: 600;
+        line-height: 84px;
+        text-transform: uppercase
+        display: block
+        font-size: 74px;
+        letter-spacing: -2.3px;
+        margin-bottom: 25px
+        +m('tablet')
+            font-size: 50px
+            line-height: 1.2em
+        +m('phone')
+            font-size: font-lg
+            line-height: 1.2em
+    
+    &-text
+        font-size: font-mdm;
+        color: #8a8c95
+        line-height: 1.7em
+        +m('phone')
+            font-size: font-nr
+    
+    &-navigate
+        display: flex
+        justify-content: center
+        align-items: center
+        &Wrap
+            position: absolute
+            bottom: 0
+            left: 0px
+            height: 40px
+            right: 0px
+        .slick-dots
+            position: relative
+            left: 0
+            right: 0
+            bottom: 0
+            top: 0
+            width: auto
+            margin-left: 11px
+            margin-right: 11px
+            li
+                +m('phone')
+                    margin-top: 2px !important
+                    margin-bottom: 2px !important
+        .slick-next
+            order: 10
+    
+    
+    &-hidePhone
+        +m(600px)
+            display: none
+
+
+    &_carousel
+        background: none
+        height: auto
+        width: 100%
+        +e(-box)
+            overflow: hidden
+            width: auto
+            height: auto
+            padding: 0px
+            margin-right: -19px
+        +e(-item)
+            padding-left: 20px
+            padding-right: 20px
+
+        .slick-list
+            height: auto
+            margin-left: -19px
+        .slick-track
+            display: flex
+            align-items: flex-start;
+            height: auto
+        +m(900px)
+            {e(-box)}{b(Cards)}
+                +e(-content)
+                    width: 100%
+                +b(Card)
+                    max-width: 100%
+            
+
+    img
+        max-width: 100%
+
+/* Slider */
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    user-select: none;
+    touch-action: pan-y;
+}
+
+
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px
+    height: 100%
+
+    &:focus {
+        outline: none;
+    }
+
+    &.dragging {
+        cursor: pointer;
+        cursor: hand;
+    }
+}
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+}
+.slick-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    [dir="rtl"] & {
+        float: right;
+    }
+    img {
+        display: block;
+    }
+    &.slick-loading img {
+        display: none;
+    }
+
+    display: none;
+
+    &.dragging img {
+        pointer-events: none;
+    }
+
+    .slick-initialized & {
+        display: block;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+
+    .slick-vertical & {
+        display: block;
+        height: auto;
+        border: 1px solid transparent;
+    }
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+
+// Default Variables
+
+$slick-font-path = "./fonts/";
+$slick-font-family = "slick";
+$slick-loader-path = "./";
+$slick-arrow-color = white;
+$slick-dot-color = black;
+$slick-dot-color-active = $slick-dot-color;
+$slick-prev-character = "←";
+$slick-next-character = "→";
+$slick-dot-character = "•";
+$slick-dot-size = 6px;
+$slick-opacity-default = 0.75;
+$slick-opacity-on-hover = 1;
+$slick-opacity-not-active = 0.25;
+
+/* Slider */
+.slick-loading .slick-list{
+    //background: #fff url('../img/ajax-loader.gif') center center no-repeat;
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next {
+    //position: absolute;
+    display: block;
+    height: 20px;
+    width: 12px;
+    line-height: 0px;
+    font-size: 0px;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    //top: 50%;
+    //transform: translate(0, -50%);
+    //margin-top: -15px
+    padding: 0;
+    border: none;
+    outline: none;
+    //opacity: 0.65
+    background: img('icons', 'arrowRightSlider.svg') 0 0 no-repeat
+    &:hover, &:focus {
+        outline: none;
+        color: transparent;
+        opacity: 1
+    }
+    &.slick-disabled:before {
+        opacity: $slick-opacity-not-active;
+    }
+}
+.slick-prev {
+    transform: rotate(-180deg)
+}
+
+/* Dots */
+
+.slick-dotted .slick-slider {
+    margin-bottom: 30px;
+}
+
+.slick-dots {
+    position: absolute;
+    bottom: 7px;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    li {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle
+        height: 7px;
+        width: 7px;
+        margin: 0 5px;
+        padding: 0 !important;
+        cursor: pointer;
+        + li {
+            margin-top: 0 !important;
+        }
+        button {
+            border: 0;
+            background: #aaabae
+            display: block;
+            outline: none;
+            line-height: 0px;
+            font-size: 0px;
+            color: transparent;
+            padding: 0px;
+            cursor: pointer;
+            width: 7px;
+            height: 7px;
+            border-radius: 0
+            &:hover, &:focus {
+                outline: none;
+                &:before {
+                    opacity: $slick-opacity-on-hover;
+                }
+            }
+            &:before,
+            &:after {
+               display: none
+            }
+        }
+        &:before,
+        &:after {
+            display: none !important
+        }
+        &.slick-active button {
+            background-color: clr-primary;
+            position: relative
+
+        }
+
+    }
+}

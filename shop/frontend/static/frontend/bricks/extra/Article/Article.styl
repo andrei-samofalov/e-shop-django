@@ -1,0 +1,116 @@
+.{$px}Article
+.{$px}Product .{$px}Tabs-block
+    padding: 0 0 40px
+    clearfix()
+    overflow: hidden
+    font-size: font-nr
+    line-height: 1.6em
+    letter-spacing: 0
+    
+    > {b(pict)}:first-child
+        margin-top: 0
+
+    +b(Cards)
+        margin-top: 45px
+
+
+    h1
+    h2
+    h3
+    h4
+        font-weight: 600
+        line-height: 1.2em;
+        margin-top: 23px
+        margin-bottom: 23px
+        color: text-main;
+        font-size: 32px;
+        &:first-child
+            margin-top: 0
+
+    h1
+        visibility: visible
+
+    h2
+        letter-spacing: -0.2px
+        margin-bottom: 20px
+    h3
+        font-size: font-nrp;
+        margin-bottom: 20px
+
+    h4
+        font-size: font-nr;
+        margin-bottom: 20px
+
+
+    {b(Toc)} + h2
+        margin-top: 0
+
+    ul
+        margin-left: 0
+        padding-left: 0
+        li
+            padding-left: 25px
+            + li
+                margin-top: 5px
+            &:after
+                display: block
+                background: clr-primary
+                width: 5px
+                height: 5px
+                left: 3px
+                border-radius: 0;
+        +m('tablet')
+            font-size: font-sm;
+            li
+                padding-left: 30px
+                + li
+                    margin-top: 15px
+                &:after
+                    left: 2px
+                    top: 5px
+                    
+    ol
+        counter-reset: list
+        li
+            list-style: none
+            position: relative
+            &:after
+                background: none
+                height: 20px
+                width: 26px
+                text-align: right
+                position: absolute
+                left: -8px
+                top: -1px
+                counter-increment: list
+                content: counter(list)')'
+    img
+        margin-top: 20px
+
+    +b(pict)
+        img
+            margin-top: 0
+
+    p
+        letter-spacing: -0.2px
+        margin-bottom: 25px
+
+    table
+        margin-top: 50px
+        &:last-child
+            margin-bottom: 0
+    +b(clearfix)
+        clearfix()
+    &_ins
+        font-size: font-sm
+        line-height: 1.6em
+    &-section
+        & + &
+            margin-top: 70px
+            padding-top: 90px
+            background: img('bg', 'lineHeaderSection.png') 0 0 repeat-x
+            
+
+
+
+

@@ -1,0 +1,43 @@
+.{$px}Sort
+    visibility: visible;
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: 70px
+    background: img('bg', 'lineHeaderSection.png') 0 11px repeat-x
+    &-title
+        color: #aaa
+        padding-right: 10px
+        background: clr-white
+    &-variants
+        display: inline-flex
+        background: clr-white
+        +m('tablet')
+            flex-wrap: wrap
+    &-sortBy
+        margin-right: 20px
+        position: relative
+        color: text-main
+        +m('desktop')
+            &:hover
+                color: clr-primary
+        +m('phone')
+            margin-bottom: 10px
+        &_dec
+        &_inc
+            margin-right: 40px
+            color: clr-primary
+            border-bottom: 1px dotted @color
+            &:after
+                content: ''
+                display: block
+                position: absolute
+                right: -30px
+                top: 0
+                width: 30px
+                height: 30px
+                background: img('icons', 'upArrow.svg') center center no-repeat
+                background-size: contain
+        &_inc
+            &:after
+                transform: rotate(180deg)
+        

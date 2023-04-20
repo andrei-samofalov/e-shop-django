@@ -1,0 +1,308 @@
+/*-----------  Стилизация текстовых полей формы и текстовых областей  -----------*/
+$input-height = 56px
+$input-padding = 5px 25px
+$input-borderWidth = 1px
+$bd-input = #e0e0e0
+$bd-radius_nr = 0px
+
+input_text()
+    padding: $input-padding
+    min-height: $input-height
+    border: $input-borderWidth solid $bd-input
+    background-color: clr-white
+    display: block
+    font-size: font-nrp
+    box-sizing: border-box
+    min-width: 250px
+    &:focus
+        outline: none
+    + input
+    + textarea
+    + select
+        margin-top: 20px
+        
+/*----------  Поля формы  ----------*/
+buttonPadding = 10px
+
+label
+    display: inline-block
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"]
+    input_text()
+    line-height: 1.3em
+    &[disabled="true"]
+        color: text-muted
+textarea
+    input_text()
+    line-height: 1.45em
+
+select
+    input_text()
+    color: #777777
+    padding-left: $input-padding[1]
+
+
+[type="checkbox"]
+[type="radio"]
+    width: 20px
+    height: @width
+    position: relative
+    z-index: 100;
+    border-radius: bd-radius_nr
+    border: 2px solid bd-input
+    cursor: pointer;
+    margin-right: 5px
+    margin-left: 5px
+    &:first-child
+        margin-left: 0
+    &:last-child
+        margin-left: 0
+[type="radio"]
+    border-radius: 100px;
+
+    
+/*-----------  Формы  -----------*/
+.{$px}form
+    $fontSzLabel = font-sm              // Размер шрифта для тега label
+    $fontSzInput = font-nrp             // Размер шрифта внутри input
+    $borderColor = $bd-input            // Цвет границы для полей ввода
+    $borderRadius = $bd-radius_nr       // Скругление полей ввода
+    $borderWidth = $input-borderWidth   // Толщина границы полей ввода
+    $heightInput = $input-height        // Высота полей ввода
+    $bgColor     = #f9fafc              // Фон полей в форме
+    $paddingBox = $input-padding        // Поля для input и textarea
+    $spaceBetween = 25px    // Расстояние между группами по вертикали
+    
+    margin-top: 39px
+    display: block
+    width: 100%
+
+    +e(-input)
+        width: 100%
+        //height: $heightInput
+        box-sizing: border-box
+        padding: $paddingBox
+        border-radius: $borderRadius
+        border: $borderWidth solid $borderColor
+        font-size: $fontSzInput
+        background-color: $bgColor
+        line-height: ($heightInput - ($paddingBox[0] * 2))
+        &_error
+            border-color: clr-danger
+        &:focus
+            outline:none
+    
+    +e(-textarea)
+        width: 100%
+        height: ($heightInput * 2)
+        box-sizing: border-box
+        padding: $paddingBox
+        padding-top: 18px
+        padding-bottom: 18px
+        border-radius: $borderRadius
+        border: $borderWidth solid $borderColor
+        font-size: $fontSzInput
+        background-color: $bgColor
+        line-height: 1.2em
+        &:focus
+            outline:none
+        &_error
+            border-color: clr-danger
+    +e(-select)
+        width: 100%
+        height: $heightInput
+        box-sizing: border-box
+        padding: $paddingBox[0] ($paddingBox[1] - 4)
+        border-radius: $borderRadius
+        border: $borderWidth solid $borderColor
+        background: $bgColor
+        background: transparent
+        box-shadow: none !important
+        background-image: none
+        font-size: $fontSzInput
+        line-height: 1.2em
+        &:focus
+            outline:none
+        &Wrap
+            position: relative
+            width: 100%
+            +e(-select)
+                padding-right: 0px
+            &:after
+                content: ''
+                display: block
+                pointer-events: none
+                position: absolute
+                right: $borderWidth
+                top: $borderWidth
+                bottom: $borderWidth
+                border-radius: 0 $borderRadius+3 $borderRadius+3 0
+                width: 40px
+                background: $bgColor img('icons','arrowMuted.svg') center center no-repeat
+        
+    
+    
+    
+    +e(-btn)
+        margin-top: 20px
+    
+    &-error
+        font-size: font-nrm
+        color: clr-danger
+    
+    
+    &-label
+        display: block
+        color: text-muted
+        font-size: font-nr;
+        margin-bottom: 5px
+        &:focus
+            outline:none
+
+    &-group
+        &_center
+            text-align: center
+        & + &
+            margin-top: $spaceBetween
+    &_contacts
+        +e(-input)
+            min-width: auto
+    
+
+    
+// Выпадающие списки
+.{$px}selectList
+    position: relative
+    &-header
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &-icon
+        display: block
+        background: img('icons','arrowMuted.svg') 0 0 no-repeat
+        width: 12px
+        height: 8px
+        margin-left: 15px
+    &-dropdown
+        position: absolute
+        left: 50%
+        top: 100%
+        background: #fff
+        z-index: 900
+        display: none
+        padding: 20px 15px
+        box-shadow: 2px 2px 5px rgba(#000, 0.2)
+        border: 1px solid clr-muted
+        border-radius: 10px
+        width: 200px
+        margin-left: -100px
+    &_sm
+        +e(-icon)
+            width: 8px
+            height: 5px
+            margin-left: 7px
+            background-size: contain
+    &_OPEN
+        +e(-dropdown)
+            display: block
+    &-item
+        display: flex
+        align-items: center
+        & + &
+            margin-top: 7px
+            
+// Чекбоксы
+.{$px}toggle
+    $borderRadiusCheck = 3px    // Скругление углов у чекбоксов
+    $width = 17px               // Ширина чекбокса
+    $height = $width            // Высота чекбокса
+    
+    $borderRadiusRadio = 100px  // Скругление углов у чекбоксов
+    
+    position: relative
+    z-index: 100;
+    width: auto
+    height: auto
+    display: inline-block
+    cursor: default
+    border-radius: 0
+    vertical-align: middle
+    &[type="radio"]
+    &[type="checkbox"]
+        width: $width
+        height: $height
+        cursor: pointer;
+    &[type="radio"]
+        border-radius: $borderRadiusRadio
+    &[type="checkbox"]
+        border-radius: $borderRadiusCheck
+    label&
+        cursor: pointer
+    +e(-text)
+        display: inline
+    +e(-box)
+        position: relative
+        display: inline-block
+        top: 2px
+        margin-left: 0
+        z-index: 5
+        width: $width
+        height: $height
+        border 1px solid #b7b7b7
+        border-radius: $borderRadiusCheck
+        margin-right: 4px
+        &:after
+            content:''
+            display: block
+            position: absolute
+            width: (@width - 6px)
+            height: @width
+            background: transparent
+            border-radius: @border-radius
+            left: 2px
+            top: 2px
+            
+    [type="radio"]
+    [type="checkbox"]
+        opacity: 0
+        width: $width
+        height: $height
+        position: absolute
+        top: 2px
+        left: 0
+        z-index: 10
+        cursor: pointer
+        display: inline-block
+    
+        &:checked
+            + {e(-box)}
+                border-color: #1e7cc4
+                &:after
+                    background: @border-color
+    [type="radio"]
+        visibility: visible
+        + {e(-box)}
+            border-radius: $borderRadiusRadio
+            &:after
+                border-radius: $borderRadiusRadio
+                
+placeholder(fzSize, color)
+    color: color;
+    font-size: fzSize
+    line-height: 1.5em
+    
+$fontSzInput = font-nrp             // Размер шрифта внутри input
+::-webkit-input-placeholder
+    placeholder: $fontSzInput #777777
+
+::-moz-placeholder
+    placeholder: $fontSzInput #777777
+    
+:-moz-placeholder
+    placeholder: $fontSzInput #777777
+
+:-ms-input-placeholder
+    placeholder: $fontSzInput #777777
+

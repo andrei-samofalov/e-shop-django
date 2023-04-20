@@ -1,0 +1,39 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+
+{% block content %}
+	<div class="Middle Middle_top">
+		<div class="Middle-top">
+			<div class="wrap">
+				<div class="Middle-header">
+					<h1 class="Middle-title">Ожидание оплаты
+					</h1>
+					<ul class="breadcrumbs Middle-breadcrumbs">
+						<li class="breadcrumbs-item">
+							<a href={% url "frontend:index" %}>home</a>
+						</li>
+						<li class="breadcrumbs-item breadcrumbs-item_current">
+							<span>Ожидание оплаты</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Section">
+			<div class="wrap">
+				<div class="ProgressPayment">
+					<div class="ProgressPayment-title">Ждем подтверждения оплаты платежной системой
+					</div>
+					<div class="ProgressPayment-icon">
+						<div class="cssload-thecube">
+							<div class="cssload-cube cssload-c1"></div>
+							<div class="cssload-cube cssload-c2"></div>
+							<div class="cssload-cube cssload-c4"></div>
+							<div class="cssload-cube cssload-c3"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

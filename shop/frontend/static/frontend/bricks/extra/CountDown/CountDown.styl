@@ -1,0 +1,83 @@
+.{$px}CountDown
+    visibility: visible;
+    display: flex
+    justify-content: center
+    &-block
+        visibility: visible
+        text-align: center
+        & + &
+            margin-left: 9px
+    &-days
+    &-hours
+    &-minutes
+    &-secs
+        width: 55px;
+        height: 53px;
+        background-color: #ebebeb;
+        display: flex
+        padding: 5px
+        justify-content: center
+        align-items: center
+        font-size: font-md;
+        font-weight: 600;
+        line-height: 1.2em
+        letter-spacing: 1.1px;
+        color: text-main;
+        
+    &-label
+        color: #747880;
+        font-size: font-xs;
+        font-weight: 600;
+        line-height: 1.2em
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-top: 5px
+        display: block
+    &_vt
+        display: block
+        +e(-block)
+            width: 79px;
+            height: 80px;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+            background-color: clr-white;
+            display: flex
+            justify-content: center
+            align-items: center
+            padding: 5px
+            +m('phone')
+                width: 60px
+                height: 60px
+            + {e(-block)}
+                margin-left: 0
+                margin-top: 10px
+        +e(-label)
+            width: 100%
+            opacity: 0.7;
+            color: text-main;
+            font-size: font-xs;
+            font-weight: 400;
+            line-height: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-top: 0
+        {e(-days)},
+        {e(-hours)},
+        {e(-minutes)},
+        {e(-secs)}
+            width: auto
+            height: auto
+            padding: 0
+            background: none
+            font-size: 28px;
+            letter-spacing: 1.4px;
+            +m('phone')
+                font-size: font-md
+        +m('tablet')
+            display: flex
+            margin-top: 10px
+            +e(-block)
+                + {e(-block)}
+                    margin-top: 0
+                    margin-left: 10px
+            
+            

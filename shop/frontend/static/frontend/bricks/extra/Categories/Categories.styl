@@ -1,0 +1,378 @@
+.{$px}Categories
+    display: flex
+    flex-wrap: wrap
+    position: relative
+    z-index: 5
+    +m('phone')
+        margin-bottom: 0
+        display: block
+        margin-left: -0.8rem
+        margin-right: -0.8rem
+
+    &-block
+        padding-left: 2.6rem
+        margin-top: 3rem
+        +m('phone')
+            padding-left: 0
+        +e(-row)
+            font-weight: 500
+            justify-content: space-between
+        &_lg
+            +e(-header)
+                min-height: 17.5rem
+        &_info
+            width: 100%
+            +m(700px)
+                width: auto
+            
+        + {e(-block)}
+            margin-top: 5rem
+            +m('phone')
+                margin-top: 5rem
+    &-col
+        width: 50%
+        +m(1150px)
+            width: 100%
+            margin-top: 5rem
+    &-wrap
+        background: clr-white
+    &-more
+        +m('phone')
+            display: none
+    &-trigger
+        display: none
+        margin-top: 2rem
+        color #0064c9
+        font-family Roboto
+        font-size font-nrm
+        font-weight 900
+        line-height 1.2em
+        &:after
+            content:''
+            display: inline-block
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAHCAYAAADebrddAAAAn0lEQVQoU3WPTQrCMBCFvyHu9SZ2L5Z6A29gAu3eo7ivYI7gDQwR9+1N7N5QSX+sUpzNwJvvDe8JxSOBkFCmln9TeA2qEgpfAWvAUqZmxufeIhyg7WANXAbo1/ABu6uRbuX3DGmvwBJwqGAIKj7IgIZW9py3rofj9NndYBjVBlRGuYlRmeDJEIvGDjUoPYJzOCr6tmKhTrzCEbt7fhd+A3GVMd5uchffAAAAAElFTkSuQmCC") center center no-repeat;
+            width: 1.1rem
+            height: .5rem
+            margin-left: 1rem
+            vertical-align: middle
+            position: relative
+            top: -1px
+        &_OPEN
+            &:after
+                transform: rotate(180deg)
+
+        +m('phone')
+            display: block
+    &-row
+        display: flex
+        align-items: center
+        padding: 1.3rem 1.6rem 1.3rem
+        margin: 0 -1.6rem
+        +m(700px)
+            flex-wrap: wrap
+            justify-content: space-between
+            padding-bottom: 1.5rem
+            padding-top: 1rem
+            padding-left: 0
+            padding-right: 0
+            border-bottom: 0.1rem solid #f2f2f2
+            + {e(-row)}
+                padding-top: 3rem
+        > {e(-block)}
+            margin-top: 0
+            +m(700px)
+                flex-basis: inherit!important
+            &:nth-child(0)
+                order: 1
+            &:nth-child(1)
+                order: 2
+            &:nth-child(2)
+                order: 3
+            &:nth-child(3)
+                order: 4
+            &:nth-child(4)
+                order: 5
+            &:nth-child(5)
+                order: 6
+            &:nth-child(6)
+                order: 7
+            &:nth-child(7)
+                order: 8
+        +m('desktop')
+            &:hover
+                background: #f8f8f8
+
+    &-desc
+        font-weight: bold
+        font-size: font-sm
+        text-transform: uppercase
+        color: clr-muted
+        letter-spacing: 0.1rem
+        margin-bottom: 1rem
+        display: block
+        +m('phone')
+            font-family: 'Roboto'
+
+    &-amount
+        white-space: nowrap
+        text-align: left
+        flex-basis: 13rem
+        font-size: font-sm
+        flex-shrink: 0
+    &-price
+        white-space: nowrap
+        flex-basis: 8.7rem
+        text-align: right
+        font-size: font-sm
+        flex-shrink: 0
+        +m(700px)
+            order: 2 !important
+            align-self: flex-start
+
+    &-info
+        font-size: font-nr
+        display: inline-block
+        
+        +m(700px)
+            margin-bottom: 1rem
+            margin-right: 1rem
+    &-ml
+        margin-left: 0.7rem
+        display: inline-block
+
+    &-size
+        color: clr-muted
+        font-size: font-xs
+        margin-left: 1.7rem
+        text-transform: uppercase
+        white-space: nowrap
+        +m('phone')
+            width: auto
+            margin-left: 0
+            margin-bottom: 1rem
+            display: inline-block
+            vertical-align: top
+            font-family: 'Roboto';
+
+    &-spec
+        color: clr-muted
+        font-size font-xs
+        margin-top: 0.5rem
+        display: block
+
+    &-button
+        flex-basis: 300px
+        text-align: right
+        flex-shrink: 0
+        +b('btn')
+            min-width: 11.5rem
+        +m(700px)
+            padding-left: 0
+        
+
+
+    &-header
+        background-color: #0064c9;
+        padding: 2.7rem 2.5rem 2.5rem
+        position: relative
+        display: flex
+        align-items: stretch
+        margin-left: -0.2rem
+        margin-right: -0.2rem
+        margin-top: -0.2rem
+        +m('phone')
+            padding: 4.3rem 2.4rem 2.8rem
+
+        &-content
+            margin-left: 4rem
+            padding-bottom: 3rem
+            padding-right: 4rem
+            position: relative
+            +m('phone')
+                padding-bottom: 0
+                margin-left: 0
+                padding-right: 0
+        &-footer
+            position: absolute
+            left: 0
+            bottom: 0.7rem
+            right: 0
+
+    &-content
+        padding: 1.6rem 3rem 2.3rem
+        +m('phone')
+            padding-left: 2.2rem
+            padding-right: 2.2rem
+
+    &-footer
+        padding: 0 3rem
+        font-size: font-sm
+        line-height: 1.6em
+        +m('phone')
+            padding-left: 2.2rem
+            padding-right: 2.2rem
+
+    &-label
+        display: inline-block
+        padding-left: .8rem
+        padding-right: .8rem
+        line-height: 1.8rem
+        font-size font-sm
+        font-weight: 900
+        letter-spacing: 0.2rem
+        border-radius 0.2rem
+        &_danger
+            color: clr-white
+            background: #df3349
+            visibility: visible
+
+    &-go
+        position: absolute
+        width: 4rem
+        height: 4rem
+        display: flex
+        align-items: center
+        justify-content: center
+        right: 2.1rem
+        top: 2.9rem
+        z-index: 10
+        +m('phone')
+            display: none
+    &-pict
+        width: 14rem
+        margin-left: 0.5rem
+        margin-top: 0.7rem
+        +m('phone')
+            position: absolute
+            left: 1.7rem
+            top: -3.5rem
+            width: 8rem !important
+            height: 8rem !important
+            margin-left: 0
+            margin-right: 0
+            img
+                max-width: 100%
+                max-height: 100%
+    &-title
+        font-size font-mdp
+        font-weight: 700
+        color: clr-white
+        line-height: 1.4em
+        letter-spacing: .05rem
+        margin-bottom: .5rem
+        display: block
+        +m('desktop')
+            &:hover
+                text-decoration: underline
+    &-slogan
+        text-transform: uppercase
+        color: #6fa7e0
+        font-size: font-sm
+        font-weight: 500
+        letter-spacing: 0.13rem
+        +m('phone')
+            font-family: 'Roboto'
+            font-size: 1.1rem
+
+    &-label
+        width: 7rem
+    &-priceForOne
+        font-size: font-nrm
+        font-weight: 500
+    &-splitProps
+        display: none
+        +m(700px)
+            display: block
+            width: 100%
+            height: 1px
+            order: 3
+            opacity: 0
+            //margin-bottom: 1rem
+
+    &-phoneVisible
+        display: none
+        +m('phone')
+            display: block
+    &_product
+        display: block
+        padding-left: 20px
+        padding-right: 20px
+        margin-left: auto
+        margin-right: auto
+        max-width: 900px
+        +e(-block)
+            &_info
+                padding-left: 0
+        +e(-row)
+            justify-content: space-between
+            padding-top: 0.9rem
+            padding-bottom: 0.9rem
+            +e(-label)
+                width: 7rem
+                opacity: 0
+                margin-left: 1rem
+                margin-right: 1rem
+                +m('phone')
+                    display: none
+            +e(-priceForOne)
+                width: 15%
+                +m('phone')
+                    display: none
+            +e(-size)
+                width: 22%
+                margin-left: 0
+                font-family: 'Roboto';
+                letter-spacing: 0.086rem
+                +m('phone')
+                    width: auto
+                    display: inline-block
+            +e(-amount)
+                order: 3 !important
+                font-size font-nrm
+                font-weight 500
+                +m('phone')
+                    font-size font-xs
+                    padding-left: 0
+            +e(-button)
+                order: 10
+            +m('desktop')
+                &:hover
+                    background: #e9f3fc
+                    +e(-label)
+                        opacity: 1
+        +e(-price)
+            font-size: font-nrm
+    &_similar
+        +e(-block)
+            margin-top: 0
+        +e(-wrap)
+            padding-bottom: 0
+        +e(-content)
+            display: none
+        +e(-go)
+            display: none
+        +e(-title)
+            font-size font-mdm
+            letter-spacing: 0
+            margin-bottom: 1rem
+            +m('phone')
+                margin-bottom: 0.3rem
+        +e(-slogan)
+            font-size: font-sm
+            letter-spacing 0.093rem
+            font-family: 'Roboto'
+            +m('phone')
+                font-size: 1.1rem
+        +e(-header)
+            justify-content: space-between
+            padding: 2.6rem 3.3rem
+            &-content
+                margin-left: 0
+            +e(-pict)
+                order: 2
+                width: 9rem
+                img
+                    max-width: 100%
+            +m('phone')
+                padding: 4.3rem 2.4rem 2.8rem
+

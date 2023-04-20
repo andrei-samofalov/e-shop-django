@@ -1,0 +1,20 @@
+//
+// FONT FACE
+// =========
+//
+
+
+font-face($font-name, $file-path, $weight = 'normal', $style = 'normal')
+
+  $url-fallback = 'url("' + $file-path + '.eot")'
+  $url  = 'url("' + $file-path + '.eot?#iefix") format("embedded-opentype"), '
+  $url = $url + 'url("' + $file-path + '.woff") format("woff"), '
+  $url = $url + 'url("' + $file-path + '.ttf") format("truetype"), '
+  $url = $url + 'url("' + $file-path + '.svg#svg' + replace(' ', '', $font-name) + '") format("svg")'
+
+  @font-face
+    font-family $font-name
+    src unquote($url-fallback)
+    src unquote($url)
+    font-weight unquote($weight)
+    font-style unquote($style)
