@@ -1,3 +1,7 @@
+![logo](misc/img/logo.png)
+
+For english version see [this readme](Readme-en.md)
+
 # Интернет-магазин на базе Django и Vue3
 
 ### Основные технологии
