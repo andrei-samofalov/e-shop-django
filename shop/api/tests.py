@@ -13,5 +13,5 @@ class AccessApiMiddlewareTest(TestCase):
         response = self.client.get(
             '/api/catalog/'
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
