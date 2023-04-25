@@ -9,7 +9,7 @@ class AccessApiMiddlewareTest(TestCase):
         )
         self.assertEqual(response.status_code, 200)
 
-    def test_requests_without_header_dont_passes(self):
+    def test_requests_without_header_dont_pass(self):
         response = self.client.get(
             '/api/catalog/'
         )
