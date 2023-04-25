@@ -100,7 +100,7 @@ class Order(models.Model):
         on_delete=models.PROTECT,
         verbose_name=_('delivery type'),
         related_name='orders',
-        null=True,
+        default=1,
     )
     paymentType = models.CharField(
         choices=PaymentTypeChoices.choices,
@@ -132,6 +132,11 @@ class Order(models.Model):
     def totalCost(self):
         order_products = OrderItem.objects.filter(order=self)
         products_cost = sum([i.total_cost for i in order_products])
+
+        if not self.deliveryType:
+            # needed on order creation
+            return products_cost
+
         if self.deliveryType.type == 'regular':
             delivery = self.deliveryType.cost if products_cost < 2000 else 0
         else:
