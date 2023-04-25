@@ -41,18 +41,19 @@ class PaymentView(APIView):
 
         # for each product in purchase decreasing stock if it enough,
         # otherwise - returning error
-        purchases = OrderItem.objects.filter(order__in=orders_for_pay)
+        purchases = OrderItem.objects.filter(order__in=orders_for_pay).all()
         errors = []
-        for purchase in purchases.all():
+        for purchase in purchases:
             if purchase.product.stock < purchase.quantity:
                 errors.append(f'not enough {purchase.product.title}')
             else:
                 purchase.product.stock -= purchase.quantity
-                purchase.product.save()
 
         if not errors:
             orders_for_pay.update(status='paid')
+            [purchase.product.save() for purchase in purchases]
             self.request.cart.clear()
+
             return Response(status=status.HTTP_200_OK)
 
         return Response({'detail': errors}, status.HTTP_400_BAD_REQUEST)
