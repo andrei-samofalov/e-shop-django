@@ -473,6 +473,9 @@ paths:
               xml:
                 name: password
               properties:
+                passwordCurrent:
+                  type: string
+                  example: '123456'
                 password:
                   type: string
                   example: 'QWEWETEW12312'
@@ -747,10 +750,16 @@ components:
           xml:
             wrapped: true
           items:
-            type: string
-            example: 'NVIDIA'
+            type: object
             xml:
-              name: tagId
+              name: tags
+            properties:
+              id:
+                type: string
+                example: 'NVIDIA'
+              name:
+                type: string
+                example: 'NVIDIA'
         reviews:
           type: array
           xml:
