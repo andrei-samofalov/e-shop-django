@@ -30,7 +30,7 @@
 
 							<!-- Миниатюры -->
 							<div class="ProductCard-picts">
-								<a v-for="src in product.images" class="ProductCard-pict ProductCard-pict_ACTIVE" :href="src">
+								<a v-for="src in product.images" @click.prevent="setMainPhoto(src)" class="ProductCard-pict ProductCard-pict_ACTIVE" :href="src">
 									<img :src="src" :alt="product.title"/> </a>
 							</div>
 							<!-- Миниатюры -->

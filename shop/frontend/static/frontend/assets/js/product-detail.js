@@ -16,10 +16,17 @@ var mix = {
                     ...this.product,
                     ...data
                 }
+                if (this.product.images.length > 0) {
+                    this.photoSrc = this.product.images[0]
+                    this.photoAlt = this.product.title
+                }
             }).catch(() => {
                 this.product = {}
                 console.warn('Ошибка при получении товара')
             })
+        },
+        setMainPhoto(photo) {
+            this.photoSrc = photo
         },
         submitReview() {
             this.postData('/api/products/' + this.product.id + '/review/', {
@@ -47,6 +54,8 @@ var mix = {
         return {
             product: {},
             count: 1,
+            photoSrc: '',
+            photoAlt: '',
             review: {
                 author: '',
                 email: '',
