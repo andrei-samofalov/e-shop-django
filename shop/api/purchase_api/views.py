@@ -61,7 +61,6 @@ class PaymentView(APIView):
 class OrderActiveView(APIView):
     serializer_class = OrderSerializer
 
-    @method_decorator(cache_page(60*60*2))
     def get(self, request: Request, *args, **kwargs) -> Response:
         if not request.user.is_authenticated:
             return Response(status=status.HTTP_204_NO_CONTENT)

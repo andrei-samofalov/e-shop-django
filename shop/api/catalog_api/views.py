@@ -20,7 +20,7 @@ from catalog.models import Category, Product, ProductOffer, Review, Tag
 
 class CachedListAPIView(ListAPIView):
     """Abstract ListAPIView-based class with cached get-route"""
-    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(cache_page(60))
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
@@ -35,7 +35,7 @@ class ProductDetail(RetrieveAPIView):
     )
     serializer_class = ProductSerializer
 
-    @method_decorator(cache_page(60 * 60 * 2))
+    @method_decorator(cache_page(60))
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
 
