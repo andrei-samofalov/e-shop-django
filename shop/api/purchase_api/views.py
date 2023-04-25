@@ -125,6 +125,7 @@ class OrderListCreateView(ListCreateAPIView):
             buyer=self.request.user.profile, status='accepted'
         )
         if created:
+            self.request.cart.clear()
             for pr in products:
                 pr_id = str(pr.id)
                 OrderItem.objects.create(

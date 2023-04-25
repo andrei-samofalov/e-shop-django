@@ -18,7 +18,7 @@ var mix = {
                     this.order.paymentType = data.paymentType
                     this.order.products = data.products
                     this.order.totalCost = data.totalCost
-                    // this.basket = {}
+                    this.basket = {}
                     location.assign('/order/')
                 }).catch(() => {
                 console.warn('Ошибка при создании заказа')
