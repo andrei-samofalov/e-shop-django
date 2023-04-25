@@ -19,7 +19,7 @@ class SpecificationAdmin(SoftDeleteMixin, admin.ModelAdmin):
 
 @admin.register(ProductOffer)
 class ProductOfferAdmin(SoftDeleteMixin, admin.ModelAdmin):
-    pass
+    list_display = 'product_title', "dateFrom", 'dateTo'
 
 
 @admin.register(Review)
