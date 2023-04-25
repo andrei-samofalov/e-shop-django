@@ -3,7 +3,9 @@ import shlex
 
 
 def product_images_directory_path(instance, filename: str) -> str:
-    filename = shlex.quote(filename)[:10]
+    filename = shlex.quote(filename)
+    if len(filename) > 20:
+        filename = filename[15:]
     return "products/product_{pk}/images/{filename}".format(
         pk=instance.product_id,
         filename=filename,
@@ -11,7 +13,9 @@ def product_images_directory_path(instance, filename: str) -> str:
 
 
 def product_main_photo_directory_path(instance, filename: str) -> str:
-    filename = shlex.quote(filename)[:10]
+    filename = shlex.quote(filename)
+    if len(filename) > 20:
+        filename = filename[15:]
     return "products/product_{pk}/images/{filename}".format(
         pk=instance.id,
         filename=filename,
@@ -19,7 +23,9 @@ def product_main_photo_directory_path(instance, filename: str) -> str:
 
 
 def category_images_directory_path(instance, filename: str) -> str:
-    filename = shlex.quote(filename)[:10]
+    filename = shlex.quote(filename)
+    if len(filename) > 20:
+        filename = filename[15:]
     return "categories/category_{pk}/images/{filename}".format(
         pk=instance.id,
         filename=filename,
