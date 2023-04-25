@@ -163,12 +163,15 @@ class Product(models.Model):
         Return average rating of the product based on reviews.
         If there is no reviews to this product yet return `not rated yet`
         """
-        return round(
-            Review.objects.select_related('product')
-            .filter(product=self)
-            .aggregate(models.Avg('rate'))
-            .get('rate__avg'), 2
-        ) or "not rated yet"
+        try:
+            return round(
+                Review.objects.select_related('product')
+                .filter(product=self)
+                .aggregate(models.Avg('rate'))
+                .get('rate__avg'), 2
+            )
+        except TypeError:
+            return 0
 
     def __str__(self):
         return self.title
