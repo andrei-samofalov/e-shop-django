@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from catalog.choices import RateChoices
@@ -43,8 +44,6 @@ class Product(models.Model):
         catalog.models.ProductImage = images;
         catalog.models.Review = reviews;
 
-
-
     """
     category = models.ForeignKey(
         'Category',
@@ -76,6 +75,7 @@ class Product(models.Model):
         verbose_name=_('product'),
         help_text=_('human-readable title of the product')
     )
+    slug = models.SlugField(default='', null=True)
     fullDescription = models.TextField(
         default='',
         blank=True,
@@ -126,6 +126,14 @@ class Product(models.Model):
         verbose_name_plural = _('products')
         indexes = (models.Index('title', name='title'),)
         ordering = ('stock',)
+
+    def get_absolute_url(self):
+        return reverse("frontend:product-slug", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
     @property
     def available(self):
@@ -233,7 +241,6 @@ class Category(models.Model):
 
     def href(self):
         return f'/catalog/{self.pk}'
-        # return reverse('frontend:catalog', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title
