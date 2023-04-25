@@ -295,17 +295,17 @@ class Specification(models.Model):
 class ProductOffer(models.Model):
     dateFrom = models.DateField(verbose_name=_('start date'))
     dateTo = models.DateField(verbose_name=_('end date'))
-    salePrice = models.DecimalField(
-        decimal_places=2,
-        max_digits=10,
-        verbose_name=_('offer price'),
-        default=0,
-    )
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
         verbose_name=_('product'),
         related_name='offers',
+    )
+    salePrice = models.DecimalField(
+        decimal_places=2,
+        max_digits=10,
+        verbose_name=_('offer price'),
+        default=0,
     )
     is_active = models.BooleanField(default=True, verbose_name=_('active'))
 
