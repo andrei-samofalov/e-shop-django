@@ -27,9 +27,18 @@ class ReviewAdmin(admin.ModelAdmin):
     pass
 
 
+class SubcategoriesInline(admin.TabularInline):
+    model = Category.subcategories.through
+    fk_name = 'to_category'
+    extra = 1
+    verbose_name = _('parent category')
+    verbose_name_plural = _('parent categories')
+
+
 @admin.register(Category)
 class CategoryAdmin(SoftDeleteMixin, admin.ModelAdmin):
     filter_horizontal = ('subcategories',)
+    inlines = [SubcategoriesInline]
 
 
 class ProductImagesInline(admin.TabularInline):
