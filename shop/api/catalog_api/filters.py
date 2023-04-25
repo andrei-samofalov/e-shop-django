@@ -22,7 +22,7 @@ class ProductFilter(filters.FilterSet):
     sort = filters.OrderingFilter(
         fields=(
             ('price', 'price'),
-            ('created', 'created'),
+            ('created_at', 'created'),
             ('_reviews', 'reviews'),
             ('_purchases', 'rating')
         )
@@ -33,6 +33,9 @@ class ProductFilter(filters.FilterSet):
     available = filters.BooleanFilter(
         field_name='stock', method='check_availability'
     )
+    freeDelivery = filters.BooleanFilter(
+        field_name='freeDelivery', method='check_delivery'
+    )
 
     @classmethod
     def check_availability(cls, queryset, name, value):
@@ -42,3 +45,13 @@ class ProductFilter(filters.FilterSet):
         """
         lookup = '__'.join([name, 'gt'])
         return queryset.filter(**{lookup: 0})
+
+    @classmethod
+    def check_delivery(cls, queryset, name, value):
+        """
+        Check if delivery is free
+        and return filtered queryset by this parameter
+        """
+        if value is True:
+            return queryset.filter(freeDelivery=True)
+        return queryset
