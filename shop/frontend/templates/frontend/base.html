@@ -130,7 +130,7 @@
 						<div class="CategoriesButton-link" v-for="category in categories">
 							<a :href="category.href">
 								<div class="CategoriesButton-icon">
-									<img :src="category.image.src" :alt="category.image.alt"/>
+									<img :src="category.image.src" :alt="category.image.alt"  width="23" height="19"/>
 								</div>
 								<span class="CategoriesButton-text">${ category.title }$</span></a>
 							<a v-if="category.subcategories.length > 0" class="CategoriesButton-arrow" href="#"></a>
@@ -139,7 +139,7 @@
 								<div v-for="subcategory in category.subcategories">
 									<a class="CategoriesButton-link" :href="subcategory.href">
 										<div class="CategoriesButton-icon">
-											<img :src="subcategory.image.src" :alt="subcategory.alt"/>
+											<img :src="subcategory.image.src" :alt="subcategory.alt" width="23" height="19"/>
 										</div>
 										<span class="CategoriesButton-text">${ subcategory.title }$</span></a>
 								</div>
