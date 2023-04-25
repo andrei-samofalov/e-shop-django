@@ -55,6 +55,7 @@ class ProductAdmin(SoftDeleteMixin, admin.ModelAdmin):
     exclude = ('count',)
     search_fields = ('title', 'fullDescription')
     list_filter = ('is_active', 'is_limited')
+    prepopulated_fields = {"slug": ("title",)}
 
 
 class ProductInline(admin.TabularInline):
