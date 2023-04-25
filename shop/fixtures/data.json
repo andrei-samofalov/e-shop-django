@@ -1,0 +1,678 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$YotNWctY9kuFohD0rpgEtT$Ly8YBppuf0dMyhANS6Wu8/ii8dpJ52/k4FiGBDAucTI=",
+      "last_login": "2023-04-24T13:58:38.052Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "admin",
+      "last_name": "adminoff",
+      "email": "admin@admin.ru",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-04-21T06:51:23.373Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$0fvX7xT7qB1Jn8l5i4Bcbk$0SOvRUK3+yJ3IVN0Tl8Nf7EFaG9D/NIZ2dgfQF/GIQQ=",
+      "last_login": "2023-04-25T09:50:00.058Z",
+      "is_superuser": false,
+      "username": "user1",
+      "first_name": "Юзер",
+      "last_name": "Юзеров",
+      "email": "user1@user.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-25T09:48:27.521Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$0fvX7xT7qB1Jn8l5i4Bcbk$0SOvRUK3+yJ3IVN0Tl8Nf7EFaG9D/NIZ2dgfQF/GIQQ=",
+      "last_login": "2023-04-25T09:50:00.058Z",
+      "is_superuser": false,
+      "username": "user2",
+      "first_name": "Юзер",
+      "last_name": "Юзеров",
+      "email": "user2@user.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-25T09:48:27.521Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$0fvX7xT7qB1Jn8l5i4Bcbk$0SOvRUK3+yJ3IVN0Tl8Nf7EFaG9D/NIZ2dgfQF/GIQQ=",
+      "last_login": "2023-04-25T09:50:00.058Z",
+      "is_superuser": false,
+      "username": "user3",
+      "first_name": "Юзер",
+      "last_name": "Юзеров",
+      "email": "user3@user.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-04-25T09:48:27.521Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "auth",
+      "model": "user"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "sitesettings",
+      "model": "sitesettings"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "accounts",
+      "model": "profile"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "catalog",
+      "model": "category"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "catalog",
+      "model": "product"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+      "app_label": "catalog",
+      "model": "tag"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+      "app_label": "catalog",
+      "model": "specification"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+      "app_label": "catalog",
+      "model": "review"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 14,
+    "fields": {
+      "app_label": "catalog",
+      "model": "productoffer"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 15,
+    "fields": {
+      "app_label": "catalog",
+      "model": "productimage"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 16,
+    "fields": {
+      "app_label": "purchase",
+      "model": "deliverytype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 17,
+    "fields": {
+      "app_label": "purchase",
+      "model": "order"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 18,
+    "fields": {
+      "app_label": "purchase",
+      "model": "orderitem"
+    }
+  },
+  {
+    "model": "accounts.profile",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "avatar": "accounts/user_1/profile/avatar/2023-04-25_115344.732936_admin_profile.png",
+      "phone": ""
+    }
+  },
+  {
+    "model": "accounts.profile",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "avatar": "",
+      "phone": ""
+    }
+  },
+  {
+    "model": "accounts.profile",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "avatar": "",
+      "phone": ""
+    }
+  },
+  {
+    "model": "accounts.profile",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "avatar": "",
+      "phone": ""
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "category": 3,
+      "price": "1200.00",
+      "stock": 48,
+      "count": 0,
+      "title": "14\" Ноутбук DEXP Aquilon серебристый",
+      "slug": "14-noutbuk-dexp-aquilon-serebristyj",
+      "fullDescription": "14\" Ноутбук DEXP Aquilon серебристый",
+      "freeDelivery": false,
+      "is_active": true,
+      "created_at": "2023-04-21T21:19:27.470Z",
+      "updated_at": "2023-04-25T08:53:09.423Z",
+      "is_limited": true,
+      "specifications": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tags": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "price": "2000.00",
+      "stock": 10,
+      "count": 0,
+      "title": "21.45\" Монитор DEXP DF22N1 серебристый",
+      "slug": "2145-monitor-dexp-df22n1-serebristyj",
+      "fullDescription": "1920x1080 (FullHD)@75 Гц, VA, 3000 : 1, 250 Кд/м², 170°/170°, HDMI 1.4, VGA (D-Sub), AMD FreeSync",
+      "freeDelivery": true,
+      "is_active": true,
+      "created_at": "2023-04-21T22:20:27.528Z",
+      "updated_at": "2023-04-21T22:20:27.528Z",
+      "is_limited": false,
+      "specifications": [
+        1,
+        2,
+        6
+      ],
+      "tags": [
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "category": 3,
+      "price": "2200.00",
+      "stock": 10,
+      "count": 0,
+      "title": "14.1\" Ноутбук Irbis NB270 белый",
+      "slug": "141-noutbuk-irbis-nb270-belyj",
+      "fullDescription": "Full HD (1920x1080), IPS, Intel Celeron N4020, ядра: 2 х 1.1 ГГц, RAM 4 ГБ, eMMC 128 ГБ, Intel UHD Graphics 600 , Windows 10 Pro",
+      "freeDelivery": false,
+      "is_active": true,
+      "created_at": "2023-04-24T16:29:25.756Z",
+      "updated_at": "2023-04-24T16:29:25.756Z",
+      "is_limited": false,
+      "specifications": [
+        1,
+        4,
+        6
+      ],
+      "tags": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "image": "products/product_1/images/340a302f23b113816c4f0f10b01253d7a977626b9232f709f.jpg.webp"
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 2,
+    "fields": {
+      "product": 1,
+      "image": "products/product_1/images/302c60b5c627a347b0b8301b243fb0a61a6cf3e41cf64dea6.jpg.webp"
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 3,
+    "fields": {
+      "product": 2,
+      "image": "products/product_2/images/afc460e55b0c6b7f339a8779d1922557adc9382b4e9ed8cef.png.webp"
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 4,
+    "fields": {
+      "product": 2,
+      "image": "products/product_2/images/671bacc7d0f3db5ec74dec56b20a52134057cb0e271f34197.jpg.webp"
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 5,
+    "fields": {
+      "product": 3,
+      "image": "products/product_3/images/main.jpg.webp"
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 6,
+    "fields": {
+      "product": 3,
+      "image": "products/product_3/images/sec.jpg.webp"
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 7,
+    "fields": {
+      "product": 3,
+      "image": "products/product_3/images/third.jpg.webp"
+    }
+  },
+  {
+    "model": "catalog.productimage",
+    "pk": 8,
+    "fields": {
+      "product": 3,
+      "image": "products/product_3/images/foutrth.jpg.webp"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "title": "мониторы",
+      "picture": "categories/category_1/images/monitors.png",
+      "is_active": true,
+      "subcategories": []
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "title": "персональные компьютеры",
+      "picture": "categories/category_2/images/PC.png",
+      "is_active": true,
+      "subcategories": []
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "title": "ноутбуки",
+      "picture": "categories/category_None/images/notebook.png",
+      "is_active": true,
+      "subcategories": []
+    }
+  },
+  {
+    "model": "catalog.tag",
+    "pk": 1,
+    "fields": {
+      "name": "ноутбуки",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.tag",
+    "pk": 2,
+    "fields": {
+      "name": "новинки",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.tag",
+    "pk": 3,
+    "fields": {
+      "name": "выбор покупателей",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.review",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "author": "Оранжевый Апельсин",
+      "text": "Отличный ноутбук!\r\nПользуюсь каждый день",
+      "rate": 5,
+      "date": "2023-04-21T22:12:28.940Z",
+      "email": ""
+    }
+  },
+  {
+    "model": "catalog.review",
+    "pk": 2,
+    "fields": {
+      "product": 2,
+      "author": "John Doe",
+      "text": "Wonderful",
+      "rate": 4,
+      "date": "2023-04-25T08:49:18.072Z",
+      "email": ""
+    }
+  },
+  {
+    "model": "catalog.review",
+    "pk": 3,
+    "fields": {
+      "product": 2,
+      "author": "Another user",
+      "text": "",
+      "rate": 3,
+      "date": "2023-04-25T08:49:36.026Z",
+      "email": ""
+    }
+  },
+  {
+    "model": "catalog.review",
+    "pk": 4,
+    "fields": {
+      "product": 2,
+      "author": "Banana Bombs",
+      "text": "That's great!",
+      "rate": 5,
+      "date": "2023-04-25T08:50:18.169Z",
+      "email": ""
+    }
+  },
+  {
+    "model": "catalog.specification",
+    "pk": 1,
+    "fields": {
+      "name": "Гарантия",
+      "value": "12",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.specification",
+    "pk": 2,
+    "fields": {
+      "name": "Страна-производитель",
+      "value": "Китай",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.specification",
+    "pk": 3,
+    "fields": {
+      "name": "Диагональ экрана (дюйм)",
+      "value": "14",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.specification",
+    "pk": 4,
+    "fields": {
+      "name": "Покрытие экрана",
+      "value": "матовое",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.specification",
+    "pk": 5,
+    "fields": {
+      "name": "Вид графического ускорителя",
+      "value": "встроенный",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.specification",
+    "pk": 6,
+    "fields": {
+      "name": "Диагональ экрана (дюйм)",
+      "value": "21.45",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.productoffer",
+    "pk": 1,
+    "fields": {
+      "dateFrom": "2023-04-25",
+      "dateTo": "2023-04-28",
+      "product": 2,
+      "salePrice": "1800.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.productoffer",
+    "pk": 2,
+    "fields": {
+      "dateFrom": "2023-04-25",
+      "dateTo": "2023-05-25",
+      "product": 1,
+      "salePrice": "1000.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "purchase.orderitem",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "product": 1,
+      "quantity": 1,
+      "price": "1200.00"
+    }
+  },
+  {
+    "model": "purchase.orderitem",
+    "pk": 2,
+    "fields": {
+      "order": 2,
+      "product": 1,
+      "quantity": 1,
+      "price": "1200.00"
+    }
+  },
+  {
+    "model": "purchase.orderitem",
+    "pk": 3,
+    "fields": {
+      "order": 3,
+      "product": 2,
+      "quantity": 1,
+      "price": "2000.00"
+    }
+  },
+  {
+    "model": "purchase.orderitem",
+    "pk": 4,
+    "fields": {
+      "order": 3,
+      "product": 3,
+      "quantity": 3,
+      "price": "2200.00"
+    }
+  },
+  {
+    "model": "purchase.deliverytype",
+    "pk": 1,
+    "fields": {
+      "type": "regular",
+      "cost": "200.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "purchase.deliverytype",
+    "pk": 2,
+    "fields": {
+      "type": "express",
+      "cost": "700.00",
+      "is_active": true
+    }
+  },
+  {
+    "model": "purchase.order",
+    "pk": 1,
+    "fields": {
+      "buyer": 1,
+      "createdAt": "2023-04-22T19:53:48.450Z",
+      "deliveryType": 1,
+      "paymentType": "own",
+      "status": "paid",
+      "city": "Санкт-Петербург",
+      "address": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "purchase.order",
+    "pk": 2,
+    "fields": {
+      "buyer": 1,
+      "createdAt": "2023-04-24T18:31:42.752Z",
+      "deliveryType": 1,
+      "paymentType": "own",
+      "status": "paid",
+      "city": "Санкт-Петербург",
+      "address": "1st street",
+      "is_active": true
+    }
+  },
+  {
+    "model": "purchase.order",
+    "pk": 3,
+    "fields": {
+      "buyer": 2,
+      "createdAt": "2023-04-25T09:50:08.948Z",
+      "deliveryType": 2,
+      "paymentType": "someone",
+      "status": "awaiting payment",
+      "city": "Санкт-Петербург",
+      "address": "На деревню дедушке",
+      "is_active": true
+    }
+  }
+]
