@@ -13,18 +13,27 @@ from rest_framework.views import APIView
 
 from api.catalog_api.serializers import ProductShortSerializer
 from api.purchase_api.serializers import OrderSerializer
-from api.purchase_api.service import is_payment_valid
+from api.purchase_api.service import (
+    is_payment_valid,
+    check_stock_availability,
+    reduce_product_stock_with_purchase_quantity
+)
 from catalog.models import Product
 from purchase.cart import Cart
 from purchase.models import DeliveryType, Order, OrderItem
 
 
 class PaymentView(APIView):
+    """POST for api/payment/"""
     @atomic
     def post(self, request: Request, *args, **kwargs) -> Response:
+        """
+        Check product stock for all orders,
+        check user's card and finish payment
+        """
         data = self.request.data
 
-        # getting orders which status is `awaiting payment`
+        # getting orders of request user which status is `awaiting payment`
         orders_for_pay = (
             Order.objects
             .prefetch_related('purchases')
@@ -35,31 +44,38 @@ class PaymentView(APIView):
         # check if card number is valid, return bad request if not
         if not is_payment_valid(card_number):
             return Response(
-                {'detail': 'card number is not valid'},
+                {'detail': 'card number %s is not valid' % card_number},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # for each product in purchase decreasing stock if it enough,
-        # otherwise - returning error
-        purchases = OrderItem.objects.filter(order__in=orders_for_pay).all()
-        errors = []
-        for purchase in purchases:
-            if purchase.product.stock < purchase.quantity:
-                errors.append(f'not enough {purchase.product.title}')
-            else:
-                purchase.product.stock -= purchase.quantity
+        # get all purchases in orders for pay
+        # (it could be better to split purchases for each order)
+        purchases = (
+            OrderItem.objects
+            .prefetch_related('product')
+            .filter(order__in=orders_for_pay).all()
+        )
+        # check for stock availability of all products in purchases
+        if errors := check_stock_availability(purchases) is False:
+            # if ALL products have enough stock reduce it
+            # with quantity in purchase
+            reduce_product_stock_with_purchase_quantity(purchases)
 
-        if not errors:
+            # change order statuses to `paid`
             orders_for_pay.update(status='paid')
-            [purchase.product.save() for purchase in purchases]
+
+            # delete all records from cart
             self.request.cart.clear()
 
             return Response(status=status.HTTP_200_OK)
 
+        # if any of products doesn't have enough stock return bad request
+        # with details
         return Response({'detail': errors}, status.HTTP_400_BAD_REQUEST)
 
 
 class OrderActiveView(APIView):
+    """GET for api/orders/active/"""
     serializer_class = OrderSerializer
 
     def get(self, request: Request, *args, **kwargs) -> Response:
@@ -73,6 +89,7 @@ class OrderActiveView(APIView):
 
 
 class OrderRetrieveConfirmView(RetrieveModelMixin, GenericAPIView):
+    """GET and POST for api/orders/{id}/"""
     serializer_class = OrderSerializer
     queryset = Order.objects.filter(is_active=True)
 
@@ -81,10 +98,11 @@ class OrderRetrieveConfirmView(RetrieveModelMixin, GenericAPIView):
         return self.retrieve(request, *args, **kwargs)
 
     def post(self, request: Request, *args, **kwargs) -> Response:
+        """"""
         data = self.request.data
         user = self.request.user.profile
 
-        order = Order.objects.select_related('buyer__user__profile').get(
+        order = Order.objects.get(
             buyer=user, status='accepted'
         )
 
@@ -101,6 +119,7 @@ class OrderRetrieveConfirmView(RetrieveModelMixin, GenericAPIView):
 
 
 class OrderListCreateView(ListCreateAPIView):
+    """GET and POST for api/orders/"""
     serializer_class = OrderSerializer
 
     def get_queryset(self) -> QuerySet[Order]:
@@ -111,7 +130,7 @@ class OrderListCreateView(ListCreateAPIView):
         )
 
     def post(self, request: Request, *args, **kwargs) -> Response:
-
+        """Create temp Order which would be finished in future"""
         if not request.user.is_authenticated:
             messages.error(request, 'Вам необходимо войти в свой аккаунт')
             return redirect(reverse('frontend:signin'))
@@ -139,7 +158,12 @@ class OrderListCreateView(ListCreateAPIView):
 
 
 class BasketView(GenericAPIView):
+    """GET, POST and DELETE for api/basket/"""
     serializer_class = ProductShortSerializer
+
+    def __init__(self):
+        super().__init__()
+        self.cart = self.request.cart
 
     def get_queryset(self) -> QuerySet[Product]:
         cart = self.get_cart()

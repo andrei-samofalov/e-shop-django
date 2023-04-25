@@ -26,6 +26,10 @@ class CachedListAPIView(ListAPIView):
 
 
 class ProductDetail(RetrieveAPIView):
+    """
+    GET api/products/{id}/
+    responses is cached for 60 sec
+    """
     queryset = (
         Product.objects
         .filter(is_active=True)
@@ -49,27 +53,32 @@ class ProductListCommon(CachedListAPIView):
 
 
 class ProductListLimited(ProductListCommon):
+    """GET for api/products/limited/"""
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(is_limited=True)[:16]
 
 
 class ProductListBanners(ProductListCommon):
+    """GET for api/banners/"""
     def get_queryset(self):
         return super().get_queryset()[:4]
 
 
 class ProductListPopular(ProductListCommon):
+    """GET for api/products/popular/"""
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.alias(rating=Avg('reviews__rate')).order_by('-rating')[:8]
 
 
 class ReviewCreate(CreateAPIView):
+    """POST for api/products/{id}/review"""
     serializer_class = ReviewSerializer
     product_id = None
 
     def get_queryset(self):
+        """Return queryset with filtered reviews on specific product"""
         return (
             Review.objects
             .select_related('product')
@@ -77,6 +86,7 @@ class ReviewCreate(CreateAPIView):
         )
 
     def create(self, request, *args, **kwargs):
+        """Add review to product and return all of related reviews"""
         self.product_id = kwargs.get('pk')
 
         request.data.update({'product_id': self.product_id})
@@ -92,11 +102,17 @@ class ReviewCreate(CreateAPIView):
 
 
 class TagList(CachedListAPIView):
+    """GET for api/tags/"""
     queryset = Tag.objects.filter(is_active=True)
     serializer_class = TagSerializer
 
 
 class CatalogList(CachedListAPIView):
+    """
+    GET for api/catalog/
+    filter by fields in `api.catalog_api.filters.ProductFilter`
+    and filter by `tags[]` (this is frontend specific query)
+    """
     pagination_class = CatalogPaginator
     serializer_class = ProductShortSerializer
     filterset_class = ProductFilter
@@ -116,6 +132,7 @@ class CatalogList(CachedListAPIView):
 
 
 class CategoryList(CachedListAPIView):
+    """GET for api/categories/"""
     queryset = (
         Category.objects
         .filter(is_active=True)
@@ -125,6 +142,7 @@ class CategoryList(CachedListAPIView):
 
 
 class OfferList(CachedListAPIView):
+    """GET for api/sales/"""
     queryset = (
         ProductOffer.objects
         .filter(is_active=True)
