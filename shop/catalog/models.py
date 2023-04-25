@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
@@ -322,3 +323,10 @@ class ProductOffer(models.Model):
     class Meta:
         verbose_name = _('product offer')
         verbose_name_plural = _('product offers')
+
+    @admin.display(description=_('product title'))
+    def product_title(self):
+        return self.product.title
+
+    def __str__(self):
+        return f'{self.product.title}: {self.dateFrom} - {self.dateTo}'
