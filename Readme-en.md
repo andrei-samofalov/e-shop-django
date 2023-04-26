@@ -66,9 +66,7 @@ installation you are at the root of the project
     python manage.py migrate
     ```
 
-7. **!Developing**
-
-   Create some demo content by loading fixtures
+7. Create some demo content by loading fixtures
     ```shell
    python manage.py loaddata fixtures/data.json
    ```
