@@ -122,7 +122,7 @@ For english version see [this readme](Readme-en.md)
 2. Сайт доступен по адресу http://localhost:8000/
 3. Администраторский раздел http://localhost:8000/admin/
 
-<div style="visibility:hidden">
-    author: Andrey Samofalov
-    https://github.com/andrei-samofalov/
-</div>
+
+[//]: # (    author: Andrey Samofalov)
+
+[//]: # (    https://github.com/andrei-samofalov/)
